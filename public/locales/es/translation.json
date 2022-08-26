@@ -1,0 +1,19 @@
+{
+    "prueba":{
+       "second": "prueba translated"
+    },
+    "escrito":{
+        "placeholder":"Escribe la hora aquí. Termina con un punto.",
+        "point": "Termina la oración con un punto.",
+        "phrase1":"La frase '(horas) y (minutos)' se usa entre los minutos 1 y 35.",
+        "phrase2":"La frase '(minutos) para las (horas)' ó  '(horas) menos (minutos)' se usa entre los minutos 40 y 59.",
+        "noche": "El periodo 'noche' se usa entre las 7 y las 12.",
+        "tarde":"El periodo 'tarde' se usa entre las 1 y las 7.",
+        "ending":"Puedes terminar la frase con; {{periodos}}, para que sea mas clara.",
+        "finish":"Termina de escribir la frase.",
+        "hoursWrong": "Escribe las horas entre uno y doce.",
+        "minutesWrong": "Escríbe los minutos entre uno y cincuenta y nueve.",
+        
+        "dummy": "final"
+    }
+}
