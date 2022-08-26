@@ -2,10 +2,8 @@ import {Component} from 'react';
 import {es} from '../modell/writtenComponents/written';
 import { reloj, relojDigital, escrito, translate } from '../controller/controller';
 import {CgArrowsHAlt} from 'react-icons/cg';
-import '../i18n';
-import { withTranslation } from 'react-i18next';
 
-class DiscoO extends Component {
+class Disco extends Component {
     calculateDegrees(){
         let hours = this.props.hours;
         let minutes = this.props.minutes;
@@ -20,9 +18,9 @@ class DiscoO extends Component {
     }
   }
   
-class EscritoO extends Component{
-  constructor(props){
-    super(props);
+class Escrito extends Component{
+  constructor(){
+    super();
     this.state = {
       hours:undefined,
       minutes:undefined,
@@ -41,6 +39,7 @@ class EscritoO extends Component{
     }
     this.evaluatePhrase(input);
   }
+
   componentDidUpdate(prevProps,prevState){
     if(this.props.answer){
       let input= null;
@@ -54,6 +53,7 @@ class EscritoO extends Component{
       }
     }
   }
+
   showInteraction(e){
     if(this.props.interaction){
       if(e.target.classList.contains("clockContainers")){
@@ -90,6 +90,7 @@ class EscritoO extends Component{
     }
   }
   changeInputValue(value){
+    console.log("change input value")
     escrito.input = value;
     this.setState({input : value,inputWithFeedback: null});
   }
@@ -203,6 +204,7 @@ class EscritoO extends Component{
     });
     return <span className="alternative" key={value} children={children} onClick={this.changeInputValue.bind(this,value)}></span>
   }
+
   replacePartsAndGiveAlternatives(timeObject){
     let returnArray = [];
     timeObject.structure.forEach((part,index)=>{
@@ -225,40 +227,53 @@ class EscritoO extends Component{
     }
     let timeObject = escrito.analyzePhrase(input);
     //validation
-    if(timeObject.action){
-      let feedback = timeObject.feedback;
-      let inputWithFeedback = null;
-      if(timeObject.action === "show"){
-        console.log("show");
-      }else if(timeObject.action === "delete"){
-        console.log("delete");
-        inputWithFeedback = this.deletePhraseParts(timeObject);
-      }else if(timeObject.action === "alternatives"){
-        console.log("alternatives");
-        inputWithFeedback = this.createEitherOrAlternatives(timeObject);
-      }else if(timeObject.action === "switch"){
-        console.log("switch");
-        inputWithFeedback =  this.switchParts(timeObject);
-      }else if(timeObject.action === "highlight"){
-        console.log("highlight");
-        inputWithFeedback =  this.highlightPart(timeObject);
-      }else if(timeObject.action === "replace"){
-        console.log("replace");
-        inputWithFeedback =  this.replacePart(timeObject);
-      }else if(timeObject.action === "replaceAndAlternatives"){
-        console.log("replaceAndAlternatives")
-        inputWithFeedback =  this.replacePartsAndGiveAlternatives(timeObject);
+    if(timeObject.action === "changeInput"){
+      console.log("answer: changeInput")
+      if(timeObject.type === "erasePoint"){
+        this.changeInputValue(input.replace(/\.$/gm,""));
+      }else if(timeObject.type === "eraseLastSpace"){
+        this.changeInputValue(input.replace(/\s\.$/gm,"."));
       }
-      feedback = (Array.isArray(feedback))?this.props.t(...feedback):this.props.t(feedback);
-      this.props.feedback({feedback});
-      this.setState({inputWithFeedback});
-      return 0
+      return 0;
+    }else if(timeObject.action === "show"){
+      console.log("answer: show");
+      this.props.feedback({feedback:timeObject.feedback});
+      this.setState({inputWithFeedback : null})
+      return 0;
+    }else if(timeObject.action === "delete"){
+      console.log("answer: delete");
+      this.props.feedback({feedback:timeObject.feedback});
+      this.setState({inputWithFeedback : this.deletePhraseParts(timeObject)});
+      return 0;
+    }else if(timeObject.action === "alternatives"){
+      console.log("answer: alternatives");
+      this.props.feedback({feedback:timeObject.feedback});
+      this.setState({inputWithFeedback : this.createEitherOrAlternatives(timeObject)});
+      return 0;
+    }else if(timeObject.action === "switch"){
+      console.log("answer: switch");
+      this.props.feedback({feedback:timeObject.feedback});
+      this.setState({inputWithFeedback : this.switchParts(timeObject)});
+      return 0;
+    }else if(timeObject.action === "highlight"){
+      console.log("answer: highlight");
+      this.props.feedback({feedback:timeObject.feedback});
+      this.setState({inputWithFeedback : this.highlightPart(timeObject)});
+      return 0;
+    }else if(timeObject.action === "replace"){
+      console.log("answer: replace");
+      this.props.feedback({feedback:timeObject.feedback});
+      this.setState({inputWithFeedback : this.replacePart(timeObject)});
+      return 0;
+    }else if(timeObject.action === "replaceAndAlternatives"){
+      console.log("answer: replaceAndAlternatives");
+      this.props.feedback({feedback:timeObject.feedback});
+      this.setState({inputWithFeedback : this.replacePartsAndGiveAlternatives(timeObject)});
+      return 0;
     }else{
+      console.log("answer: accepted");
       this.props.feedback({feedback:null});
       this.setState({inputWithFeedback : null});
-      if(timeObject === 0){
-        return 0
-      }
     }
     this.props.response(timeObject);
   }
@@ -271,13 +286,13 @@ class EscritoO extends Component{
         <div className={`escrito${(this.props.answer === true)?'':' show'}`} >{this.write(this.state.hours, this.state.minutes)}</div>
         <span className={`escritoSpan${(this.props.answer === true)?' show':''}`}>
           <div className="escritoInteractionShow" >{this.write(this.state.hours, this.state.minutes)}</div>
-          <input id="escritoInteraction" className="escritoInteraction" placeholder={this.props.t('escrito.placeholder')} value={(this.props.answer === true )?escrito.input:this.state.input} onChange={this.handleChange}></input>
+          <input id="escritoInteraction" className="escritoInteraction" placeholder="Escribe la hora aquí." value={(this.props.answer === true )?escrito.input:this.state.input} onChange={this.handleChange}></input>
         </span>
       </div>);
   }
 }
   
-class RelojDigitalO extends Component{
+class RelojDigital extends Component{
   constructor(){
     super();
     this.state={
@@ -418,7 +433,7 @@ showTime(){
   }
 }
   
-class RelojAnalogoO extends Component{
+class RelojAnalogo extends Component{
   constructor(){
     super();
     this.state = {
@@ -624,9 +639,5 @@ class RelojAnalogoO extends Component{
     )
   }
 }
-const Escrito = withTranslation()(EscritoO);
-const Disco = withTranslation()(DiscoO)
-const RelojDigital = withTranslation()(RelojDigitalO)
-const RelojAnalogo = withTranslation()(RelojAnalogoO)
 
-export {Escrito,Disco,RelojDigital,RelojAnalogo};
+export {Disco, Escrito, RelojDigital, RelojAnalogo}

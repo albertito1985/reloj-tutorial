@@ -259,10 +259,12 @@ export let relojDigital = {
 }
 
 export let escrito ={
-  input: "son las once y.",
+  input: "",
+  prevInput: "",
   hours: 0,
   minutes:0,
   analyzePhrase(phrase){
+    let prevInput = phrase;
     phrase= phrase.replace(/\s+/g," ").trim();
     let words = phrase.split(" ");
     let phraseParts;
@@ -270,21 +272,22 @@ export let escrito ={
       feedback:[],
       results:{}
     };
-
+    if(phrase.match(/\s\.$/gm)){
+      if(this.prevInput.match(/\s$/gm)){
+        return {action:"changeInput", type:"eraseLastSpace"}
+      }else{
+        return {action:"changeInput", type:"erasePoint"}
+      }
+    }
+    this.prevInput = prevInput;
     if(words.length === 1){//if the use is writing the first word ... do nothing
-      return 0;
+      return {action:"show", feedback:"Escribe la hora y termina con un punto."}
     }
 
     if(phrase.match(/.+\.$/)){
       //STRUCTURE
       phraseParts =this.identifyPhraseParts(phrase);
       let structure = this.detectStructure(phraseParts);
-      if(structure.length <3){
-        return {
-          action: "show",
-          feedback: "escrito.finish"
-        }
-      }
       if(structure.action){
         return structure;
       }else{
@@ -326,28 +329,26 @@ export let escrito ={
         if(endingFeedback.feedback === true){
           responseObject.feedback.push(endingFeedback.phrase);
         }
-        console.log(responseObject.feedback);
       }
       //CORRECTING SINTACTIC ERRORS
-      let coreType = (phraseParts.core === null)? null : phraseParts.core.type[0];
-      let periodCongruence = this.periodHourCongruence(responseObject,structure,coreType);
+      let periodCongruence = this.periodHourCongruence(responseObject,structure,phraseParts.core.type[0]);
       if (periodCongruence.action){  
         return periodCongruence;
       }
-      let timeFraseTypeCongruence = this.timeFraseTypeCongruence(responseObject,structure,coreType);
+      let timeFraseTypeCongruence = this.timeFraseTypeCongruence(responseObject,structure,phraseParts.core.type[0]);
       if (timeFraseTypeCongruence.action){  
         return timeFraseTypeCongruence;
       }
       console.log("spelling and grammar check end");
     }else{// if the sentence do not ends with period.
-    //  responseObject.feedback.push("punto");
-     return {action:"show", feedback:"escrito.point"}
+     return {action:"show", feedback:"Termina la oración con un punto."}
     }
     responseObject.analysis = {
       phrase:phrase,
-      type:(phraseParts.core === null)? null : phraseParts.core.type[0],
-      mode:(phraseParts.core === null)? null : phraseParts.core.mode[0]
+      type:phraseParts.core.type[0],
+      mode:phraseParts.core.mode[0]
     };
+    console.log(responseObject);
     return responseObject
   },
   timeFraseTypeCongruence(response,structure,coreType){
@@ -355,13 +356,13 @@ export let escrito ={
       return {
         action: "show",
         structure:structure,
-        feedback: "escrito.phrase1"
+        feedback: "La frase '(horas) y (minutos)' se usa entre los minutos 1 y 35."
       }
     }else if(response.results.minutes<35 && coreType === 2){
       return {
         action: "show",
         structure:structure,
-        feedback: "escrito.phrase2"
+        feedback: "La frase '(minutos) para las (horas)' ó  '(horas) menos (minutos)' se usa entre los minutos 40 y 59."
       }
     }else{
       return false
@@ -374,7 +375,7 @@ export let escrito ={
           structure[index].replace = ["de la mañana", "de la tarde"];  
         return {
           action: "replaceAndAlternatives",
-          feedback:"escrito.noche",
+          feedback:"El periodo 'noche' se usa entre las 7 y las 12.",
           structure:structure
         }
       }
@@ -384,7 +385,7 @@ export let escrito ={
           structure[index].replace = ["de la mañana", "de la noche"];
         return {
           action: "replaceAndAlternatives",
-          feedback:"escrito.tarde",
+          feedback:"El periodo 'tarde' se usa entre las 1 y las 7.",
           structure:structure
         }
       }
@@ -395,11 +396,11 @@ export let escrito ={
     if(results.minutes === 0 && (results.hours === 12 || results.hours === 0)){
       return {feedback : false}
     }else if(results.hours === 7){
-      return {feedback: true, phrase:["escrito.ending",{periodos : "de la mañana, de la tarde ó de la noche"}]};
+      return {feedback: true, phrase:"Puedes terminar la frase con; de la mañana, de la tarde ó de la noche, para que sea mas clara."};
     }else if(results.hours>=1 && results.hours<7){
-      return {feedback: true, phrase:["escrito.ending",{periodos : "de la mañana ó de la tarde"}]};
+      return {feedback: true, phrase:"Puedes terminar la frase con; de la mañana ó de la tarde para que sea mas clara."};
     }else if(results.hours>=8 && results.hours<=12){
-      return {feedback: true, phrase:["escrito.ending",{periodos : "de la mañana ó de la noche"}]};
+      return {feedback: true, phrase:"Puedes terminar la frase con; de la mañana ó de la noche para que sea mas clara."};
     }
   },
   getTheTime(phraseParts){
@@ -470,10 +471,9 @@ export let escrito ={
     if(action.object){
       return {
         ...action,
-        feedback: (validation === "hours")? "escrito.hoursWrong":"escrito.minutesWrong"
+        feedback: (validation === "hours")? "Escribe las horas entre uno y doce.":"Escríbe los minutos entre uno y cincuenta y nueve."
       }
     }
-    console.log(responseObject);
     return responseObject;
     
     function validateTime(time){
@@ -487,7 +487,6 @@ export let escrito ={
     }
   },
   validateIntro(structure,phraseParts){
-
     if(!(phraseParts.core) || !(phraseParts.core.type[0] === 0) ){
       if(phraseParts.number0.value[0] === 1){
         if(phraseParts.core.type[0] === 2 && phraseParts.core.mode[0] === 0){
@@ -510,16 +509,14 @@ export let escrito ={
           }
         }
       }else{
-        if(phraseParts.core){
-          if(phraseParts.core.type[0] === 2 && phraseParts.core.mode[0] === 0){
-            if(!(phraseParts.intro.phrase[0].match(/^[szc](?:ou|[oóuú])(?:ni|nj|[n|ñ])$/i))){
-              let index = structure.findIndex((object)=>object.name === "intro");
-              structure[index].replace = "Son";       
-              return{
-                action:"replace",
-                feedback: "Ésta frase comienza con 'Son'.",
-                structure:structure
-              }
+        if(phraseParts.core.type[0] === 2 && phraseParts.core.mode[0] === 0){
+          if(!(phraseParts.intro.phrase[0].match(/^[szc](?:ou|[oóuú])(?:ni|nj|[n|ñ])$/i))){
+            let index = structure.findIndex((object)=>object.name === "intro");
+            structure[index].replace = "Son";       
+            return{
+              action:"replace",
+              feedback: "Ésta frase comienza con 'Son'.",
+              structure:structure
             }
           }
         }else if(!(phraseParts.intro.phrase[0].match(/^[szc](?:ou|[oóuú])(?:ni|nj|[n|ñ])\sl[aá][szc]$/i))){
@@ -597,7 +594,7 @@ export let escrito ={
       //finding grouping the parts that follow each other correctly.
       for(let correct=0, start= false; correct < correctStructure.length; correct++){
         for(let actual=0; actual<actualStructure.length;actual++){
-          if(typeof actualStructure[actual].found ==="undefined"){
+          if(!(actualStructure[actual].found)){
             if(start===false){
               if(actualStructure[actual].name.includes(correctStructure[correct].name)){
                 start=true;
@@ -614,7 +611,7 @@ export let escrito ={
               }else{
                 start = false;
                 groups++;
-                correct=-1;
+                correct=0;
                 break;
               }
             }
@@ -650,31 +647,20 @@ export let escrito ={
         } 
       });
       //validating the largest group against the correct structure or deleting the group properties if the largest group has only one word
-      
-      
-      //aquí me quedé
-      
-      
-      
-      
-      
-      
-      
       if(currentLargestGroup.quantity > 1){
         correctStructure.forEach((part)=>{
-          // if(!(part.found)){
+          if(!(part.found)){
             actualStructure.forEach((actualPart)=>{
               if(actualPart.group === currentLargestGroup.group){ 
-                if(!(actualPart.validated)){
+                if(!(part.found === true)){
                   if(actualPart.name.includes(part.name)){
                     actualPart.found = true;
                     part.found = true;
-                    actualPart.validated = true;
                   }
                 }
               }
             });
-          // }
+          }
         });
       }else{
         actualStructure.forEach((part)=>{
@@ -682,50 +668,38 @@ export let escrito ={
         });
       }
       // finding correct structure parts or the rest of them.
-
-
-
-
-
-
-
-
-
-
-
       correctStructure.forEach((part)=>{
-        if(typeof part.found === "undefined"){
-          for(let i=0;i<actualStructure.length;i++){
-            if(actualStructure[i].name.includes(part.name) && !(actualStructure[i].found)){
-              actualStructure[i].found = true;
+        actualStructure.forEach((actualPart)=>{
+          if(!(part.found === true)){
+            if(actualPart.name.includes(part.name)){
+              actualPart.found = true;
               part.found = true;
-              break;
             }
-          };
-          if(typeof part.found === "undefined"){
-            part.found = false;
           }
+        });
+        if(!(part.found)){
+          part.found = false;
         }
       });
-
       //validation
       // checking for missing parts and deleting not mandatory-not found parts.
       let deleteOptional = [];
-      for(let i=0; i< correctStructure.length;i++){
-        if(correctStructure[i].mandatory === true && correctStructure[i].found === false){
+      correctStructure.forEach((part,index)=>{
+        if(part.mandatory === true && part.found === false){
           return {
             action:"missing",
             feedback: "Faltan partes en la frase.",
             object: missingParts,
           }
-        }else if(correctStructure[i].mandatory === false && correctStructure[i].found === false){
-          deleteOptional.push(i);
+        }else if(part.mandatory === false && part.found === false){
+          deleteOptional.push(index);
         }
-      };
-      deleteOptional = deleteOptional.sort((a,b)=>b-a);
-      deleteOptional.forEach((i)=>{
-        correctStructure.splice(i,1);
       });
+      deleteOptional = deleteOptional.sort((a,b)=>b-a);
+      deleteOptional.forEach((index)=>{
+        correctStructure.splice(index,1);
+      });
+
       // checking for extra parts
       actualStructure.forEach((actualPart)=>{
         if(!(actualPart.found)){

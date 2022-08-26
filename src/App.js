@@ -4,16 +4,14 @@ import './App.css';
 import './controller/useful';//probar
 import {general} from './controller/controller';
 import {Disco, Escrito, RelojDigital, RelojAnalogo} from './components/Reloj'
-import './i18n';
-import { withTranslation } from 'react-i18next';
-
+import {ScoreBoard} from './components/scoreBoard.js'
 
 class App extends Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
-      hours: 1,
-      minutes: 40,
+      hours: 0,
+      minutes: 0,
       config:{
         analogInteraction: true,
         analogAnswer:false,
@@ -69,30 +67,27 @@ class App extends Component {
   }
 
   updateResponse(response){
+    console.log({response,state:this.state})
     let stateTime = {
       hours:this.state.hours,
       minutes: this.state.minutes
     }
-    let feedback =[];
-    feedback = response.feedback.map((feed)=>{
-      return (Array.isArray(feed))?this.props.t(...feed):this.props.t(feed);
-    });
     if(general.compareTime(stateTime,response.results)){
       let correctspelling = general.compareSpelling(response);
       if( correctspelling === true){
-        feedback.push(<span className="greetings" key={response.analysis.phrase}>{general.randomGreeting()}</span>)
+        this.setState({answer:response,feedback:[<span className="greetings" key={response.analysis.phrase}>{general.randomGreeting()}</span>, ...response.feedback]})
       }else{
-        feedback.push(<span className="greetings" key={response.analysis.phrase}>{`${general.randomGreeting()} observa en detalle la escritura correcta; ${correctspelling}`}</span>);
+        this.setState({answer:response,feedback:[<span className="greetings" key={response.analysis.phrase}>{`${general.randomGreeting()} observa en detalle la escritura correcta; ${correctspelling}`}</span>, ...response.feedback]})
       }
     }else{
-      feedback.push("La hora escrita NO es correcta.")
+      this.setState({feedback:"La hora escrita NO es correcta."})
     }
-    this.setState({answer:response,feedback:feedback})
   }
   render(){
     return (
       <div className="App">
-        <div className="container">
+          <ScoreBoard></ScoreBoard>
+          <div className="container">
           <Disco hours={this.state.hours} minutes={this.state.minutes} period={this.state.period}/>
           <div className="relojes">
             <RelojAnalogo hours={this.state.hours} minutes={this.state.minutes} answer={this.state.config.analogAnswer} response={this.changeTime} interaction={this.state.config.analogInteraction} feedback={null}/>
@@ -109,4 +104,6 @@ class App extends Component {
   }
 }
 
-export default withTranslation()(App);
+
+
+export default App;

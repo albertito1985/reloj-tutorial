@@ -364,6 +364,20 @@ transform:rotate(calc(var(--rotate) * -1));
 }
 
 /*
+==========================>Score board<==========================
+*/
+
+.scoreBoard{
+  position: absolute;
+  background-color: #E97F02;
+  height:150px;
+  width: 200px;
+  right:20px;
+  top:20px;
+  border-radius: 30px;
+}
+
+/*
 ==========================>Generall<==========================
 */
 .show{

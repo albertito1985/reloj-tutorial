@@ -53,7 +53,7 @@ export let es = {
             let minutesW = es.minuteExceptions(es.numberFinder(minutes));
             
             let returnArray = endings.map((ending,index)=>{
-                return{type:1,phrase:(hoursW === "uno")?`Es la una y ${minutesW}${ending}`: `Son las ${hoursW} y ${minutesW}${ending}`};
+                return{type:1,phrase:(hoursW === "uno")?`Es la una y ${minutesW} ${ending}`: `Son las ${hoursW} y ${minutesW}${ending}`};
             });
             return returnArray;
         },
