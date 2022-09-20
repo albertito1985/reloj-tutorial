@@ -1,0 +1,13 @@
+.languageMenu .flags{
+  width:180px;
+  display:flex;
+  align-items: center;
+  justify-content:space-between;
+}
+.NavigationScreen .languageMenu {
+  margin:30px;
+}
+
+.languageMenu .flags .flagLink{
+  cursor:pointer;
+}

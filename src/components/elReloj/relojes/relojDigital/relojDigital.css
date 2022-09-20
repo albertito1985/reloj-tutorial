@@ -1,0 +1,40 @@
+.relojDigital{
+    padding: 5px 20px;
+    color:#E97F02;
+    border:1px solid white;
+    border-radius:50px;
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    gap:3px;
+    font-family: "digital";
+    font-size:30px;
+  }
+  
+  .digitalShow{
+    display:none;
+  }
+  
+  .digitalSpan input,.digitalSpan select{
+    width:28px;
+    text-align: center;
+    background:none;
+    border:none;
+    color:#E97F02;
+    font-family: "digital";
+    font-size:30px;
+  }
+  
+  .digitalSpan select{
+    width:auto;
+  
+  }
+  
+  .digitalSpan select option{
+    background-color:black;
+  }
+  
+  .digitalSpan{
+    display:none;
+  }  

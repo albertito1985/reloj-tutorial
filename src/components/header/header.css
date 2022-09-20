@@ -1,0 +1,31 @@
+.header{
+    background-color: var(--white);
+    width:100%;
+    padding:10px 20px;
+    display:flex;
+    align-items: center;
+    justify-content:space-between;
+    /* border-bottom:2px solid black; */
+    box-shadow: 0 5px 10px gray;
+  }
+
+.logga{
+height:75px;
+width: 75px;
+background-image: url("../../images/ES.svg");
+}
+
+.loggaLink{
+  display: inline-block;
+}
+
+/* .flagsContainer{
+  /* border: 2px solid black; 
+  padding:10px 20px;
+  background: white;
+  border-radius:50px;
+} */
+
+
+
+

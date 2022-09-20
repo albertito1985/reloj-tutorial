@@ -1,0 +1,35 @@
+{
+    "titulo": "Aprende a decir la hora en Español",
+    "start": "Comenzar",
+    "languages":{
+        "spanish":"Español",
+        "english":"Inglés",
+        "swedish":"Sueco"
+    },
+    "config": {
+        "title":"El reloj - Adaptar lección",
+        "explanation": "Ésta sección tiene como objetivo adaptar la lección de 'El Reloj' a tu necesidad o la del libro que estás siguiendo.",
+        "tutorialExplanation": "Explicaciónes en:",
+        "spain":"España",
+        "lAmerica":"Latinoamérica",
+        "esType" : "Tipo de Español:",
+        "content": "Contenido:",
+        "moment": "Momento",
+        "slides":"Slides",
+        "minutes": "Minutos",
+        "parts":"Las partes del reloj.",
+        "phrase1":"Frase 1: ... en punto.",
+        "phrase2":"Frase 2: ... y ....",
+        "phrase3":"Frase 3: ... para ....",
+        "periods":"Los periodos del día (mañana, tarde y noche).",
+        "answer":"Responder con la hora.",
+        "extra":"Extra",
+        "total":"Total",
+        "tutorial":"Tutorial",
+        "excercises":"Ejercicios"
+    },
+    "parts":{
+        "title": "Las partes del reloj",
+        "explanation": "Para aprender a decir la hora en español es necesario aprender las partes del reloj. Apunta con el ratón en los nombres de la derecha para resaltar las partes del reloj."
+    }
+}

@@ -1,0 +1,15 @@
+.disco{
+    --rotate:0;
+    position:relative;
+    height:150px;
+    width:150px;
+    background-image:url("./images/disco.svg");
+    background-size:cover;
+    /* right:200px;  */
+    /* transform:translate(50%, -50%) rotate(var(--rotate)); */
+    transform:rotate(var(--rotate));
+    z-index:10;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }

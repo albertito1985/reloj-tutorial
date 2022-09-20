@@ -2,6 +2,14 @@
 /* texto width 400 
 total 400+240+20 = 660*/
 
+/*
+palette 
+BD1550 red/magenta
+F7F7F7 white/grayish
+E97F02 yellow/orange
+F8CA00  rgba(248, 202, 0, 1) yellow
+*/
+
 
 
 * {
@@ -17,50 +25,60 @@ total 400+240+20 = 660*/
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-@font-face{
-  font-family: "digital";
-  src: url("./fonts/7SEGMENTALDIGITALDISPLAY.ttf");
+:root{
+  --yellow: #F8CA00;
+  --orange: #E97F02;
+  --magenta: #BD1550;
+  --white: #F7F7F7;
 }
 
+@font-face{
+  font-family: "Coolvetica";
+  src: url("./fonts/coolvetica rg.otf");
+  
+}
+
+h1{
+  font-family: "Coolvetica",Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 4em;
+  text-align: center;
+}
+ p{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
+
 .App{
-  display: flex;
   height:100vh;
-  min-height:490px;
   width:100%;
-  justify-content: center;
-  align-items:center;
-  padding:20px;
 }
 .container{
   position:relative;
-  display:flex;
-  gap:20px;
-  border:1px solid black;
+  width:100%;
 }
 
-.disco{
-  --rotate:0;
-  position:relative;
-  height:150px;
-  width:150px;
-  background-image:url("./images/disco.svg");
+.contentBody {
+  background-image: url('./images/time-g42305ce1d_19202.jpg');
+  background-repeat: none;
   background-size:cover;
-  /* right:200px;  */
-  /* transform:translate(50%, -50%) rotate(var(--rotate)); */
-  transform:rotate(var(--rotate));
-  z-index:10;
+  width:100%;
+  min-height:calc(100vh - 99px);
   display:flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
+  padding:50px;
 }
 
-.disco .arrow{
+
+
+
+
+.disco .arrow{ /* ????????? */
 font-size:2em;
 color:#E97F02;
 transform:rotate(calc(var(--rotate) * -1));
 }
 
-.relojes {
+.relojes { /* ????????? */
   display:flex;
   flex-direction:column;
   justify-content: center;
@@ -70,298 +88,8 @@ transform:rotate(calc(var(--rotate) * -1));
   padding:20px;
   border-radius:50px;
 }
-/*
-==========================>Reloj Analogo<==========================
-*/
-.reloj {
-  width:200px;
-  height:200px;
-  border-radius:50%;
-  border: 1px solid black;
-  position:relative;
-  display:flex;
-  font-size:20px;
-}
-
-.reloj .numeros{
-  position:absolute;
-  width: 100%;
-  height: 100%;
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  background-color:white;
-  border-radius:50px;
-}
-
-.reloj .background{
-  --dimension: 75%;
-  position:absolute;
-  height:var(--dimension);
-  width:var(--dimension);
-  background-image:url("./images/background.svg")
-}
 
 
-.reloj .horasContainer{
-  --dimension: 100%;
-  position:absolute;
-  height:var(--dimension);
-  width:var(--dimension);
-}
-
-.reloj .minutosContainer{
-  --dimension:70%;
-  position:absolute;
-  width: var(--dimension);
-  height: var(--dimension);
-  display:none;
-}
-
-.reloj .minutos {
-  --rotation:0;
-  position:absolute;
-  width:100%;
-  height:100%;
-  text-align:center;
-  transform:rotate(var(--rotation));
-}
-
-.reloj .minutos p{
-  font-size:0.6em;
-}
-
-.reloj .horas {
-  --rotation:0;
-  position:absolute;
-  width:100%;
-  height:100%;
-  text-align:center;
-  transform:rotate(var(--rotation));
-}
-
-.reloj .numero1 {--rotation:30deg;}
-.reloj .numero2 {--rotation:60deg;}
-.reloj .numero3 {--rotation:90deg;}
-.reloj .numero4 {--rotation:120deg;}
-.reloj .numero5 {--rotation:150deg;}
-.reloj .numero6 {--rotation:180deg;}
-.reloj .numero7 {--rotation:210deg;}
-.reloj .numero8 {--rotation:240deg;}
-.reloj .numero9 {--rotation:270deg;}
-.reloj .numero10 {--rotation:300deg;}
-.reloj .numero11 {--rotation:330deg;}
-
-.numero{
-  transform:rotate(calc(var(--rotation)*(-1)));
-}
-
-
-.reloj .manillaContainer {
-  --rotation:0;
-  position:absolute;
-  width:30px;
-  bottom:50%;
-  left:50%;
-  transform-origin:bottom;
-  transform:translateX(-50%) rotate(calc(var(--rotation) * 1deg));
-  z-index:10;
-  display:flex;
-  justify-content: baseline;
-  transition:rotate 0,2s;
-}
-
-.reloj .manillaContainer{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:end;
-}
-
-.reloj .manillaContainer.minutero{
-  height:42%;
-}
-
-.reloj .manillaContainer.horario{
-  height:35%;
-}
-
-.reloj .manilla{
-  height:calc(100% - 10px);
-  background-color:black;
-  border:1px solid white;
-}
-
-.reloj .manillaContainer.minutero .manilla{
-  width:5px;
-}
-
-.reloj .manillaContainer.horario .manilla{
-  width:10px;
-}
-
-
-.manillaContainer .agarrador{
-  position:relative;
-  width:100%;
-  height:10px;
-  display:none;
-  align-items: center;
-  justify-content: center;
-}
-
-.manillaContainer.active:hover .agarrador{
-  display:flex;
-}
-
-.reloj .logo{
-  position:absolute;
-  background-color:black;
-  z-index:20;
-  width: 70px;
-  height:70px;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  border-radius:50%;
-  background-image:url("./images/ES.svg");
-  background-position:center;
-  border:1px solid black;
-}
-
-/*
-==========================>Reloj Digital<==========================
-*/
-
-.relojDigital{
-  padding: 5px 20px;
-  color:#E97F02;
-  border:1px solid white;
-  border-radius:50px;
-  text-align:center;
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  gap:3px;
-  font-family: "digital";
-  font-size:30px;
-}
-
-.digitalShow{
-  display:none;
-}
-
-.digitalSpan input,.digitalSpan select{
-  width:28px;
-  text-align: center;
-  background:none;
-  border:none;
-  color:#E97F02;
-  font-family: "digital";
-  font-size:30px;
-}
-
-.digitalSpan select{
-  width:auto;
-
-}
-
-.digitalSpan select option{
-  background-color:black;
-}
-
-.digitalSpan{
-  display:none;
-}
-
-
-
-
-
-/*
-==========================>Texto Escrito<==========================
-*/
-.texto{
-  width:400px;
-  height:300px;
-  border:1px solid black;
-  display:flex;
-  flex-direction:column;
-  justify-content: center;
-  align-items: center;
-  background-color:white;
-  border-radius:50px;
-}
-.pregunta{
-  height:40%;
-  width:100%;
-  display:flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
-
-.escrito{
-  height:60%;
-  width:100%;
-  display:none;
-  flex-direction:column;
-  justify-content: center;
-  align-items: center;
-  gap:40px;
-}
-
-.phrasePart{
-  border: 1px solid black;
-  padding:10px;
-  border-radius:50px;
-}
-
-.phrase1{
-  background-color:#F8CA00
-}
-
-.phrase2{
-  background-color: #E97F02;
-}
-
-.feedback{
-  display:flex;
-  flex-direction: column;
-  height:50px;
-  width:300px;
-}
-
-.escritoSpan{
-  display:none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.alternative{
-  width:100%;
-  height:auto;
-  background-color:#F8CA00;
- 
-}
-.alternative .delete{
-  text-decoration: line-through;
-  
-}
-
-.escritoInteractionShow{
-  display:flex;
-  flex-direction: column;
-  gap:10px;
-}
-
-.highlight{
-  background-color:#E97F02;
-}
-.greetings{
-  color:#E97F02;
-}
 
 /*
 ==========================>Score board<==========================

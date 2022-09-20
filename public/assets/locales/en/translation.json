@@ -1,0 +1,31 @@
+{
+    "titulo": "Inglés",
+    "start": "Comenzar",
+    "languages":{
+        "spanish":"Español",
+        "english":"Inglés",
+        "swedish":"Sueco"
+    },
+    "config": {
+        "title":"Inglés",
+        "explanation": "Ésta sección tiene como objetivo adaptar la lección de 'El Reloj' a tu necesidad o la del libro que estás siguiendo.",
+        "tutorialExplanation": "Explicaciónes en:",
+        "spain":"España",
+        "lAmerica":"Latinoamérica",
+        "esType" : "Tipo de Español:",
+        "content": "Contenido:",
+        "moment": "Momento",
+        "slides":"Slides",
+        "minutes": "Minutos",
+        "parts":"Las partes del reloj.",
+        "phrase1":"Frase 1: ... en punto.",
+        "phrase2":"Frase 2: ... y ....",
+        "phrase3":"Frase 3: ... para ....",
+        "periods":"Los periodos del día (mañana, tarde y noche).",
+        "answer":"Responder con la hora.",
+        "extra":"Extra",
+        "total":"Total",
+        "tutorial":"Tutorial",
+        "excercises":"Ejercicios"
+    }
+}

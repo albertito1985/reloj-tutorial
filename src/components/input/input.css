@@ -1,0 +1,93 @@
+:root{
+    --yellow: #F8CA00;
+    --orange: #E97F02;
+    --magenta: #BD1550;
+
+    --white: #F7F7F7;
+  }
+
+
+input[type="radio"].CustomRadio,
+input[type="checkbox"].CustomCheckBox{
+    /*hides the radio button*/
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--white);
+    margin: 0;
+        /*custom unchecked radio styles*/
+        font: inherit;
+        color: currentColor;
+
+        border: 0.15em solid black;
+        /*checked state styles*/
+    display: grid;
+    place-content: center;
+}
+
+input[type="radio"].CustomRadio{
+    /*custom unchecked radio styles*/
+    border-radius: 50%;
+    width: 1.15em;
+    height: 1.15em;
+}
+
+input[type="checkbox"].CustomCheckBox {
+    border-radius: 0.15em;
+    width: 1em;
+    height: 1em;
+}
+    
+input[type="radio"].CustomRadio::before,
+input[type="checkbox"].CustomCheckBox::before {
+    content: "";
+
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--orange);
+}
+
+input[type="radio"].CustomRadio::before{
+    border-radius: 50%;
+    width: 0.65em;
+    height: 0.65em;
+}
+
+input[type="checkbox"].CustomCheckBox::before {
+    width: 0.5em;
+    height: 0.5em;
+}
+
+
+input[type="radio"].CustomRadio:checked::before,
+input[type="checkbox"].CustomCheckBox:checked::before{
+    transform: scale(1);
+    }
+
+.CustomButton {
+    background-color:var(--magenta);
+    padding:10px;
+    border-radius:50px;
+    color:var(--white);
+    text-decoration: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    min-width: 100px;
+}
+
+.CustomButton.inactive{
+    background-color:var(--yellow);
+    color:gray;
+}
+
+.CustomButton:hover{
+    background-color:var(--white);
+    color:var(--magenta)
+}
+
+.CustomButton.inactive:hover{
+    background-color:var(--yellow);
+    color:gray;
+}
+.CustomInactiveButton{
+    
+}
