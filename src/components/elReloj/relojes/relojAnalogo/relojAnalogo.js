@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import {reloj} from './relojAnalogoController';
 import {translate} from '../timeFunctions';
-import {CgArrowsHAlt} from 'react-icons/cg';
+import {CgArrowsHAlt, CgSmileNone} from 'react-icons/cg';
 import './relojAnalogo.css'
 
 export class RelojAnalogo extends Component{
@@ -10,6 +10,7 @@ export class RelojAnalogo extends Component{
       this.state = {
         moving: false,
         handle: undefined,
+        showMinutes:false,
         clockWork:{
           degrees:{
             hours:0,
@@ -38,7 +39,8 @@ export class RelojAnalogo extends Component{
         reloj.minutes = props.minutes;
         reloj.period = translate.time24hto12h({hours: props.hours,minutes:props.minutes}).period;
         reloj.states ={...clockWork.degrees};
-        return {clockWork};
+        let showMinutes = (props.showMinutes)?true:false;
+        return {clockWork,showMinutes};
         }
         
     }
@@ -167,7 +169,7 @@ export class RelojAnalogo extends Component{
               <p className="numero">12</p>
             </div>
           </div>
-          <div className="minutosContainer" style={{display:(this.state.handle === "minutero")? "flex":"none"}}>
+          <div className="minutosContainer" style={{display:(this.state.showMinutes === true || this.state.handle === "minutero")? "flex":"none"}}>
             <div className="minutos numero1">
               <p className="numero">5</p>
             </div>

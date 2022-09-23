@@ -1,0 +1,14 @@
+.nextBack{
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+}
+.buttonLabel{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonLabelIcon{
+    transform: translateY(2px);
+}

@@ -1,6 +1,7 @@
 {
-    "titulo": "Aprende a decir la hora en Español",
-    "start": "Comenzar",
+    "titulo": "Aprende a decir la hora en español",
+    "next": "Siguiente",
+    "back":"Atrás",
     "languages":{
         "spanish":"Español",
         "english":"Inglés",
@@ -30,6 +31,15 @@
     },
     "parts":{
         "title": "Las partes del reloj",
-        "explanation": "Para aprender a decir la hora en español es necesario aprender las partes del reloj. Apunta con el ratón en los nombres de la derecha para resaltar las partes del reloj."
+        "explanation": "Para aprender a decir la hora en español es necesario aprender las partes del reloj. Apunta con el ratón en los nombres de la derecha para resaltar las partes del reloj.",
+        "prompt": "Apunta con el ratón en los nombres de la derecha.",
+        "horas":"Las horas son los números grandes del reloj y cáda número representa una hora diferente.",
+        "minutos":"No todos los relojes muestran los minutos pero en éste reloj los minútos son los números pequeños. Cuando no se ven, los minutos se pueden calcular multiplicando cada número grande (las horas) por cinco.",
+        "horario":"El horario es el palito pequeño y gordito del reloj que indíca una hora específica.",
+        "minutero":"El minutero es el palito delgado y largo del reloj que indica un minuto específico."
+    },
+    "phrase1":{
+        "title":"Frase 1",
+        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la hora termina con 'en punto'. Mueve el horario y el minutero para ver más ejemplos."
     }
 }

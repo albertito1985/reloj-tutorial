@@ -7,7 +7,9 @@
 
 .pages{
     display:flex;
+    flex-direction: column;
     justify-content: center;
+    gap:50px;
     align-items: center;
     background-color:rgba(248, 202, 0, 0.8);
     min-height:50vh;
@@ -30,10 +32,6 @@ label, td, th, .title{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size:1.5em;
 }
-
-
-
-
 
 /*---------------------------------explanation ----------------------------------*/
 #config {
@@ -99,4 +97,54 @@ label, td, th, .title{
 #buttons {
     display:flex;
     gap:20px;
+}
+
+/* /////////////////Parts0*/
+
+#parts0{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    align-items: center;
+}
+
+.parts0{
+    display:flex;
+    gap:20px;
+    justify-content: center;
+    align-items:center;
+}
+
+#partsButtons{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+#horario .manilla.analogHighlight{
+    background-color:var(--magenta);
+}
+
+#minutero .manilla.analogHighlight{
+    background-color:var(--magenta);
+}
+
+.minutosContainer.analogHighlight .minutos{
+    color:var(--magenta);
+    font-weight:bolder
+}
+.horasContainer.analogHighlight .horas{
+    color:var(--magenta);
+    font-weight:bolder;
+}
+
+.parts02{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--white);
+    width:100%;
+    height:100px;
+    padding:30px;
+    border-radius: 50px;
 }

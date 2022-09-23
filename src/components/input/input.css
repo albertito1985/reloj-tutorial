@@ -64,30 +64,35 @@ input[type="checkbox"].CustomCheckBox:checked::before{
     }
 
 .CustomButton {
-    background-color:var(--magenta);
-    padding:10px;
+    padding: 10px 20px;
     border-radius:50px;
-    color:var(--white);
     text-decoration: none;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    min-width: 100px;
+    min-width: 150px;
 }
 
-.CustomButton.inactive{
+.CustomButton.buttoninactive{
     background-color:var(--yellow);
     color:gray;
 }
 
-.CustomButton:hover{
+.CustomButton.button1{
+    background-color:var(--magenta);
+    color:var(--white);
+}
+
+.CustomButton.button1:hover{
     background-color:var(--white);
     color:var(--magenta)
 }
 
-.CustomButton.inactive:hover{
-    background-color:var(--yellow);
-    color:gray;
+.CustomButton.button2{
+    background-color:var(--orange);
+    color:var(--white);
 }
-.CustomInactiveButton{
-    
+
+.CustomButton.button2:hover{
+    background-color:var(--magenta);
+    color:var(--white)
 }

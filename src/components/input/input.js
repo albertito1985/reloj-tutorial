@@ -18,20 +18,10 @@ class CheckBox extends Component {
 }
 
 class Button extends Component{
-    constructor(){
-        super();
-        this.classTag = this.classTag.bind(this);
-    }
-    classTag(){
-        if(this.props.active === true || this.props.active === undefined){
-            return "";
-        }else{
-            return " inactive";
-        }
-    }
+    
     render(){
         return(
-            <div className={`CustomButton${this.classTag()}`} id={this.props.id} onClick={(this.props.active)?this.props.onClick:null}>{this.props.label}</div>
+            <div className={`CustomButton button${this.props.type}`} id={this.props.id} onClick={(this.props.type==="inactive")?null:this.props.onClick}>{this.props.label}</div>
         )
     }
 }

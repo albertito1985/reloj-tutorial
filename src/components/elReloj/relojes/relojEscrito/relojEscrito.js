@@ -1,9 +1,9 @@
 import {Component} from 'react';
-import escrito from '../../controller/relojEscritoController';
-import {es} from '../../modell/writtenComponents/written';
+import {escrito} from './relojEscritoController';
+import {es} from './written';
 import './relojEscrito.css';
 
-export class Escrito extends Component{
+export class RelojEscrito extends Component{
     constructor(){
       super();
       this.state = {
@@ -51,6 +51,7 @@ export class Escrito extends Component{
         }
       }
     }
+
     static getDerivedStateFromProps(props,state){
       if(props.answer){
         return {input:escrito.input,
@@ -275,4 +276,5 @@ export class Escrito extends Component{
           </span>
         </div>);
     }
+    //saknas att ge ett standard värde till propsen answer och feedback eventuellt interaktion också och interaktion om användaren inte deklarerar det
   }

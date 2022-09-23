@@ -101,13 +101,15 @@ class Configuration extends Component {
             value= target.value;
         }
         let changedMoment={};
-        let prelMoments={};
+        let prelMoments={...this.state.actualMoments};
+        delete prelMoments["minutearm"];
+        delete prelMoments["min15and30"];
+        delete prelMoments["phrases2and3"];
         if(value===false){
-            prelMoments ={...this.state.actualMoments};
             delete prelMoments[name];
         }else{
             changedMoment[name] = value? value: undefined;
-            prelMoments ={...this.state.actualMoments,...changedMoment};
+            prelMoments ={...prelMoments,...changedMoment};
         }
 
         let keys = Object.keys(prelMoments);
@@ -122,7 +124,7 @@ class Configuration extends Component {
         let prelMomentsExtras = this.calculateExtraMoments(relevantMoments);
 
         prelMoments={...prelMoments, ...prelMomentsExtras}
-
+        console.log(prelMomentsExtras);
         let extraTime = this.calculateTime(prelMomentsExtras);
         let totalTime = this.calculateTime(prelMoments) + extraTime;
 
@@ -244,8 +246,8 @@ class Configuration extends Component {
                         </div>
                     </form>
                     <div id="buttons">
-                        <Button active={this.state.totalTime>0?true:false} onClick={this.handleTutorial} label={t('config.tutorial')}/>
-                        <Button active={this.state.totalTime>0?true:false} onClick={this.handleExcercises} label={t('config.excercises')}/> 
+                        <Button type={this.state.totalTime>0?"1":"inactive"} onClick={this.handleTutorial} label={t('config.tutorial')}/>
+                        <Button type={this.state.totalTime>0?"1":"inactive"} onClick={this.handleExcercises} label={t('config.excercises')}/> 
                     </div>
                 </div>
            </div>

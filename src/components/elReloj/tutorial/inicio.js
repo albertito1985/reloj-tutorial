@@ -1,9 +1,11 @@
-import { t } from 'i18next';
-import React, {createElement,Component} from 'react';
+import { exists, t } from 'i18next';
+import React, {Component} from 'react';
 import { withTranslation } from 'react-i18next';
 import '../pages.css';
 import {RelojAnalogo} from '../relojes/relojAnalogo/relojAnalogo';
-import {Button} from '../../input/input'
+import {RelojEscrito} from '../relojes/relojEscrito/relojEscrito';
+import {Button} from '../../input/input';
+import NextBack from '../tutorial/NextBack'
 import { isContentEditable } from '@testing-library/user-event/dist/utils';
 
 
@@ -11,7 +13,10 @@ class Tutorial extends Component {
     constructor(){
         super();
         this.state={
-            page:0,
+            page:undefined,
+            // lastPage:undefined,
+            next:undefined,
+            back:undefined
         };
         this.pages=[];
         this.config ={};
@@ -31,21 +36,37 @@ class Tutorial extends Component {
         };
         this.generateContent=this.generateContent.bind(this);
         this.nextPage = this.nextPage.bind(this);
+        this.previousPage = this.previousPage.bind(this);
     }
     nextPage(){
-        console.log("nextPage");
         let pagenumber;
         if(this.state.page === undefined){
             pagenumber = 0
         }else{
+            console.log(this.state.page)
             let temp = this.state.page;
-            pagenumber =temp++;
+            pagenumber =++temp;
         }
-        this.setState({page:pagenumber})
+        this.setState({
+            page:pagenumber,
+            back:true,
+            next:(pagenumber+1 === this.moments.actual.length)
+        })
 
     }
     previousPage(){
-
+        let pagenumber;
+        if(this.state.page === 0){
+            pagenumber = undefined
+        }else{
+            let temp = this.state.page;
+            pagenumber = --temp;
+        }
+        this.setState({
+            page:pagenumber,
+            back:(pagenumber === undefined)?undefined:true,
+            next:true
+        })
     }
 
     componentDidMount(){
@@ -87,7 +108,7 @@ class Tutorial extends Component {
         function createElement(page, props){
             let parts ={
                 parts0 : <Parts0 {...props}/>,
-                phrase10: null,
+                phrase10: <Phrase10 {...props}/>,
                 phrase11: null,
                 phrase12:null,
                 minutearm0:null,
@@ -109,17 +130,22 @@ class Tutorial extends Component {
         if(this.state.page === undefined){
             return <Home nextPage={this.nextPage}/>
         }else{
-            const myComponent = createElement(this.pages[this.state.page], {nextPage:this.nextPage});
+            const myComponent = createElement(this.pages[this.state.page]);
             return myComponent;
         }
 
     };
 
     render(){
-
         return(
             <div className="pages">
-                {this.generateContent()}
+                {this.generateContent()}   
+                <NextBack 
+                    back={(this.state.back === undefined)?"inactive":true}
+                    next={(this.state.page+1 === this.moments.actual.length)?"inactive":true}
+                    backFunction={this.previousPage}
+                    nextFunction={this.nextPage}
+                />
             </div>
         )
     }
@@ -130,29 +156,153 @@ class Home extends Component{
         return(
                 <div className="home">
                     <h1>{t('titulo')}</h1>
-                    <Button active={true} label={t('start')} onClick={this.props.nextPage}/>
                 </div>
         )
     }
 }
+
 class Parts0 extends Component{
+    constructor(){
+        super();
+        this.state = {
+            hours: undefined,
+            minutes:undefined,
+            part:undefined
+        }
+        this.highlight=this.highlight.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.unHighlight = this.unHighlight.bind(this);
+    }
+
+    componentDidMount(){
+        let buttons = document.getElementById("partsButtons").children;
+        buttons.forEach((button)=>{
+            button.addEventListener("mouseover", this.highlight);
+            button.addEventListener("mouseout", this.unHighlight);
+        })
+        const d = new Date();
+        this.setState({
+            hours:d.getHours(),
+            minutes:d.getMinutes()
+        })
+    }
+
+    componentWillUnmount(){
+        let buttons = document.getElementById("partsButtons").children;
+        buttons.forEach((button)=>{
+            button.removeEventListener("mouseover", this.highlight);
+            button.removeEventListener("mouseout", this.unHighlight)
+        })
+    }
+
+    highlight(e){
+        let target;
+        let targetWord = e.target.textContent;
+        switch(e.target.textContent){
+            case "Horas":
+                target = document.querySelector(".horasContainer");
+            break;
+            case "Minutos":
+                target = document.querySelector(".minutosContainer");
+            break;
+            case "Horario":
+                target = document.querySelector("#horario .manilla");
+            break;
+            case "Minutero":
+                target = document.querySelector("#minutero .manilla");
+            break;
+            default:
+            break;
+        }
+        console.log(target);
+        target.classList.add("analogHighlight");
+        this.setState({part:targetWord})
+    }
+
+    unHighlight(e){
+        let target;
+        switch(e.target.textContent){
+            case "Horas":
+                target = document.querySelector(".horasContainer");
+            break;
+            case "Minutos":
+                target = document.querySelector(".minutosContainer");
+            break;
+            case "Horario":
+                target = document.querySelector("#horario .manilla");
+            break;
+            case "Minutero":
+                target = document.querySelector("#minutero .manilla");
+            break;
+            default:
+            break;
+        }
+        target.classList.remove("analogHighlight");
+        this.setState({part:undefined})
+    }
+
     render(){
         return(
-                <div className="parts0">
+                <div id="parts0">
                     <h1>{t('parts.title')}</h1>
                     <p>{t('parts.explanation')}</p>
-                    <div>
-                        <RelojAnalogo/>
-                        <div>
-                            <Button label="Horas"/>
-                            <Button label="Minutos"/>
-                            <Button label="Horario"/>
-                            <Button label="Minutero"/>
-
-                        {/* // Cambiar de color a los botones */}
+                    <div className="parts0">
+                        <RelojAnalogo hours={this.state.hours} minutes={this.state.minutes} showMinutes="true"/>
+                        <div id="partsButtons">
+                            <Button label="Horas" type="2"/>
+                            <Button label="Minutos" type="2"/>
+                            <Button label="Horario" type="2"/>
+                            <Button label="Minutero" type="2"/>
                         </div>
                     </div>
+                    <div className="parts02">
+                        <p>
+                            {(this.state.part === undefined) && t('parts.prompt')}
+                            {(this.state.part === "Horas") && t('parts.horas')}
+                            {(this.state.part === "Minutos") && t('parts.minutos')}
+                            {(this.state.part === "Horario") && t('parts.horario')}
+                            {(this.state.part === "Minutero") && t('parts.minutero')}
+                        </p>
+                    </div>
                 </div>
+        )
+    }
+}
+
+class Phrase10 extends Component{
+    constructor(){
+        super();
+        this.state={
+            hours:0,
+            minutes:0
+        }
+        this.changeTime= this.changeTime.bind(this);
+    }
+    componentDidMount(){
+        const d = new Date();
+        this.setState({
+            hours:d.getHours(),
+            minutes:d.getMinutes()
+        })
+    }
+    changeTime({hours,minutes}){
+        this.setState({
+            hours:hours,
+            minutes:minutes
+        })
+    }
+    render(){
+        return(
+            <div className="phrase10">
+                <h1>{t('phrase1.title')}</h1>
+                <p>{t('phrase1.explanation')}</p>
+                <div className="phrase10">
+                        <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
+                        <div id="writenTime">
+                            {/* <RelojEscrito hours={this.state.hours} minutes={this.state.minutes}/>; */}
+                        </div>
+                    </div>
+            </div>
         )
     }
 }
