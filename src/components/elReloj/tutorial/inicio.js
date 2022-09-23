@@ -105,7 +105,7 @@ class Tutorial extends Component {
     }
 
     generateContent(){
-        function createElement(page, props){
+        function createElement(page, props ={}){
             let parts ={
                 parts0 : <Parts0 {...props}/>,
                 phrase10: <Phrase10 {...props}/>,
@@ -131,6 +131,7 @@ class Tutorial extends Component {
             return <Home nextPage={this.nextPage}/>
         }else{
             const myComponent = createElement(this.pages[this.state.page]);
+            console.log(this.pages)
             return myComponent;
         }
 
@@ -277,6 +278,7 @@ class Phrase10 extends Component{
             minutes:0
         }
         this.changeTime= this.changeTime.bind(this);
+        console.log("parts1")
     }
     componentDidMount(){
         const d = new Date();
