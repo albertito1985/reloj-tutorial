@@ -1,11 +1,13 @@
 import { exists, t } from 'i18next';
 import React, {Component} from 'react';
 import { withTranslation } from 'react-i18next';
-import '../pages.css';
+
 import {RelojAnalogo} from '../relojes/relojAnalogo/relojAnalogo';
 import {RelojEscrito} from '../relojes/relojEscrito/relojEscrito';
-import {Button} from '../../input/input';
+import {Button,Dropdown} from '../../input/input';
 import NextBack from '../tutorial/NextBack'
+import '../pages.css';
+
 import { isContentEditable } from '@testing-library/user-event/dist/utils';
 
 
@@ -15,8 +17,8 @@ class Tutorial extends Component {
         this.state={
             page:undefined,
             // lastPage:undefined,
-            next:undefined,
-            back:undefined
+            next:true,
+            back:false
         };
         this.pages=[];
         this.config ={};
@@ -32,27 +34,48 @@ class Tutorial extends Component {
                 phrases2and3:1,
                 periods:1,
                 answer:3,
+            },
+            navigation:{
+                home: [false,true],
+                parts0 : [true,true],
+                phrase10: [true,false],
+                phrase11: [true, true],
+                phrase12:[true, true],
+                minutearm0:[true, true],
+                phrase20:[true, true],
+                phrase21:[true, true],
+                min15and300:[true, true],
+                phrase30:[true, true],
+                phrase31:[true, true],
+                phrases2and30:[true, true],
+                periods0:[true, true],
+                answer0:[true, true],
+                answer1:[true, true],
+                answer2:[true, true]
             }
         };
         this.generateContent=this.generateContent.bind(this);
         this.nextPage = this.nextPage.bind(this);
         this.previousPage = this.previousPage.bind(this);
+        this.changeNext = this.changeNext.bind(this);
     }
     nextPage(){
         let pagenumber;
+        let back = undefined;
+        let next = undefined;
         if(this.state.page === undefined){
             pagenumber = 0
         }else{
-            console.log(this.state.page)
             let temp = this.state.page;
             pagenumber =++temp;
         }
+        back = this.moments.navigation[this.pages[pagenumber]][0];
+        next = this.moments.navigation[this.pages[pagenumber]][1];
         this.setState({
             page:pagenumber,
-            back:true,
-            next:(pagenumber+1 === this.moments.actual.length)
+            back:back,
+            next:next
         })
-
     }
     previousPage(){
         let pagenumber;
@@ -123,27 +146,26 @@ class Tutorial extends Component {
                 answer1:null,
                 answer2:null
             }
-
             return parts[page];
         }
-
         if(this.state.page === undefined){
             return <Home nextPage={this.nextPage}/>
         }else{
-            const myComponent = createElement(this.pages[this.state.page]);
-            console.log(this.pages)
+            const myComponent = createElement(this.pages[this.state.page], {changeNext:this.changeNext});
             return myComponent;
         }
-
     };
+    changeNext(value){
+        this.setState({next:value});
+    }
 
     render(){
         return(
             <div className="pages">
-                {this.generateContent()}   
+                {this.generateContent()}
                 <NextBack 
-                    back={(this.state.back === undefined)?"inactive":true}
-                    next={(this.state.page+1 === this.moments.actual.length)?"inactive":true}
+                    back={(this.state.back)?true:"inactive"}
+                    next={(this.state.next)?true:"inactive"}
                     backFunction={this.previousPage}
                     nextFunction={this.nextPage}
                 />
@@ -215,7 +237,6 @@ class Parts0 extends Component{
             default:
             break;
         }
-        console.log(target);
         target.classList.add("analogHighlight");
         this.setState({part:targetWord})
     }
@@ -275,10 +296,27 @@ class Phrase10 extends Component{
         super();
         this.state={
             hours:0,
-            minutes:0
+            minutes:0,
+            next:false,
+            dropdown:"inactive"
         }
+        this.ejerciciosContent = this.ejerciciosContent.bind(this);
         this.changeTime= this.changeTime.bind(this);
-        console.log("parts1")
+        this.recieveValue =this.recieveValue.bind(this);
+        this.options=[
+            {label:"A la una en punto.",value:1},
+            {label:"A las dos en punto.",value:2},
+            {label:"A las tres en punto.",value:3},
+            {label:"A las cuatro en punto.",value:4},
+            {label:"A las cinco en punto.",value:5},
+            {label:"A las seis en punto.",value:6},
+            {label:"A las siete en punto.",value:7},
+            {label:"A las ocho en punto.",value:8},
+            {label:"A las nueve en punto.",value:9},
+            {label:"A las diez en punto.",value:10},
+            {label:"A las once en punto.",value:11},
+            {label:"A las doce en punto.",value:12},
+        ]
     }
     componentDidMount(){
         const d = new Date();
@@ -288,22 +326,60 @@ class Phrase10 extends Component{
         })
     }
     changeTime({hours,minutes}){
-        this.setState({
-            hours:hours,
-            minutes:minutes
-        })
+        let newState={}
+        if(minutes === 0){
+            if(hours===1 || hours === 13){
+                newState.dropdown = "";
+            }
+        }
+        newState.hours = hours;
+        newState.minutes = minutes;
+        this.setState({...newState});
+        
+    }
+
+    ejerciciosContent(hours,minutes){
+        if(minutes === 0){
+            if(hours===1){
+                return <div className="phrase10pic" id="phrase10night"></div>
+            }else if(hours===13){
+                return <div className="phrase10pic" id="phrase10day"></div>
+            }else{
+                return <div className="phrase10pic" id="phrase10normal"></div>
+            }
+        }
+    };
+    recieveValue(value){
+        if(value==="1"){
+            this.props.changeNext(true);
+        }else{
+            this.props.changeNext(false);
+        }
     }
     render(){
         return(
             <div className="phrase10">
                 <h1>{t('phrase1.title')}</h1>
                 <p>{t('phrase1.explanation')}</p>
-                <div className="phrase10">
-                        <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
-                        <div id="writenTime">
-                            {/* <RelojEscrito hours={this.state.hours} minutes={this.state.minutes}/>; */}
-                        </div>
+                <div id="phrase10">
+                    <h2>{t("examples")}</h2>
+                    <div id="phrase10HalfsContainer">
+                        <span className="phrase10Half phrase10HalfLeft">
+                            <p id="phrase1Task1">{t("phrase1.task1")}</p>
+                            <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
+                        </span>
+                        <span className="phrase10Half phrase10HalfRight">
+                            <p className="phrase10question">{t("phrase1.question1")}</p>
+                            <span id="relojescritoTime">{this.state.minutes === 0 &&<RelojEscrito className="escritoPhrase10" hours={this.state.hours} minutes={this.state.minutes} mode="0" begining={0}/>}</span>
+                            {this.ejerciciosContent(this.state.hours, this.state.minutes)}
+                        </span>
                     </div>
+                </div>
+                <div id="dropdownContainer">
+                    <p>¿A que hora come Juanito?</p>
+                    <Dropdown type={this.state.dropdown} options={this.options} placeholder={t("phrase1.dropdownPlaceholder")} recieveValue={this.recieveValue}/>
+                </div>
+                
             </div>
         )
     }

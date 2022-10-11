@@ -1,3 +1,4 @@
+
 .texto{
     width:400px;
     height:300px;
@@ -9,6 +10,11 @@
     background-color:white;
     border-radius:50px;
   }
+
+  .escritoContainer{
+    height:100%;
+  }
+  
   .pregunta{
     height:40%;
     width:100%;
@@ -19,7 +25,7 @@
   }
   
   .escrito{
-    height:60%;
+    height: 100%;
     width:100%;
     display:none;
     flex-direction:column;
@@ -27,6 +33,10 @@
     align-items: center;
     gap:40px;
   }
+
+  /* .escrito p{
+    height:100%;
+  } */
   
   .phrasePart{
     border: 1px solid black;
@@ -78,4 +88,8 @@
   }
   .greetings{
     color:#E97F02;
+  }
+
+  .show{
+    display:flex;
   }

@@ -148,3 +148,89 @@ label, td, th, .title{
     padding:30px;
     border-radius: 50px;
 }
+
+
+/* /////////////////Phrase10*/
+.phrase10{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+#phrase10{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    margin-top: 30px;
+}
+
+#phrase10HalfsContainer {
+    display:flex;
+    width:100%;
+}
+
+.phrase10Half{
+    width: 50%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.phrase10HalfLeft{
+    gap:10px;
+}
+
+.phrase10HalfRight{
+    background-color:var(--orange);
+    gap:10px;
+    padding:10px;
+    border-radius:10%;
+}
+
+.escrito span{
+    background-color:orange;
+}
+
+.phrase10pic{
+    height:100%;
+    width:100%;
+    border-radius:10%;
+}
+
+#phrase10night{
+    background-image: url('./tutorial/images/squirrel\ night.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#phrase10day{
+    background-image: url('./tutorial/images/squirrel\ day.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#phrase10normal{
+    background-image: url('./tutorial/images/squirrel.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+
+#phrase1Task1{
+    padding:10px;
+}
+
+.phrase10question {
+   text-align: center;
+   font-weight: 1000;
+}
+
+.phrase10 #dropdownContainer{
+    margin-top: 30px;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}

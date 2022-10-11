@@ -14,9 +14,19 @@ export class RelojEscrito extends Component{
         inputWithFeedback: null,
       }
       this.handleChange = this.handleChange.bind(this);
+      this.feedbackFunction = null;
     }
+
     componentDidMount(){
       let input= null;
+      if(this.props.feedback === undefined){
+        this.feedbackFunction = ()=>{return 0}
+      }else{
+        this.feedbackFunction = (values)=>{
+          this.props.feedback(values)
+        }
+      }
+      
       if(this.props.answer === true){
         input = escrito.input;
       }else{
@@ -68,9 +78,10 @@ export class RelojEscrito extends Component{
       if(this.props.answer === true){
         return this.state.inputWithFeedback;
       }else{
-        let text = es.phraseFinder(hours, minutes, this.props.mode);
+        let text = es.phraseFinder(hours, minutes, this.props.mode, this.props.ending, false, this.props.begining);
         let content =  text.map((phrase,index)=>{
-          return <p key={`${phrase.type}${index}`}><span className={`phrasePart phrase${phrase.type}`}>{phrase.phrase}</span></p>
+          //así era antes// return <p key={`${phrase.type}${index}`}><span className={`phrasePart phrase${phrase.type}`}>{phrase.phrase}</span></p>
+          return <p key={`${phrase.type}${index}`} className={`phrasePart phrase${phrase.type}`}>{phrase.phrase}</p>
         })
         return content;
       }
@@ -223,42 +234,42 @@ export class RelojEscrito extends Component{
         return 0;
       }else if(timeObject.action === "show"){
         console.log("answer: show");
-        this.props.feedback({feedback:timeObject.feedback});
+        this.feedbackFunction({feedback:timeObject.feedback});
         this.setState({inputWithFeedback : null})
         return 0;
       }else if(timeObject.action === "delete"){
         console.log("answer: delete");
-        this.props.feedback({feedback:timeObject.feedback});
+        this.feedbackFunction({feedback:timeObject.feedback});
         this.setState({inputWithFeedback : this.deletePhraseParts(timeObject)});
         return 0;
       }else if(timeObject.action === "alternatives"){
         console.log("answer: alternatives");
-        this.props.feedback({feedback:timeObject.feedback});
+        this.feedbackFunction({feedback:timeObject.feedback});
         this.setState({inputWithFeedback : this.createEitherOrAlternatives(timeObject)});
         return 0;
       }else if(timeObject.action === "switch"){
         console.log("answer: switch");
-        this.props.feedback({feedback:timeObject.feedback});
+        this.feedbackFunction({feedback:timeObject.feedback});
         this.setState({inputWithFeedback : this.switchParts(timeObject)});
         return 0;
       }else if(timeObject.action === "highlight"){
         console.log("answer: highlight");
-        this.props.feedback({feedback:timeObject.feedback});
+        this.feedbackFunction({feedback:timeObject.feedback});
         this.setState({inputWithFeedback : this.highlightPart(timeObject)});
         return 0;
       }else if(timeObject.action === "replace"){
         console.log("answer: replace");
-        this.props.feedback({feedback:timeObject.feedback});
+        this.feedbackFunction({feedback:timeObject.feedback});
         this.setState({inputWithFeedback : this.replacePart(timeObject)});
         return 0;
       }else if(timeObject.action === "replaceAndAlternatives"){
         console.log("answer: replaceAndAlternatives");
-        this.props.feedback({feedback:timeObject.feedback});
+        this.feedbackFunction({feedback:timeObject.feedback});
         this.setState({inputWithFeedback : this.replacePartsAndGiveAlternatives(timeObject)});
         return 0;
       }else{
         console.log("answer: accepted");
-        this.props.feedback({feedback:null});
+        this.feedbackFunction({feedback:null});
         this.setState({inputWithFeedback : null});
       }
       this.props.response(timeObject);

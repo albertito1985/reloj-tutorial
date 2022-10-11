@@ -96,3 +96,98 @@ input[type="checkbox"].CustomCheckBox:checked::before{
     background-color:var(--magenta);
     color:var(--white)
 }
+
+
+
+
+.CustomdropdownContainer select{
+    display:none;
+}
+
+
+.CustomdropdownContainer{
+    background-color:var(--white);
+    width:300px;
+    height:40px;
+    position:relative;
+    border-radius:20px;
+    border:3px solid var(--magenta);
+    z-index:100;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.CustomdropdownContainer::after{
+    content:"\25BC";
+    position:absolute;
+    display:flex;
+    width:20%;
+    right:0;
+    top:0;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+    border-radius:0 20px 20px 0;
+    color:var(--magenta);
+}
+
+.CustomdropdownContainer .item{
+    min-height: 30px;
+    display:flex;
+    align-items: center;
+    padding-left:20px;
+}
+
+.CustomdropdownContainer .item:hover{
+    background-color:var(--yellow);
+}
+
+.itemsList {
+    position:absolute;
+    width:calc(100% + 6px);
+    top:36px;
+    left:-3px;
+    display:none;
+    flex-direction:column;
+    background-color: var(--white);
+    height:200px;
+    overflow-y: scroll;
+    border-radius: 0 0 0 20px;
+    border:3px solid var(--magenta);
+    /* border-top: 0px; */
+}
+
+.itemListShow{
+    display:flex;
+}
+
+.CustomdropdownContainer.dropdownShow{
+    border-radius: 20px 20px 0 0;
+}
+
+.CustomdropdownContainer.dropdownShow::after{
+    content:"\25B2";
+    border-radius: 0 20px 0 0;
+}
+
+.CustomdropdownContainer .item.selected{
+background-color:var(--orange);
+}
+
+.CustomdropdownContainer .selectedItem{
+    min-height: 100%;
+    display:flex;
+    align-items: center;
+    padding-left:20px;
+}
+
+.CustomdropdownContainer .selectedItem.selectedItemEmpty {
+    color:gray;
+}
+
+.CustomdropdownContainerInactive{
+    border:3px solid gray;
+}
+
+.CustomdropdownContainerInactive::after{
+    color: gray;
+}
