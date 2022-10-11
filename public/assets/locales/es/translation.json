@@ -2,6 +2,7 @@
     "titulo": "Aprende a decir la hora en español",
     "next": "Siguiente",
     "back":"Atrás",
+    "examples":"Ejemplos",
     "languages":{
         "spanish":"Español",
         "english":"Inglés",
@@ -39,7 +40,10 @@
         "minutero":"El minutero es el palito delgado y largo del reloj que indica un minuto específico."
     },
     "phrase1":{
-        "title":"Frase 1",
-        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la hora termina con 'en punto'. Mueve el horario y el minutero para ver más ejemplos."
+        "title":"Frase 1: 'en punto'",
+        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la frase termina con 'en punto'.",
+        "task1":"Mueve el horario y el minutero y descubre a que hora come Juanito.",
+        "question1":"¿Qué hace Juanito?",
+        "dropdownPlaceholder": "Escoje la hora correcta."
     }
 }
