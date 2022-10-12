@@ -80,8 +80,8 @@ export class RelojEscrito extends Component{
       }else{
         let text = es.phraseFinder(hours, minutes, this.props.mode, this.props.ending, false, this.props.begining);
         let content =  text.map((phrase,index)=>{
-          //así era antes// return <p key={`${phrase.type}${index}`}><span className={`phrasePart phrase${phrase.type}`}>{phrase.phrase}</span></p>
-          return <p key={`${phrase.type}${index}`} className={`phrasePart phrase${phrase.type}`}>{phrase.phrase}</p>
+          return <p key={`${phrase.type}${index}`}><span className={`phrasePart phrase${phrase.type}`}>{phrase.phrase}</span></p>
+          // return <p key={`${phrase.type}${index}`} className={`phrasePart phrase${phrase.type}`}>{phrase.phrase}</p>
         })
         return content;
       }

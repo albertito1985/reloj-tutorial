@@ -1,4 +1,4 @@
-import React, {Component, createElement} from 'react';
+import React, {Component} from 'react';
 import './input.css'
 
 class RadioButton extends Component {
@@ -80,7 +80,8 @@ class Dropdown extends Component{
         return(
             <div className={`CustomdropdownContainer${(this.props.type === "inactive")?" CustomdropdownContainerInactive":""}`} 
                 id="CustomdropdownContainer"
-                onClick={(this.props.type!=="inactive")?this.openClick:undefined}>
+                onClick={(this.props.type!=="inactive")?this.openClick:undefined}
+            >
                 <span className={`selectedItem${this.state.selected.phrase?"":" selectedItemEmpty"}`} id="selectedItem">{this.state.selected.phrase || this.props.placeholder}</span>
                 <span className="itemsList" id="itemsList">
                     {this.generateItems(this.props.options)}
@@ -92,7 +93,5 @@ class Dropdown extends Component{
         )
     }
 }
-
-
 
 export {RadioButton, CheckBox, Button, Dropdown}

@@ -63,6 +63,11 @@ h2{
   position:relative;
   width:100%;
 }
+.headerContainer{
+  position:sticky;
+  top:0;
+  right:0
+}
 
 .contentBody {
   background-image: url('./images/time-g42305ce1d_19202.jpg');
@@ -75,10 +80,6 @@ h2{
   align-items: center;
   padding:50px;
 }
-
-
-
-
 
 .disco .arrow{ /* ????????? */
 font-size:2em;
@@ -96,8 +97,6 @@ transform:rotate(calc(var(--rotate) * -1));
   padding:20px;
   border-radius:50px;
 }
-
-
 
 /*
 ==========================>Score board<==========================

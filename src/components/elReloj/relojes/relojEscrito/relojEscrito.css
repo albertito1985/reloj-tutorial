@@ -26,17 +26,19 @@
   
   .escrito{
     height: 100%;
-    width:100%;
-    display:none;
+    width:100%; 
+    /* padding:10px; */
+    display:hide;
     flex-direction:column;
     justify-content: center;
     align-items: center;
     gap:40px;
   }
 
-  /* .escrito p{
-    height:100%;
-  } */
+  .escrito p{
+    display:flex;
+    width:100%;
+  }
   
   .phrasePart{
     border: 1px solid black;

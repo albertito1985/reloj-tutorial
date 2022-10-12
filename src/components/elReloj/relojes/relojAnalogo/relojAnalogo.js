@@ -22,7 +22,22 @@ export class RelojAnalogo extends Component{
       this.handle.eventHandlers.mouseDown =this.handle.eventHandlers.mouseDown.bind(this);
       this.handle.eventHandlers.mouseMove = this.handle.eventHandlers.mouseMove.bind(this);
       this.handle.both.moveView= this.handle.both.moveView.bind(this);
+      this.resizeObs= new ResizeObserver(entries=>{
+        if(entries[0].target.tagName === "BODY"){
+          this.clockCenter = this.calculateClockCenter();
+        };
+      })
+      this.intersectionObs= new IntersectionObserver(entries=>{
+        if(entries[0].target.id === "reloj"){
+          if(entries[0].isIntersecting === true){
+            document.body.onscroll = ()=>{this.clockCenter =this.calculateClockCenter()}
+          }else{
+            document.body.onscroll = null;
+          }
+        };
+      })
     }
+    
   
     static getDerivedStateFromProps(props,state){
         if(props.answer){
@@ -58,6 +73,10 @@ export class RelojAnalogo extends Component{
         reloj.addEventListener('mousemove',this.handle.eventHandlers.mouseMove);
       }
       
+      let body = document.querySelector("body");
+      let clock = document.getElementById("reloj");
+      this.resizeObs.observe(body);
+      this.intersectionObs.observe(clock);
     }
   
     calculateClockCenter(){
@@ -70,6 +89,12 @@ export class RelojAnalogo extends Component{
     }
   
     componentWillUnmount(){
+      let body = document.querySelector("body");
+      let clock = document.getElementById("reloj");
+      this.resizeObs.unobserve(body);
+      this.intersectionObs.unobserve(clock);
+      document.body.onscroll = null;
+
       let reloj = document.getElementById("reloj");
       let manillaContainers = Array.prototype.slice.call(document.getElementsByClassName("manillaContainer"));
       manillaContainers.forEach((container)=>{

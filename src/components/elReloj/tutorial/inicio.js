@@ -1,4 +1,4 @@
-import { exists, t } from 'i18next';
+import { t } from 'i18next';
 import React, {Component} from 'react';
 import { withTranslation } from 'react-i18next';
 
@@ -15,12 +15,12 @@ class Tutorial extends Component {
     constructor(){
         super();
         this.state={
-            page:undefined,
+            page:3,
             // lastPage:undefined,
             next:true,
             back:false
         };
-        this.pages=[];
+        this.pages=["home"];
         this.config ={};
         this.moments = {
             actual:[],
@@ -39,8 +39,8 @@ class Tutorial extends Component {
                 home: [false,true],
                 parts0 : [true,true],
                 phrase10: [true,false],
-                phrase11: [true, true],
-                phrase12:[true, true],
+                phrase11: [true, false],
+                phrase12:[true, false],
                 minutearm0:[true, true],
                 phrase20:[true, true],
                 phrase21:[true, true],
@@ -79,16 +79,20 @@ class Tutorial extends Component {
     }
     previousPage(){
         let pagenumber;
+        let back = undefined;
+        let next = undefined;
         if(this.state.page === 0){
             pagenumber = undefined
         }else{
             let temp = this.state.page;
             pagenumber = --temp;
         }
+        back = this.moments.navigation[this.pages[pagenumber]][0];
+        next = this.moments.navigation[this.pages[pagenumber]][1];
         this.setState({
             page:pagenumber,
-            back:(pagenumber === undefined)?undefined:true,
-            next:true
+            back:back,
+            next:next
         })
     }
 
@@ -132,8 +136,8 @@ class Tutorial extends Component {
             let parts ={
                 parts0 : <Parts0 {...props}/>,
                 phrase10: <Phrase10 {...props}/>,
-                phrase11: null,
-                phrase12:null,
+                phrase11: <Phrase11 {...props}/>,
+                phrase12: <Phrase12 {...props}/>,
                 minutearm0:null,
                 phrase20:null,
                 phrase21:null,
@@ -295,12 +299,13 @@ class Phrase10 extends Component{
     constructor(){
         super();
         this.state={
-            hours:0,
+            hours:10,
             minutes:0,
             next:false,
-            dropdown:"inactive"
+            dropdown:"inactive",
+            pic:"phrase109"
         }
-        this.ejerciciosContent = this.ejerciciosContent.bind(this);
+        this.picChanger = this.picChanger.bind(this);
         this.changeTime= this.changeTime.bind(this);
         this.recieveValue =this.recieveValue.bind(this);
         this.options=[
@@ -317,41 +322,76 @@ class Phrase10 extends Component{
             {label:"A las once en punto.",value:11},
             {label:"A las doce en punto.",value:12},
         ]
+
     }
-    componentDidMount(){
-        const d = new Date();
-        this.setState({
-            hours:d.getHours(),
-            minutes:d.getMinutes()
-        })
-    }
+
     changeTime({hours,minutes}){
         let newState={}
         if(minutes === 0){
             if(hours===1 || hours === 13){
                 newState.dropdown = "";
             }
+            newState.pic = this.picChanger(hours,minutes);
+        }else{
+            newState.pic = undefined;
         }
         newState.hours = hours;
         newState.minutes = minutes;
         this.setState({...newState});
-        
     }
 
-    ejerciciosContent(hours,minutes){
-        if(minutes === 0){
-            if(hours===1){
-                return <div className="phrase10pic" id="phrase10night"></div>
-            }else if(hours===13){
-                return <div className="phrase10pic" id="phrase10day"></div>
-            }else{
-                return <div className="phrase10pic" id="phrase10normal"></div>
-            }
+    picChanger(hours,minutes){
+        switch(hours){
+            case 1:
+                return "phrase101";
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+                return "phrase102";
+            case 8:
+                return "phrase108";
+            case 9:
+                return "phrase109";
+            case 10:
+                return "phrase1010";
+            case 11:
+                return "phrase1011";
+            case 12:
+                return "phrase1012";
+            case 13:
+                return "phrase1013";
+            case 14:
+                return "phrase1014";
+            case 15:
+                return "phrase1015";
+            case 16:
+                return "phrase1016";
+            case 17:
+                return "phrase1017";
+            case 18:
+                return "phrase1018";
+            case 19:
+                return "phrase1019";
+            case 20:
+                return "phrase1020"
+            case 21:
+            case 22:
+            case 23:
+            case 0:
+                return "phrase102";
+            default:
+            break;
         }
     };
     recieveValue(value){
         if(value==="1"){
-            this.props.changeNext(true);
+            setTimeout(()=>{
+                this.props.changeNext(true);
+            },300);
+            
         }else{
             this.props.changeNext(false);
         }
@@ -365,21 +405,135 @@ class Phrase10 extends Component{
                     <h2>{t("examples")}</h2>
                     <div id="phrase10HalfsContainer">
                         <span className="phrase10Half phrase10HalfLeft">
-                            <p id="phrase1Task1">{t("phrase1.task1")}</p>
+                                <p id="phrase1Task1">{t("phrase1.command")}</p>
                             <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
                         </span>
                         <span className="phrase10Half phrase10HalfRight">
-                            <p className="phrase10question">{t("phrase1.question1")}</p>
                             <span id="relojescritoTime">{this.state.minutes === 0 &&<RelojEscrito className="escritoPhrase10" hours={this.state.hours} minutes={this.state.minutes} mode="0" begining={0}/>}</span>
-                            {this.ejerciciosContent(this.state.hours, this.state.minutes)}
+                            <div className={`phrase10pic${(this.state.pic !== undefined)?` ${this.state.pic}`:""}`} ></div>
                         </span>
                     </div>
                 </div>
                 <div id="dropdownContainer">
-                    <p>¿A que hora come Juanito?</p>
+                    <div>
+                        <h2 >¿A que hora come Juanito?</h2>
+                        <p>{t("phrase1.command2")}</p>
+                    </div>
                     <Dropdown type={this.state.dropdown} options={this.options} placeholder={t("phrase1.dropdownPlaceholder")} recieveValue={this.recieveValue}/>
                 </div>
                 
+            </div>
+        )
+    }
+}
+
+class Phrase11 extends Component{
+    constructor(){
+        super();
+        this.options=[
+            {label:"A la una en punto.",value:1},
+            {label:"A las dos en punto.",value:2},
+            {label:"A las tres en punto.",value:3},
+            {label:"A las cuatro en punto.",value:4},
+            {label:"A las cinco en punto.",value:5},
+            {label:"A las seis en punto.",value:6},
+            {label:"A las siete en punto.",value:7},
+            {label:"A las ocho en punto.",value:8},
+            {label:"A las nueve en punto.",value:9},
+            {label:"A las diez en punto.",value:10},
+            {label:"A las once en punto.",value:11},
+            {label:"A las doce en punto.",value:12},
+        ]
+        this.recieveValue=this.recieveValue.bind(this);
+    }
+    recieveValue(value){
+        if(value==="12"){
+            setTimeout(()=>{
+                this.props.changeNext(true);
+            },300);
+        }else{
+            this.props.changeNext(false);
+        }
+    }
+    render(){
+        return(
+            <div id="phrase11">
+                <h1>{t("phrase1.title")}</h1>
+                <p>{t("phrase1.explanation2")}</p>
+                <div id="dropdownContainer">
+                    <Dropdown options={this.options} placeholder={t("phrase1.dropdownPlaceholder")} recieveValue={this.recieveValue}/>
+                </div>
+            </div>
+        )
+    }
+}
+
+class Phrase12 extends Component{
+    constructor(){
+        super();
+        this.state ={
+            Ahours:10,
+            Aminutes:0,
+            Qhours:10,
+            next:false
+        }
+        this.changeTime = this.changeTime.bind(this);
+        this.randomHour = this.randomHour.bind(this);
+    }
+
+    randomHour(){
+        let returnHour= undefined;
+       do{
+        returnHour=Math.floor(Math.random() * 12) ;
+       }while(returnHour === this.state.Ahours)
+        return returnHour
+    }
+
+    componentDidMount(){
+        this.setState({Qhours:this.randomHour()})
+    }
+
+    changeTime({hours,minutes}){
+        let newState={}
+        
+        if(minutes === 0){
+            if(hours=== 0){
+                hours=12;
+            }else if(hours>12){
+                hours = hours-12
+            }
+    
+            if(hours===this.state.Qhours){
+                newState.next = true;
+                this.props.changeNext(true);
+            }
+        }else{
+            if(this.state.next === true){
+                newState.next = false;
+                this.props.changeNext(false);
+            }
+        }
+        newState.Ahours = hours;
+        newState.Aminutes = minutes;
+        this.setState({...newState});
+    }
+
+
+    
+    render(){
+        return(
+            <div id="phrase12">
+                <h1>{t("phrase1.title")}</h1>
+                <h2>{t("excercises")}</h2>
+                <div id="phrase12Halvor">
+                    <div id="phrase12left">
+                        <p>{t("phrase1.excercisesExplanation")}</p>
+                        <RelojEscrito className="escritoPhrase10" hours={this.state.Qhours||0} minutes={0} mode="0" begining={0}/>
+                    </div>
+                    <div id="phrase12right">
+                        <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.Ahours} minutes={this.state.Aminutes}/>
+                    </div>
+                </div>
             </div>
         )
     }

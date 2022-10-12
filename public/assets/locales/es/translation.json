@@ -3,6 +3,7 @@
     "next": "Siguiente",
     "back":"Atrás",
     "examples":"Ejemplos",
+    "excercises":"Ejercicios",
     "languages":{
         "spanish":"Español",
         "english":"Inglés",
@@ -33,17 +34,19 @@
     "parts":{
         "title": "Las partes del reloj",
         "explanation": "Para aprender a decir la hora en español es necesario aprender las partes del reloj. Apunta con el ratón en los nombres de la derecha para resaltar las partes del reloj.",
-        "prompt": "Apunta con el ratón en los nombres de la derecha.",
+        "prompt": "Pasa el ratón sobre los nombres a la derecha del reloj.",
         "horas":"Las horas son los números grandes del reloj y cáda número representa una hora diferente.",
         "minutos":"No todos los relojes muestran los minutos pero en éste reloj los minútos son los números pequeños. Cuando no se ven, los minutos se pueden calcular multiplicando cada número grande (las horas) por cinco.",
         "horario":"El horario es el palito pequeño y gordito del reloj que indíca una hora específica.",
         "minutero":"El minutero es el palito delgado y largo del reloj que indica un minuto específico."
     },
     "phrase1":{
-        "title":"Frase 1: 'en punto'",
-        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la frase termina con 'en punto'.",
-        "task1":"Mueve el horario y el minutero y descubre a que hora come Juanito.",
-        "question1":"¿Qué hace Juanito?",
-        "dropdownPlaceholder": "Escoje la hora correcta."
+        "title":"Frase 1: '...en punto'",
+        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la frase termina con 'en punto'. ",
+        "command":"Mueve el horario y el minutero para ver mas ejemplos.",
+        "command2":"Cambia la hora en el reloj y escubre a que hora en punto come Juanito.",
+        "dropdownPlaceholder": "Escoje la hora correcta.",
+        "explanation2": "De repente te diste cuenta que entre las horas '...en punto' hay dos que tienen su propio nombre, mediodía y medianoche. Mediodía son las 12:00 y medianoche las 00:00 ¿A que hora apunta el horario en éstas dos horas?.",
+        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada."
     }
 }

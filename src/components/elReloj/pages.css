@@ -33,6 +33,7 @@ label, td, th, .title{
     font-size:1.5em;
 }
 
+
 /*---------------------------------explanation ----------------------------------*/
 #config {
     display:flex;
@@ -155,18 +156,23 @@ label, td, th, .title{
     display:flex;
     flex-direction:column;
     align-items: center;
+    gap:20px;
+    width:100%;
 }
 
 #phrase10{
     display:flex;
     flex-direction:column;
     width:100%;
-    margin-top: 30px;
+    background-color: var(--orange);
+    padding:20px 20px 30px 20px;
+    border-radius:20px;
 }
 
 #phrase10HalfsContainer {
     display:flex;
     width:100%;
+    gap:20px;
 }
 
 .phrase10Half{
@@ -175,52 +181,43 @@ label, td, th, .title{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.phrase10HalfLeft{
     gap:10px;
 }
 
 .phrase10HalfRight{
-    background-color:var(--orange);
-    gap:10px;
-    padding:10px;
-    border-radius:10%;
-}
-
-.escrito span{
-    background-color:orange;
+    border-radius:20px;
+    border:3px solid black;
+    padding:20px;
 }
 
 .phrase10pic{
     height:100%;
     width:100%;
-    border-radius:10%;
-}
-
-#phrase10night{
-    background-image: url('./tutorial/images/squirrel\ night.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-#phrase10day{
-    background-image: url('./tutorial/images/squirrel\ day.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#phrase10normal{
-    background-image: url('./tutorial/images/squirrel.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:contain;
-}
+.phrase101{background-image: url('./tutorial/images/squirrelEating.jpg');}
+.phrase102{background-image: url('./tutorial/images/sleeping.jpg');}
+.phrase108{background-image: url('./tutorial/images/squirrel1.jpg');}
+.phrase109{background-image: url('./tutorial/images/squirrel2.jpg');}
+.phrase1010{background-image: url('./tutorial/images/squirrel3.jpg');}
+.phrase1011{background-image: url('./tutorial/images/squirrel4.jpg');}
+.phrase1012{background-image: url('./tutorial/images/squirrel5.jpg');}
+.phrase1013{background-image: url('./tutorial/images/squirrelEating.jpg');}
+.phrase1014{background-image: url('./tutorial/images/squirrel6.jpg');}
+.phrase1015{background-image: url('./tutorial/images/squirrel7.jpg');}
+.phrase1016{background-image: url('./tutorial/images/squirrel8.jpg');}
+.phrase1017{background-image: url('./tutorial/images/squirrel9.jpg');}
+.phrase1018{background-image: url('./tutorial/images/squirrel10.jpg');}
+.phrase1019{background-image: url('./tutorial/images/squirrel11.jpg');}
+.phrase1020{background-image: url('./tutorial/images/squirrel12.jpg');}
+.phrase1021{background-image: url('./tutorial/images/squirrel13.jpg');}
 
 #phrase1Task1{
-    padding:10px;
+    padding:10px 0;
+    align-self: flex-start;
 }
 
 .phrase10question {
@@ -229,8 +226,34 @@ label, td, th, .title{
 }
 
 .phrase10 #dropdownContainer{
-    margin-top: 30px;
     display:flex;
     flex-direction:column;
     align-items: center;
+    gap:20px;
+}
+
+.phrase10 #dropdownContainer h2{
+    text-align: center;
+}
+
+/* /////////////////Phrase11*/
+
+#phrase11{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    width:100%;
+}
+
+/* /////////////////Phrase11*/
+
+#phrase12{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    width:100%;
 }

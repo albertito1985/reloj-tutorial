@@ -70,7 +70,9 @@ class App extends Component {
     return (
       <div className="App">
           <div className="container">
-            <Header/>
+            <div className="headerContainer">
+              <Header/>
+            </div>
             <div className="contentBody">
               <Routes>
                 <Route path="/elreloj/*" element={<Config/>}/>

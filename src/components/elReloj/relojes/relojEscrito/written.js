@@ -26,6 +26,26 @@ export let es = {
             }
         }
     },
+    computeBegining(number, type){
+        switch(["number", type]){
+            case [true, 0]:
+                return "";
+            case ["", 1]:
+                return "al ";
+            case ["", 2]:
+                return "es ";
+            case ["uno", 1]:
+                return "a ";
+            case ["uno", 2]:
+                return "es ";
+            case [true, 1]:
+                return "a ";
+            case [true, 2]:
+                return "son ";
+            default:
+                break;
+        };
+    },
     phrases : [
         (hours,minutes,mode,ending,begining)=>{
             //solo en punto

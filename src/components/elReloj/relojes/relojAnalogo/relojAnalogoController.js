@@ -90,13 +90,12 @@ export let reloj = {
         let threshold = 360/criticalPoints;
         let nextPositionSimplified= nextPosition % threshold;
         let handleStateSimplified= reloj.states[handle] % threshold;
-    
-        if(handleStateSimplified < 10 && (nextPositionSimplified <= (threshold-0.1) && nextPositionSimplified > threshold-10)){
+        if(handleStateSimplified < 10 && (nextPositionSimplified <= (threshold-0.001) && nextPositionSimplified > threshold-10)){
           returnObject = {
             direction:"ccw",
             newTurn:true
           }
-        }else if(nextPositionSimplified < 10 && (handleStateSimplified > (threshold-10) && handleStateSimplified <= (threshold-0.1))){
+        }else if(nextPositionSimplified < 10 && (handleStateSimplified > (threshold-10) && handleStateSimplified <= (threshold-0.001))){
           returnObject = {
             direction:"cw",
             newTurn:true
@@ -115,7 +114,7 @@ export let reloj = {
             let hours = reloj.hours;
             let period = reloj.period;
             let minutes = reloj.readPointingNumber(minuteDegrees,6);
-
+            //if the minutero is moving
             if(reloj.moving === "minutero"){
               let rotation = reloj.senseRotation(minuteDegrees,"minutes",1);
               if(rotation.newTurn === true){
@@ -152,7 +151,6 @@ export let reloj = {
                 }else if(rotation1.direction === "ccw"){
                   hours = reloj.hours-1;
                 }
-               
               }
             }
           

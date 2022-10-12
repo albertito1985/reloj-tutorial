@@ -98,8 +98,6 @@ input[type="checkbox"].CustomCheckBox:checked::before{
 }
 
 
-
-
 .CustomdropdownContainer select{
     display:none;
 }
@@ -149,7 +147,7 @@ input[type="checkbox"].CustomCheckBox:checked::before{
     display:none;
     flex-direction:column;
     background-color: var(--white);
-    height:200px;
+    height:150px;
     overflow-y: scroll;
     border-radius: 0 0 0 20px;
     border:3px solid var(--magenta);
@@ -178,6 +176,7 @@ background-color:var(--orange);
     display:flex;
     align-items: center;
     padding-left:20px;
+    color:black;
 }
 
 .CustomdropdownContainer .selectedItem.selectedItemEmpty {
@@ -185,9 +184,22 @@ background-color:var(--orange);
 }
 
 .CustomdropdownContainerInactive{
-    border:3px solid gray;
+    border:3px solid var(--orange);
+    background-color:var(--yellow);
 }
 
+.CustomdropdownContainerInactive .selectedItem.selectedItemEmpty{
+    color:var(--orange);
+}
+
+/* .CustomdropdownContainerflash{
+    background-color:var(--magenta);
+}
+
+.CustomdropdownContainerflash::after, .CustomdropdownContainerflash .selectedItem.selectedItemEmpty{
+    color:var(--white);
+} */
+
 .CustomdropdownContainerInactive::after{
-    color: gray;
+    color: var(--orange);
 }
