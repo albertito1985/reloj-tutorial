@@ -43,7 +43,6 @@ class Dropdown extends Component{
 
     static getDerivedStateFromProps(props,state){
         if(props.type === "inactive"){
-            console.log(state);
             state.selected={
                     value: undefined,
                     phrase:undefined
@@ -51,18 +50,6 @@ class Dropdown extends Component{
             state.showDropdown=false
         }
     }
-
-    // componentDidMount(){
-    //     if(this.props.type==="inactive"){
-    //         this.setState({
-    //             selected:{
-    //                 value: undefined,
-    //                 phrase:undefined
-    //             },
-    //             showDropdown:false,
-    //         })
-    //     }
-    // }
 
     openClick(){
         this.setState({
