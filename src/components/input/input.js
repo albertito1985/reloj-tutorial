@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { IoTrashBinSharp } from 'react-icons/io5';
 import './input.css'
 
 class RadioButton extends Component {
@@ -94,4 +95,23 @@ class Dropdown extends Component{
     }
 }
 
-export {RadioButton, CheckBox, Button, Dropdown}
+class TextInput extends Component{
+    constructor(){
+        super();
+        this.state = {
+            value:""
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(e){
+        let value = e.target.value;
+        this.props.recieveData({field:e.target.name || undefined,value:value});
+        this.setState({value})
+    }
+
+    render(){
+        return(<input className="CustomTextInput" name={this.props.name} value={this.state.value} onChange={(this.props.type === "inactive")? null: this.handleChange} placeholder={this.props.placeholder || "text"} type="text"/>)
+    }
+}
+
+export {RadioButton, CheckBox, Button, Dropdown, TextInput}

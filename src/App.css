@@ -63,11 +63,10 @@ h2{
   position:relative;
   width:100%;
 }
-.headerContainer{
-  position:sticky;
-  top:0;
-  right:0
-}
+
+/* .headerContainer{
+ height:99px; 
+} */
 
 .contentBody {
   background-image: url('./images/time-g42305ce1d_19202.jpg');
@@ -79,6 +78,7 @@ h2{
   justify-content: center;
   align-items: center;
   padding:50px;
+  position:relative;
 }
 
 .disco .arrow{ /* ????????? */

@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+span{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .pages{
     display:flex;
     flex-direction: column;
@@ -188,6 +192,24 @@ label, td, th, .title{
     border-radius:20px;
     border:3px solid black;
     padding:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+.phrase10 .phrase10Phrase,
+#phrase12EscritoContainer .phrase10Phrase{
+    border: 3px solid black;
+    background-color:var(--white);
+    height:40px;
+    padding:10px;
+    border-radius:20px;
+    font-weight:1000;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .phrase10pic{
@@ -215,6 +237,9 @@ label, td, th, .title{
 .phrase1020{background-image: url('./tutorial/images/squirrel12.jpg');}
 .phrase1021{background-image: url('./tutorial/images/squirrel13.jpg');}
 
+.phrase1025{background-image: url('./tutorial/images/owl.jpg');}
+.phrase1026{background-image: url('./tutorial/images/owl2.jpg');}
+
 #phrase1Task1{
     padding:10px 0;
     align-self: flex-start;
@@ -236,6 +261,8 @@ label, td, th, .title{
     text-align: center;
 }
 
+
+
 /* /////////////////Phrase11*/
 
 #phrase11{
@@ -247,7 +274,7 @@ label, td, th, .title{
     width:100%;
 }
 
-/* /////////////////Phrase11*/
+/* /////////////////Phrase12*/
 
 #phrase12{
     display:flex;
@@ -256,4 +283,302 @@ label, td, th, .title{
     justify-content: center;
     gap:20px;
     width:100%;
+}
+
+#phrase12ContentContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    background-color:var(--orange);
+    padding:20px;
+    border-radius:20px;
+    width:60%;
+}
+
+#phrase12EscritoContainer{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+   
+}
+
+#phrase12EscritoContainer .phrasePart{
+    background-color:var(--white);
+    border-radius:20px;
+    font-weight:1000;
+    border-width:3px;
+}
+
+/* /////////////////MinuteArm0*/
+
+#minuteArm0 span{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#minuteArm0{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+#minuteArmContainer{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    gap:20px;
+    
+}
+#minuteArmOver{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:46px;
+}
+
+.minuteArmPhrase{
+    border:3px solid black;
+    padding:10px;
+    border-radius:20px;
+    width:250px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:40px;
+}
+
+#minuteArmPhraseOver{
+    background-color:var(--white);
+}
+
+#minuteArmPhraseLeft{
+    background-color:var(--orange);
+}
+
+#minuteArmUnder{
+    display:flex;
+    gap:20px;
+}
+
+.minuteArm0HAlva{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#minuteArm0HAlvLeft{
+flex-grow: 1;
+}
+
+#minuteArm0HAlvMiddle{
+flex-grow: 0;
+}
+
+#minuteArm0HAlvRight{
+flex-grow: 1;
+}
+
+#minuteArm0HAlvRight .phrasePart{
+    border:3px solid black;
+}
+
+#minutes15and30{
+    display:flex;
+    width:100%;
+    flex-direction:column;
+    gap:20px;
+}
+
+.minutes15and30FieldContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+.minutes15and30FieldContainer h2{
+    width:auto;
+}
+
+#minutes15and30 .minutes15and30FieldCheck{
+    height:40px;
+    width:40px;
+    color:var(--magenta);
+}
+.minutes15and30FieldcheckContainer{
+    height:40px;
+    width:40px;
+    background-color:var(--white);
+    border-radius:20px;
+}
+
+#minutes15and30AnswersContainer{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+
+
+.phrase10 .phrase20Phrase,
+#phrase12EscritoContainer .phrase20Phrase{
+    border: 3px solid black;
+    background-color:var(--yellow);
+    height:40px;
+    padding:10px;
+    border-radius:20px;
+    font-weight:1000;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* /////////////////PhraseTemplate1*/
+
+.phraseTemplate{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    gap:20px;
+    width:100%;
+}
+
+#phraseTemplateContent{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    background-color: var(--orange);
+    padding:20px 20px 30px 20px;
+    border-radius:20px;
+}
+
+#phraseTemplateHalfsContainer {
+    display:flex;
+    width:100%;
+    gap:20px;
+    margin-top:20px;
+}
+
+.phraseTemplateHalf{
+    width: 50%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+.phraseTemplateHalf p{
+    text-align: center;
+}
+
+.phraseTemplatePic{
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    aspect-ratio: 4/3;
+    border-radius: 20px;
+    
+}
+
+.phrase101{background-image: url('./tutorial/images/squirrelEating.jpg');}
+.phrase102{background-image: url('./tutorial/images/sleeping.jpg');}
+.phrase108{background-image: url('./tutorial/images/squirrel1.jpg');}
+.phrase109{background-image: url('./tutorial/images/squirrel2.jpg');}
+.phrase1010{background-image: url('./tutorial/images/squirrel3.jpg');}
+.phrase1011{background-image: url('./tutorial/images/squirrel4.jpg');}
+.phrase1012{background-image: url('./tutorial/images/squirrel5.jpg');}
+.phrase1013{background-image: url('./tutorial/images/squirrelEating.jpg');}
+.phrase1014{background-image: url('./tutorial/images/squirrel6.jpg');}
+.phrase1015{background-image: url('./tutorial/images/squirrel7.jpg');}
+.phrase1016{background-image: url('./tutorial/images/squirrel8.jpg');}
+.phrase1017{background-image: url('./tutorial/images/squirrel9.jpg');}
+.phrase1018{background-image: url('./tutorial/images/squirrel10.jpg');}
+.phrase1019{background-image: url('./tutorial/images/squirrel11.jpg');}
+.phrase1020{background-image: url('./tutorial/images/squirrel12.jpg');}
+.phrase1021{background-image: url('./tutorial/images/squirrel13.jpg');}
+
+.phrase1025{background-image: url('./tutorial/images/owl.jpg');}
+.phrase1026{background-image: url('./tutorial/images/owl2.jpg');}
+
+#phraseTemplateTask1{
+    padding:10px 0;
+    align-self: flex-start;
+}
+
+.phraseTemplate #dropdownContainer{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    gap:20px;
+}
+
+.phraseTemplate #dropdownContainer h2{
+    text-align: center;
+}
+
+.writtenTime{
+    border: 3px solid black;   
+    height:40px;
+    padding:10px;
+    border-radius:20px;
+    font-weight:1000;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.writtenTime.phrase0{
+    background-color:var(--white);
+}
+.writtenTime.phrase1{
+    background-color:var(--yellow);
+}
+.writtenTime.phrase2{
+    background-color:var(--orange);
+}
+
+/* /////////////////PhraseTemplate2*/
+
+#phraseTemplate2{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    width:100%;
+}
+
+#phraseTemplate2ContentContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    background-color:var(--orange);
+    padding:20px;
+    border-radius:20px;
+    width:60%;
+}
+
+#phraseTemplate2EscritoContainer{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+   
 }

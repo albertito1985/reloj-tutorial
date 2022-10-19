@@ -1,3 +1,7 @@
+.headerPhantom{
+
+}
+
 .header{
     background-color: var(--white);
     width:100%;
@@ -7,6 +11,10 @@
     justify-content:space-between;
     /* border-bottom:2px solid black; */
     box-shadow: 0 5px 10px gray;
+    position:sticky;
+    top:0;
+    right:0;
+    z-index:1000;
   }
 
 .logga{

@@ -1,4 +1,4 @@
-import {es} from '../../../modell/writtenComponents/written';
+import {es} from './relojEscrito/written';
 
 export let general = {
     getRandomTime(){

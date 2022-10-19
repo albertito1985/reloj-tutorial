@@ -1,25 +1,29 @@
 /*Loadin rotating logo*/
-.App-logo {
-    height: 100px;
-    width: 100px;
+
+.LoadingImage {
+    height: 200px;
+    width: 200px;
     pointer-events: none;
+    background-image:url("../../images/ES.svg");
+    background-position: center;
+    background-size:contain;
   }
   
   @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
+    .LoadingImage {
       animation: App-logo-spin infinite 5s linear;
     }
   }
   
-  .App-header {
+  .LoadingMarkup {
+    width:100%;
+    height:100%;
     background-color: #ffffff;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    position:absolute;
   }
   
   @keyframes App-logo-spin {

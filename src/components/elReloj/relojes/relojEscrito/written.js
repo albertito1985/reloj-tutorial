@@ -1,6 +1,6 @@
 export let es = {
     //falta agregar el type
-    phraseFinder(hours, minutes, mode, ending=false, forceType=false, begining=1){
+    phraseFinder(hours, minutes, mode, ending=false, forceType=false, begining=0){
         let phraseNumber= (forceType)?[forceType]: es.choosePhrase(minutes,mode);
         return es.generatePhrases(hours,minutes,phraseNumber,mode,ending,begining);
     },
@@ -26,41 +26,50 @@ export let es = {
             }
         }
     },
-    computeBegining(number, type){
-        switch(["number", type]){
-            case [true, 0]:
-                return "";
-            case ["", 1]:
-                return "al ";
-            case ["", 2]:
-                return "es ";
-            case ["uno", 1]:
-                return "a ";
-            case ["uno", 2]:
-                return "es ";
-            case [true, 1]:
-                return "a ";
-            case [true, 2]:
-                return "son ";
-            default:
-                break;
-        };
+    computeBegining(number, begining){
+        //si hay algo mal es por ésto;
+        if(begining === 0){
+            return "";
+        }
+        if(begining === 1){
+            switch(number){
+                case "mediodía":
+                    return "al ";
+                case "medianoche":
+                    return "a la ";
+                default:
+                    return "a ";
+            };
+        }
+        if(begining === 2){
+            switch(number){
+                case "mediodía":
+                case "medianoche":
+                case "uno":
+                    return "es ";
+                default:
+                    return "son ";
+            };
+        }
+    },
+    capitalize(string){
+        return string.charAt(0).toUpperCase() + string.slice(1);
     },
     phrases : [
         (hours,minutes,mode,ending,begining)=>{
             //solo en punto
             if(mode !== 2 ){
                 if(hours === 12 && minutes === 0){
-                    return [{type:0,phrase: `${(begining===0)?"Al":"Es"} mediodía.`}]
+                    return [{type:0,phrase: es.capitalize(`${es.computeBegining("mediodía",begining)}mediodía.`)}]
                 }else if(hours === 0 && minutes === 0){
-                    return [{type:0,phrase: `${(begining===0)?"A la":"Es"} medianoche.`}]
+                    return [{type:0,phrase: es.capitalize(`${es.computeBegining("medianoche",begining)}medianoche.`)}]
                 }
             }
             let endings=es.endings(hours,mode,ending);
             hours = es.modeAdaptation(hours,mode);
             let hoursW = es.numberFinder(hours);
             let returnArray = endings.map((ending,index)=>{
-                return {type:0,phrase: (hoursW === "uno")? `${(begining===0)?"A":"Es"} la una${(mode !== 4)?" en punto":""}${ending}`: `${(begining===0)?"A":"Son"} las ${hoursW}${(mode !== 4)?" en punto":""}${ending}`};
+                return {type:0,phrase: es.capitalize((hoursW === "uno")? `${es.computeBegining(hoursW,begining)}la una${(mode !== 4)?" en punto":""}${ending}`: `${es.computeBegining(hoursW,begining)}las ${hoursW}${(mode !== 4)?" en punto":""}${ending}`)};
             });
             return returnArray;
         },
@@ -72,7 +81,7 @@ export let es = {
             let minutesW = es.minuteExceptions(es.numberFinder(minutes));
             
             let returnArray = endings.map((ending,index)=>{
-                return{type:1,phrase:(hoursW === "uno")?`${(begining===0)?"A":"Es"} la una y ${minutesW} ${ending}`: `${(begining===0)?"A":"Son"} las ${hoursW} y ${minutesW}${ending}`};
+                return{type:1,phrase:es.capitalize((hoursW === "uno")?`${es.computeBegining(hoursW,begining)}la una y ${minutesW} ${ending}`: `${es.computeBegining(hoursW,begining)}las ${hoursW} y ${minutesW}${ending}`)};
             });
             return returnArray;
         },
@@ -86,9 +95,9 @@ export let es = {
             
             let returnArray = endings.map((ending,index)=>{
                 if(mode === 0){
-                    return {type:2,phrase:`${(minutesW==="uno")? `${(begining===0)?"A":"Es"} uno`: `${(begining===0)?"A":"Son"} ${minutesW}`} para ${(hoursW === "uno")?`la una${ending}`:`las ${hoursW}${ending}`}`}
+                    return {type:2,phrase:es.capitalize(`${es.computeBegining(minutesW,begining)}${minutesW} para ${(hoursW === "uno")?`la una${ending}`:`las ${hoursW}${ending}`}`)}
                 }else{
-                    return {type:2,phrase:(hoursW === "uno")?`${(begining===0)?"A":"Es"} la una menos ${minutesW}${ending}`: `${(begining===0)?"A":"Son"} las ${hoursW} menos ${minutesW}${ending}`}
+                    return {type:2,phrase:es.capitalize((hoursW === "uno")?`${es.computeBegining(hoursW,begining)}la una menos ${minutesW}${ending}`: `${es.computeBegining(hoursW,begining)}las ${hoursW} menos ${minutesW}${ending}`)}
                 }
             });
             return returnArray;

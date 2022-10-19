@@ -41,12 +41,52 @@
         "minutero":"El minutero es el palito delgado y largo del reloj que indica un minuto específico."
     },
     "phrase1":{
-        "title":"Frase 1: '...en punto'",
-        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la frase termina con 'en punto'. ",
-        "command":"Mueve el horario y el minutero para ver mas ejemplos.",
-        "command2":"Cambia la hora en el reloj y escubre a que hora en punto come Juanito.",
+        "title":"Frase 1 : '...en punto'",
+        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la frase termina con 'en punto'. En la frase 'Las cinco en punto.' el número cinco es la hora que acaba de comenzar.",
+        "question":"¿A que hora come Juanito?",
+        "instructions":"Cambia la hora en el reloj y descubre a que hora en punto come Juanito.",
         "dropdownPlaceholder": "Escoje la hora correcta.",
         "explanation2": "De repente te diste cuenta que entre las horas '...en punto' hay dos que tienen su propio nombre, mediodía y medianoche. Mediodía son las 12:00 y medianoche las 00:00 ¿A que hora apunta el horario en éstas dos horas?.",
-        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada."
+        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
+        "otherTime":"Otra",
+        "emptyMessage":"Mueve el minutero a la zona blanca del reloj para ver más ejemplos."
+    },
+    "minuteArm":{
+        "title":"El minutero",
+        "explanation": "El minutero indica la cantidad de minutos transcurrida dentro de cada hora. El minutero indica también que frase se usa para decir la hora. Mueve el munitero para ver los tres tipos de frases, cada una tiene un color diferente."
+    },
+    "minutes15and30":{
+        "title":"Minutos 15 y 30",
+        "explanation": "Para decir la hora en español en lugar de decir 15 (minutos) se dice cuarto y en lugar de decir 30 (minutos) se dice media. Escribe los nombres al costado de las sifras.",
+        "placeholder": "Escribe aquí"
+    },
+    "phrase2":{
+        "title":"Frase 2 : '... y ...'",
+        "explanation": "Cuando el minutero se encuentra en la zona amarilla se utiliza la frase '... y ...'. En el ejemplo 'Las siete y diez' el número siete es la hora que ha comenzado y el número diez los minutos que han pasado desde las siete en punto.",
+        "question":"¿A que hora viene el buho?",
+        "instructions":"Mientras juanito come, un buho viene y mira a Juanito. Cambia la hora en el reloj y descubre a que hora viene el buho.",
+        "dropdownPlaceholder": "Escoje la hora correcta.",
+        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
+        "otherTime":"Otra",
+        "emptyMessage":"Mueve el minutero a la zona amarilla del reloj para ver más ejemplos."
+    },
+    "phraseTemplate":{
+        "dropdownPlaceholder": "Escoje la hora correcta.",
+        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
+        "otherTime":"Otra"
+    },
+    "phrase3A":{
+        "title":"Frase 3 : '... para ...'",
+        "explanation": "La frase ... para ... se utiliza cuando el minutero está en la zona naranja de éste reloj. En el ejemplo 'Veinte para las doce.' el número veinte son los minutos que faltan para las doce en punto y número doce es la hora que va a comenzar.",
+        "question":"¿A que hora ataca el buho?",
+        "instructions":"Después de un momento el buho decide atacar a Juanito. Descubre a que hora ataca el buho.",
+        "emptyMessage":"Mueve el minutero a la zona naranja del reloj para ver más ejemplos." 
+    },
+    "phrase3B":{
+        "title":"Frase 3 : '... menos ...'",
+        "explanation": "La frase ... menos ... se utiliza cuando el minutero está en la zona naranja de éste reloj. En el ejemplo 'Doce menos veinte.' el número doce es la hora que va a comenzar y el numero veinte son los minutos que faltan para las doce en punto.",
+        "question":"¿A que hora ataca el buho?",
+        "instructions":"Después de un momento el buho decide atacar a Juanito. Descubre a que hora ataca el buho.",
+        "emptyMessage":"Mueve el minutero a la zona naranja del reloj para ver más ejemplos."
     }
 }

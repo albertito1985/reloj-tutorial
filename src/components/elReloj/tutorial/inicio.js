@@ -1,12 +1,16 @@
 import { t } from 'i18next';
 import React, {Component} from 'react';
 import { withTranslation } from 'react-i18next';
+import '../pages.css';
 
 import {RelojAnalogo} from '../relojes/relojAnalogo/relojAnalogo';
 import {RelojEscrito} from '../relojes/relojEscrito/relojEscrito';
-import {Button,Dropdown} from '../../input/input';
+import {Button,Dropdown,TextInput} from '../../input/input';
 import NextBack from '../tutorial/NextBack'
-import '../pages.css';
+import {AiFillCheckCircle} from 'react-icons/ai'
+
+import {es} from '../relojes/relojEscrito/written'
+
 
 import { isContentEditable } from '@testing-library/user-event/dist/utils';
 
@@ -15,10 +19,9 @@ class Tutorial extends Component {
     constructor(){
         super();
         this.state={
-            page:3,
-            // lastPage:undefined,
-            next:true,
-            back:false
+            page:9,
+            next:undefined,
+            back:undefined
         };
         this.pages=["home"];
         this.config ={};
@@ -42,17 +45,28 @@ class Tutorial extends Component {
                 phrase11: [true, false],
                 phrase12:[true, false],
                 minutearm0:[true, true],
-                phrase20:[true, true],
-                phrase21:[true, true],
-                min15and300:[true, true],
-                phrase30:[true, true],
-                phrase31:[true, true],
+                phrase20:[true, false],
+                phrase21:[true, false],
+                min15and300:[true, false],
+                phrase30:[true,false],
+                phrase31:[true, false],
                 phrases2and30:[true, true],
                 periods0:[true, true],
                 answer0:[true, true],
                 answer1:[true, true],
                 answer2:[true, true]
-            }
+            },
+            order:[
+                "parts",
+                "minutearm",
+                "phrase1",
+                "min15and30",
+                "phrase2",
+                "phrase3",
+                "phrases2and3",
+                "periods",
+                "answer"
+            ]
         };
         this.generateContent=this.generateContent.bind(this);
         this.nextPage = this.nextPage.bind(this);
@@ -95,7 +109,6 @@ class Tutorial extends Component {
             next:next
         })
     }
-
     componentDidMount(){
         // decoding the URL
         let urlString = window.location.href;
@@ -117,33 +130,311 @@ class Tutorial extends Component {
         //splitting the configuration and the moments values
         let data = Object.keys(stateUpdate);
         data.forEach((value)=>{
-            if(value ==="lang" || value ==="esType"){
+            if(value ==="lang" ){
                 this.config[value]=stateUpdate[value];
+            }else if(value ==="esType"){
+                if(stateUpdate[value]==="spain"){
+                    this.config[value]=1;
+                }else{
+                    this.config[value]=0;
+                }
+                
             }else{
                 this.moments.actual.push(value);
             }
         });
+        //changing the order of the moments to the actual order
+        let newOrder=[];
+        this.moments.order.forEach((moment)=>{
+            if(this.moments.actual.includes(moment)){
+                newOrder.push(moment);
+            };
+ 
+        })
+        this.moments.actual =newOrder;
         //generating the series of pages according to the moments.
         this.moments.actual.forEach((value)=>{
             for(let i=0;i<this.moments.duration[value];i++){
                 this.pages.push(`${value+i}`)
             }
         })
+        //adjusting the next/back buttons to the first "slide"
+        let back = this.moments.navigation[this.pages[this.state.page]][0];
+        let next = this.moments.navigation[this.pages[this.state.page]][1];
+        this.setState({
+            back:back,
+            next:next
+        })
     }
-
     generateContent(){
         function createElement(page, props ={}){
+            let specialProps={
+                phrase10:{
+                    ...props,
+                    name:"phrase1",
+                    options:[
+                        {label:"A la una en punto.",value:1},
+                        {label:"A las dos en punto.",value:2},
+                        {label:"A las tres en punto.",value:3},
+                        {label:"A las cuatro en punto.",value:4},
+                        {label:"A las cinco en punto.",value:5},
+                        {label:"A las seis en punto.",value:6},
+                        {label:"A las siete en punto.",value:7},
+                        {label:"A las ocho en punto.",value:8},
+                        {label:"A las nueve en punto.",value:9},
+                        {label:"A las diez en punto.",value:10},
+                        {label:"A las once en punto.",value:11},
+                        {label:"A las doce en punto.",value:12},
+                    ],
+                    changeTime:({hours,minutes,picChanger,setState})=>{
+                        let newState={}
+                        if(minutes === 0){
+                            if(hours===1 || hours === 13){
+                                newState.dropdown = "";
+                            }
+                            newState.pic = picChanger(hours,minutes);
+                            newState.phrases = es.phraseFinder(hours,minutes,props.esType,false,0);
+                        }else{
+                            newState.dropdown = "inactive";
+                            newState.pic = undefined;
+                            newState.phrases = [];
+                        }
+                        newState.hours = hours;
+                        newState.minutes = minutes;
+                        setState({...newState});
+                    },
+                    correctValue:1,
+                    phraseType:0,
+                    startTimeObject:{
+                        hours:10,
+                        minutes:0
+                    }
+                },
+                phrase20:{
+                    ...props,
+                    name:"phrase2",
+                    options:[
+                        {label:"A la una y cinco.",value:5},
+                        {label:"A la una y diez.",value:10},
+                        {label:"A la una y cuarto.",value:15},
+                        {label:"A la una y veinte.",value:20},
+                        {label:"A la una y veinticinco.",value:25},
+                        {label:"A la una y media.",value:30},
+                        {label:"A la una y treinta y cinco.",value:35}
+                    ],
+                    changeTime:({hours,minutes,picChanger,setState})=>{
+                        let newState={};
+                        newState.phrases = es.phraseFinder(hours,minutes,props.esType,false,0);
+                        if(minutes > 0 && minutes < 41){
+                            if((hours===1 || hours === 13) && minutes === 15){
+                                newState.dropdown = "";
+                                newState.pic = "phrase1025";
+                            }else{
+                                newState.pic = picChanger(hours,minutes);
+                                newState.dropdown = "inactive";
+                            }
+                        }else{
+                            newState.pic = undefined;
+                        }
+                        newState.hours = hours;
+                        newState.minutes = minutes;
+                        setState({...newState});
+                    },
+                    correctValue:15,
+                    phraseType:1,
+                    startTimeObject:{
+                        hours:10,
+                        minutes:10
+                    }
+                },
+                phrase30:{
+                    ...props,
+                    name:(props.esType===0)?"phrase3A":"phrase3B",
+                    options:[
+                        {label:es.phraseFinder(1,35,props.esType,false,0)[1].phrase,value:35},
+                        {label:es.phraseFinder(1,40,props.esType,false,0)[1].phrase,value:40},
+                        {label:es.phraseFinder(1,45,props.esType,false,0)[0].phrase,value:45},
+                        {label:es.phraseFinder(1,50,props.esType,false,0)[0].phrase,value:50},
+                        {label:es.phraseFinder(1,55,props.esType,false,0)[0].phrase,value:55}
+                    ],
+                    changeTime:({hours,minutes,picChanger,setState})=>{
+                        let newState={};
+                        newState.phrases = es.phraseFinder(hours,minutes,props.esType,false,0);
+                        if(minutes > 34 && minutes < 60){
+                            
+                            if((hours===1 || hours === 13) && minutes === 50){
+                                newState.dropdown = "";
+                                newState.pic = "phrase1026";
+                            }else{
+                                newState.pic = picChanger(hours,minutes);
+                                newState.dropdown = "inactive";
+                            }
+                        }else{
+                            newState.pic = undefined;
+                        }
+                        newState.hours = hours;
+                        newState.minutes = minutes;
+                        setState({...newState});
+                    },
+                    correctValue:50,
+                    phraseType:2,
+                    startTimeObject:{
+                        hours:10,
+                        minutes:45
+                    }
+                },
+                phrase31:{
+                    ...props,
+                    name:(props.esType===0)?"phrase3A":"phrase3B",
+                    type:2,
+                    changeTime: (state)=>{
+                        let newState={Aminutes:state.minutes}
+                        if(state.hours>12){
+                            newState.Ahours = state.hours-12
+                        }else{
+                            newState.Ahours = state.hours
+                        }
+                        if(state.minutes >34){
+                            if(state.Qhours === 0 || state.Qhours === 12){
+                                if(state.hours=== 0 || state.hours === 12){
+                                    newState.Ahours=state.Qhours;
+                                }
+                            }
+                            if(state.hours===state.Qhours && state.minutes === state.Qminutes){
+                                newState.next = true;
+                                props.changeNext(true);
+                            }else{
+                                newState.next = false;
+                                props.changeNext(false);
+                            }
+                        }else{
+                            if(state.next === true){
+                                newState.next = false;
+                                props.changeNext(false);
+                            }
+                        }
+                        state.setState({...newState});
+                    },
+                    validateNewHour(hour,actualHour){
+                        if(hour === actualHour){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    },
+                    validateNewMinutes(minutes,actualMinutes){
+                        if(minutes === actualMinutes){
+                            return true;
+                        }else if(minutes === 0 ||minutes<35){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                },
+                phrase21:{
+                    ...props,
+                    name:"phrase2",
+                    type:1,
+                    changeTime: (state)=>{
+                        let newState={Aminutes:state.minutes}
+                    if(state.hours>12){
+                        newState.Ahours = state.hours-12;
+                    }else{
+                        newState.Ahours = state.hours;
+                    }
+                    if(state.Aminutes >0 && state.Aminutes<41){
+                        if(state.Qhours === 0 || state.Qhours === 12){
+                            if(state.Ahours=== 0 || state.Ahours === 12){
+                                newState.Ahours=state.Qhours;
+                            }
+                        }
+                        if(newState.Ahours===state.Qhours && newState.Aminutes === state.Qminutes){
+                            newState.next = true;
+                            props.changeNext(true);
+                        }else{
+                            newState.next = false;
+                            props.changeNext(false);
+                        }
+                    }else{
+                        if(state.next === true){
+                            newState.next = false;
+                            props.changeNext(false);
+                        }
+                    }
+                    state.setState({...newState});
+                    },
+                    validateNewHour(hour,actualHour){
+                        if(hour === actualHour){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    },
+                    validateNewMinutes(minutes,actualMinutes){
+                        if(minutes === actualMinutes){
+                            return true;
+                        }else if(minutes === 0 || minutes>40){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                },
+                phrase12:{
+                    ...props,
+                    name:"phrase1",
+                    type:0,
+                    changeTime: (state)=>{
+                        let newState={Aminutes: state.minutes}
+                    if(state.Ahours>12){
+                        newState.Ahours = state.hours-12;
+                    }else{
+                        newState.Ahours = state.hours;
+                    }
+                    if(state.Aminutes === 0){
+                        if(state.Qhours === 0 || state.Qhours === 12){
+                            if(state.Ahours=== 0 || state.Ahours === 12){
+                                newState.Ahours=state.Qhours;
+                            }
+                        }
+                        
+                        if(state.Ahours===state.Qhours){
+                            newState.next = true;
+                            props.changeNext(true);
+                        }else{
+                            newState.next = false;
+                            props.changeNext(false);
+                        }
+                    }else{
+                        if(state.next === true){
+                            newState.next = false;
+                            props.changeNext(false);
+                        }
+                    }
+                    state.setState({...newState});
+                    },
+                    validateNewHour(hour,actualHour){
+                        if(hour === actualHour){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                }
+            };
             let parts ={
+                home: <Home {...props}/>,
                 parts0 : <Parts0 {...props}/>,
-                phrase10: <Phrase10 {...props}/>,
+                phrase10: <PhraseTemplate1 {...specialProps["phrase10"]}/>,
                 phrase11: <Phrase11 {...props}/>,
-                phrase12: <Phrase12 {...props}/>,
-                minutearm0:null,
-                phrase20:null,
-                phrase21:null,
-                min15and300:null,
-                phrase30:null,
-                phrase31:null,
+                phrase12: <PhraseTemplate2 {...specialProps["phrase12"]}/>,
+                minutearm0: <Minutearm0 {...props}/>,
+                phrase20: <PhraseTemplate1 {...specialProps["phrase20"]}/>,
+                phrase21: <PhraseTemplate2 {...specialProps["phrase21"]}/>,
+                min15and300:<Minutes15and30 {...props}/>,
+                phrase30:<PhraseTemplate1 {...specialProps["phrase30"]}/>,
+                phrase31:<PhraseTemplate2 {...specialProps["phrase31"]}/>,
                 phrases2and30:null,
                 periods0:null,
                 answer0:null,
@@ -152,17 +443,13 @@ class Tutorial extends Component {
             }
             return parts[page];
         }
-        if(this.state.page === undefined){
-            return <Home nextPage={this.nextPage}/>
-        }else{
-            const myComponent = createElement(this.pages[this.state.page], {changeNext:this.changeNext});
-            return myComponent;
-        }
-    };
+        const myComponent = createElement(this.pages[this.state.page], {changeNext:this.changeNext,esType:this.config.esType});
+        return myComponent;
+        
+    }
     changeNext(value){
         this.setState({next:value});
     }
-
     render(){
         return(
             <div className="pages">
@@ -295,19 +582,9 @@ class Parts0 extends Component{
     }
 }
 
-class Phrase10 extends Component{
+class Phrase11 extends Component{
     constructor(){
         super();
-        this.state={
-            hours:10,
-            minutes:0,
-            next:false,
-            dropdown:"inactive",
-            pic:"phrase109"
-        }
-        this.picChanger = this.picChanger.bind(this);
-        this.changeTime= this.changeTime.bind(this);
-        this.recieveValue =this.recieveValue.bind(this);
         this.options=[
             {label:"A la una en punto.",value:1},
             {label:"A las dos en punto.",value:2},
@@ -322,22 +599,157 @@ class Phrase10 extends Component{
             {label:"A las once en punto.",value:11},
             {label:"A las doce en punto.",value:12},
         ]
+        this.recieveValue=this.recieveValue.bind(this);
+    }
+    recieveValue(value){
+        if(value==="12"){
+            setTimeout(()=>{
+                this.props.changeNext(true);
+            },300);
+        }else{
+            this.props.changeNext(false);
+        }
+    }
+    render(){
+        return(
+            <div id="phrase11">
+                <h1>{t("phrase1.title")}</h1>
+                <p>{t("phrase1.explanation2")}</p>
+                <div id="dropdownContainer">
+                    <Dropdown options={this.options} placeholder={t("phrase1.dropdownPlaceholder")} recieveValue={this.recieveValue}/>
+                </div>
+            </div>
+        )
+    }
+}
+
+class Minutearm0 extends Component{
+    constructor(){
+        super();
+        this.state ={
+            hours:10,
+            minutes:15,
+            phrases:[]
+        }
+        this.changeTime=this.changeTime.bind(this);
+    }
+    changeTime({hours,minutes}){
+        let phrases = es.phraseFinder(hours,minutes,this.props.esType,false,0);
+        this.setState({
+            hours:hours,
+            minutes:minutes,
+            phrases:phrases
+        });
+    }
+    render(){
+        return(
+            <div id="minuteArm0">
+                <h1>{t("minuteArm.title")}</h1>
+                <p>{t("minuteArm.explanation")}</p>
+                <div id="minuteArmContainer">
+                    <div id="minuteArmOver">
+                        <span className="minuteArmPhrase" id="minuteArmPhraseOver">
+                            {(this.state.phrases[0]) && (this.state.phrases[0].type === 0) && this.state.phrases[0].phrase}
+                        </span>
+                    </div>
+                    <div id="minuteArmUnder">
+                        <div className="minuteArm0HAlva" id="minuteArm0HAlvLeft">
+                            <span className="minuteArmPhrase" id="minuteArmPhraseLeft">
+                                {(this.state.phrases[0]) && (this.state.phrases[0].type === 2) && this.state.phrases[0].phrase}
+                                {(this.state.phrases[1]) && (this.state.phrases[1].type === 2) && this.state.phrases[1].phrase}
+                            </span>
+                        </div>
+                        <div className="minuteArm0HAlva" id="minuteArm0HAlvMiddle">
+                            <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
+                        </div>
+                        <div className="minuteArm0HAlva" id="minuteArm0HAlvRight">
+                            <span className="minuteArmPhrase" id="minuteArmPhraseRight">
+                                {(this.state.phrases[0]) && (this.state.phrases[0].type === 1) && this.state.phrases[0].phrase}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+class Minutes15and30 extends Component{
+    constructor(){
+        super();
+        this.state ={
+            field1:false,
+            field2:false,
+            next:false
+        }
+        this.recieveData = this.recieveData.bind(this);
+    }
+    
+    recieveData({field,value}){
+        if(this.state.field1===false && field==="field1" && /cuarto/i.test(value)){
+            this.setState({field1:true});
+            if(this.state.field2 === true)this.props.changeNext(true);
+        }else if(this.state.field2===false && field==="field2" && /media/i.test(value)){
+            this.setState({field2:true});
+            if(this.state.field1 === true)this.props.changeNext(true);
+        }
 
     }
+    render(){
+        let field1 = this.state.field1;
+        let field2 = this.state.field2;
+        return(
+            <div id="minutes15and30">
+                <h1>{t("minutes15and30.title")}</h1>
+                <p>{t("minutes15and30.explanation")}</p>
+                <div id="minutes15and30AnswersContainer">
+                    <div className="minutes15and30FieldContainer">
+                        <h2>15 =</h2>
+                        <TextInput name="field1" type={(field1)?"inactive":""}recieveData={this.recieveData} placeholder={t("minutes15and30.placeholder")}/>
+                        <span className="minutes15and30FieldcheckContainer">
+                            {(field1) && <AiFillCheckCircle className="minutes15and30FieldCheck" id ="minutes15and30Field1check"/>}
+                        </span>
+                        </div>
+                    <div className="minutes15and30FieldContainer">
+                        <h2>30 =</h2>
+                        <TextInput name="field2" type={(field2)?"inactive":""} recieveData={this.recieveData} placeholder={t("minutes15and30.placeholder")}/>
+                        <span className="minutes15and30FieldcheckContainer">
+                        {this.state.field2 && <AiFillCheckCircle className="minutes15and30FieldCheck" id ="minutes15and30Field2check"/>}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
 
-    changeTime({hours,minutes}){
-        let newState={}
-        if(minutes === 0){
-            if(hours===1 || hours === 13){
-                newState.dropdown = "";
-            }
-            newState.pic = this.picChanger(hours,minutes);
-        }else{
-            newState.pic = undefined;
+class PhraseTemplate1 extends Component{
+    constructor(){
+        super();
+        this.state={
+            hours:10,
+            minutes:0,
+            // next:false,
+            dropdown:"inactive",
+            pic:undefined,
+            phrases:[{type:0,phrase:"Las diez en punto."}]
         }
-        newState.hours = hours;
-        newState.minutes = minutes;
-        this.setState({...newState});
+        this.picChanger = this.picChanger.bind(this);
+        this.changeTime=this.changeTime.bind(this);
+        this.changeState=this.changeState.bind(this);
+        this.recieveValue =this.recieveValue.bind(this);
+        this.generatePhraseAndImage = this.generatePhraseAndImage.bind(this);
+    }
+    componentDidMount(){
+        this.changeTime(this.props.startTimeObject);
+    }
+
+    changeState(values){
+        this.setState({...values})
+    }
+
+    changeTime(time){
+        this.props.changeTime({...time, picChanger:this.picChanger,setState:this.changeState});
     }
 
     picChanger(hours,minutes){
@@ -386,157 +798,149 @@ class Phrase10 extends Component{
             break;
         }
     };
+
     recieveValue(value){
-        if(value==="1"){
+        if(value===`${this.props.correctValue}`){
             setTimeout(()=>{
                 this.props.changeNext(true);
             },300);
-            
         }else{
             this.props.changeNext(false);
         }
     }
+    generatePhraseAndImage(){
+        if(this.state.phrases[0]){
+            if(this.state.phrases[0].type === this.props.phraseType){
+                return (<>
+                <span className={`writtenTime phrase${this.props.phraseType}`}>{this.state.phrases[0].phrase}</span>
+                <div className={`phraseTemplatePic${(this.state.pic !== undefined)?` ${this.state.pic}`:""}`} ></div>
+                </>)
+            }else if(this.state.phrases[1]){
+                if((this.state.phrases[1].type ) === this.props.phraseType){
+                    return (<>
+                        <span className={`writtenTime phrase${this.props.phraseType}`}>{this.state.phrases[1].phrase}</span>
+                        <div className={`phraseTemplatePic${(this.state.pic !== undefined)?` ${this.state.pic}`:""}`} ></div>
+                    </>)
+                }
+            }else{
+                return <p>{t(`${this.props.name}.emptyMessage`)}</p>
+            }
+        }else{
+            return <p>{t(`${this.props.name}.emptyMessage`)}</p>
+        }
+    }
+
     render(){
         return(
-            <div className="phrase10">
-                <h1>{t('phrase1.title')}</h1>
-                <p>{t('phrase1.explanation')}</p>
-                <div id="phrase10">
+            <div className="phraseTemplate">
+                <h1>{t(`${this.props.name}.title`)}</h1>
+                <p>{t(`${this.props.name}.explanation`)}</p>
+                <div id="phraseTemplateContent">
                     <h2>{t("examples")}</h2>
-                    <div id="phrase10HalfsContainer">
-                        <span className="phrase10Half phrase10HalfLeft">
-                                <p id="phrase1Task1">{t("phrase1.command")}</p>
+                    <div id="phraseTemplateHalfsContainer">
+                        <span className="phraseTemplateHalf">
                             <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
                         </span>
-                        <span className="phrase10Half phrase10HalfRight">
-                            <span id="relojescritoTime">{this.state.minutes === 0 &&<RelojEscrito className="escritoPhrase10" hours={this.state.hours} minutes={this.state.minutes} mode="0" begining={0}/>}</span>
-                            <div className={`phrase10pic${(this.state.pic !== undefined)?` ${this.state.pic}`:""}`} ></div>
+                        <span className="phraseTemplateHalf">
+                            {this.generatePhraseAndImage()}
                         </span>
                     </div>
                 </div>
                 <div id="dropdownContainer">
                     <div>
-                        <h2 >¿A que hora come Juanito?</h2>
-                        <p>{t("phrase1.command2")}</p>
+                        <h2>{t(`${this.props.name}.question`)}</h2>
+                        <p>{t(`${this.props.name}.instructions`)}</p>
                     </div>
-                    <Dropdown type={this.state.dropdown} options={this.options} placeholder={t("phrase1.dropdownPlaceholder")} recieveValue={this.recieveValue}/>
-                </div>
-                
-            </div>
-        )
-    }
-}
-
-class Phrase11 extends Component{
-    constructor(){
-        super();
-        this.options=[
-            {label:"A la una en punto.",value:1},
-            {label:"A las dos en punto.",value:2},
-            {label:"A las tres en punto.",value:3},
-            {label:"A las cuatro en punto.",value:4},
-            {label:"A las cinco en punto.",value:5},
-            {label:"A las seis en punto.",value:6},
-            {label:"A las siete en punto.",value:7},
-            {label:"A las ocho en punto.",value:8},
-            {label:"A las nueve en punto.",value:9},
-            {label:"A las diez en punto.",value:10},
-            {label:"A las once en punto.",value:11},
-            {label:"A las doce en punto.",value:12},
-        ]
-        this.recieveValue=this.recieveValue.bind(this);
-    }
-    recieveValue(value){
-        if(value==="12"){
-            setTimeout(()=>{
-                this.props.changeNext(true);
-            },300);
-        }else{
-            this.props.changeNext(false);
-        }
-    }
-    render(){
-        return(
-            <div id="phrase11">
-                <h1>{t("phrase1.title")}</h1>
-                <p>{t("phrase1.explanation2")}</p>
-                <div id="dropdownContainer">
-                    <Dropdown options={this.options} placeholder={t("phrase1.dropdownPlaceholder")} recieveValue={this.recieveValue}/>
+                    <Dropdown type={this.state.dropdown} options={this.props.options} placeholder={t("phraseTemplate.dropdownPlaceholder")} recieveValue={this.recieveValue}/>
                 </div>
             </div>
         )
     }
 }
 
-class Phrase12 extends Component{
+class PhraseTemplate2 extends Component{
     constructor(){
         super();
         this.state ={
             Ahours:10,
             Aminutes:0,
             Qhours:10,
+            Qminutes:12,
             next:false
         }
         this.changeTime = this.changeTime.bind(this);
+        this.changeQuestion = this.changeQuestion.bind(this);
+        this.changeState = this.changeState.bind(this);
         this.randomHour = this.randomHour.bind(this);
+        this.randomMinutes = this.randomMinutes.bind(this);
+    }
+
+    changeState(values){
+        this.setState({...values});
+    }
+
+    changeTime(time){
+        this.props.changeTime({...this.state,...time,setState:this.changeState});
     }
 
     randomHour(){
         let returnHour= undefined;
        do{
         returnHour=Math.floor(Math.random() * 12) ;
-       }while(returnHour === this.state.Ahours)
+       }while(this.props.validateNewHour(returnHour,this.state.Ahours))
         return returnHour
     }
 
-    componentDidMount(){
-        this.setState({Qhours:this.randomHour()})
-    }
-
-    changeTime({hours,minutes}){
-        let newState={}
-        
-        if(minutes === 0){
-            if(hours=== 0){
-                hours=12;
-            }else if(hours>12){
-                hours = hours-12
-            }
-    
-            if(hours===this.state.Qhours){
-                newState.next = true;
-                this.props.changeNext(true);
-            }
+    randomMinutes(){
+        let returnMinutes= undefined;
+        if(this.props.type === 0){
+            returnMinutes = 0;
         }else{
-            if(this.state.next === true){
-                newState.next = false;
-                this.props.changeNext(false);
-            }
+            do{
+                returnMinutes=Math.floor(Math.random() * 55) ;
+                returnMinutes = returnMinutes - (returnMinutes%5);
+            }while(this.props.validateNewMinutes(returnMinutes, this.state.Aminutes))
         }
-        newState.Ahours = hours;
-        newState.Aminutes = minutes;
-        this.setState({...newState});
+        return returnMinutes;
     }
 
+    changeQuestion(){
+        this.setState({
+            Qhours:this.randomHour(),
+            Qminutes:this.randomMinutes(),
+            next:false
+        })
+        this.props.changeNext(false);
+    }
 
+    componentDidMount(){
+        this.setState({
+            Qhours:this.randomHour(),
+            Qminutes:this.randomMinutes()
+        })
+    }
     
     render(){
+        let hours= this.state.Qhours;
+        let minutes = this.state.Qminutes;
         return(
-            <div id="phrase12">
-                <h1>{t("phrase1.title")}</h1>
-                <h2>{t("excercises")}</h2>
-                <div id="phrase12Halvor">
-                    <div id="phrase12left">
+            <div id="phraseTemplate2">
+                <h1>{t(`${this.props.name}.title`)}</h1>
+                <div id="phraseTemplate2ContentContainer">
+                    <div>
+                        <h2>{t("excercises")}</h2>
                         <p>{t("phrase1.excercisesExplanation")}</p>
-                        <RelojEscrito className="escritoPhrase10" hours={this.state.Qhours||0} minutes={0} mode="0" begining={0}/>
                     </div>
-                    <div id="phrase12right">
-                        <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.Ahours} minutes={this.state.Aminutes}/>
+                    <div id="phraseTemplate2EscritoContainer">
+                        <span className={`writtenTime phrase${this.props.type}`}>{es.phraseFinder(hours,minutes,this.props.esType,false,this.props.type,0)[0].phrase}</span>
+                        <Button label={t("phrase1.otherTime")} type="1" onClick={this.changeQuestion}/>
                     </div>
+                    <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.Ahours} minutes={this.state.Aminutes}/>
                 </div>
             </div>
         )
     }
 }
+
 
 export default withTranslation()(Tutorial);

@@ -124,7 +124,6 @@ class Configuration extends Component {
         let prelMomentsExtras = this.calculateExtraMoments(relevantMoments);
 
         prelMoments={...prelMoments, ...prelMomentsExtras}
-        console.log(prelMomentsExtras);
         let extraTime = this.calculateTime(prelMomentsExtras);
         let totalTime = this.calculateTime(prelMoments) + extraTime;
 
@@ -132,7 +131,6 @@ class Configuration extends Component {
             actualMoments:{...prelMoments},
             totalTime, extraTime
         });
-        console.log(prelMoments)
     }
 
     valuesString(){

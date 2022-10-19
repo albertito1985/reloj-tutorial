@@ -5,6 +5,7 @@ import './App.css';
 import {Header} from './components/header/header';
 import Config from './components/elReloj/config';
 import Tutorial from './components/elReloj/tutorial/inicio';
+import {LoadingMarkup} from './components/loadingMarkup/loading';
 
 import './controller/useful';
 import {general} from './components/elReloj/relojes/relojGeneral';
@@ -34,8 +35,6 @@ class App extends Component {
   }
   
   componentDidMount(){
-    //fetch info from URL
-    // this.setState(general.getRandomTime());
   }
 
   changeTime({hours,minutes}){
@@ -70,9 +69,7 @@ class App extends Component {
     return (
       <div className="App">
           <div className="container">
-            <div className="headerContainer">
               <Header/>
-            </div>
             <div className="contentBody">
               <Routes>
                 <Route path="/elreloj/*" element={<Config/>}/>

@@ -192,14 +192,21 @@ background-color:var(--orange);
     color:var(--orange);
 }
 
-/* .CustomdropdownContainerflash{
-    background-color:var(--magenta);
-}
-
-.CustomdropdownContainerflash::after, .CustomdropdownContainerflash .selectedItem.selectedItemEmpty{
-    color:var(--white);
-} */
-
 .CustomdropdownContainerInactive::after{
     color: var(--orange);
 }
+
+input[type="text"].CustomTextInput{
+    height:40px;
+    border-radius:20px;
+    padding:3px 20px;
+    border:none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input[type="text"].CustomTextInput:focus{
+    border:3px solid var(--magenta);
+    padding: 0 17px;
+    outline:none;
+}
+
