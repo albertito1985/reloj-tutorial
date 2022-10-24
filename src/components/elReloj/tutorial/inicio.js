@@ -253,11 +253,11 @@ class Tutorial extends Component {
                     ...props,
                     name:(props.esType===0)?"phrase3A":"phrase3B",
                     options:[
-                        {label:es.phraseFinder(1,35,props.esType,false,0)[1].phrase,value:35},
-                        {label:es.phraseFinder(1,40,props.esType,false,0)[1].phrase,value:40},
-                        {label:es.phraseFinder(1,45,props.esType,false,0)[0].phrase,value:45},
-                        {label:es.phraseFinder(1,50,props.esType,false,0)[0].phrase,value:50},
-                        {label:es.phraseFinder(1,55,props.esType,false,0)[0].phrase,value:55}
+                        {label:es.phraseFinder(1,35,props.esType,false,0,1,false)[1].phrase,value:35},
+                        {label:es.phraseFinder(1,40,props.esType,false,0,1,false)[1].phrase,value:40},
+                        {label:es.phraseFinder(1,45,props.esType,false,0,1,false)[0].phrase,value:45},
+                        {label:es.phraseFinder(1,50,props.esType,false,0,1,false)[0].phrase,value:50},
+                        {label:es.phraseFinder(1,55,props.esType,false,0,1,false)[0].phrase,value:55}
                     ],
                     changeTime:({hours,minutes,picChanger,setState})=>{
                         let newState={};
@@ -1093,41 +1093,53 @@ class Periods0 extends Component{
     }
 
     chosePhrase(Item){
-        let content = undefined
-        if(Item===this.state.chosenPhrase){
-            //do nothing
+        let newState={chosenPhrase:undefined}
+        if(((Item + " ..") ===this.state.chosenPhrase)||(Item ===this.state.chosenPhrase)){
+            if(this.state.chosenEnding){
+                newState.chosenEnding = "... "+this.state.chosenEnding;
+            }else{
+                //do nothing
+            }
         }else{
-            content=Item
+            if(this.state.chosenEnding){
+                newState.chosenEnding = this.state.chosenEnding.replace("... ","");
+                newState.chosenPhrase=Item.replace(" ..","");
+            }else{
+                newState.chosenPhrase = Item + " ..";
+            }
         }
-
-        if(this.state.chosenEnding && content){
+        if(this.state.chosenEnding && newState.chosenPhrase){
             this.props.changeNext(true)
         }else{
             this.props.changeNext(false)
         }
-
-        this.setState({
-            chosenPhrase:content
-        })
+        this.setState({...newState})
     }
 
     choseEnding(Item){
-        let content = undefined
-        if(Item===this.state.chosenEnding){
-            //do nothing
+        let newState={chosenEnding:undefined}
+        if(("... "+Item===this.state.chosenEnding)|| Item===this.state.chosenEnding){
+            if(this.state.chosenPhrase){
+                newState.chosenPhrase=this.state.chosenPhrase+" ..";
+            }else{
+                //do nothing
+            }
         }else{
-            content=Item
+            if(this.state.chosenPhrase){
+                newState.chosenEnding = Item.replace("... ","");
+                newState.chosenPhrase=this.state.chosenPhrase.replace(" ..","");
+            }else{
+                newState.chosenEnding = "... "+Item;
+            }
         }
 
-        if(this.state.chosenPhrase && content){
-            this.props.changeNext(true)
+        if(this.state.chosenPhrase && newState.chosenEnding){
+            this.props.changeNext(true);
         }else{
-            this.props.changeNext(false)
+            this.props.changeNext(false);
         }
 
-        this.setState({
-            chosenEnding:content
-        })
+        this.setState({...newState});
     }
 
     generatePhrases(){
@@ -1217,5 +1229,7 @@ class Periods0 extends Component{
         )
     }
 }
+
+
 
 export default withTranslation()(Tutorial);
