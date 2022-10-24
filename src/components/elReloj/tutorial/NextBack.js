@@ -10,10 +10,10 @@ import {IoChevronBackSharp,IoChevronForwardSharp} from 'react-icons/io5';
 class NextBack extends Component {
     backLabel= <div className="buttonLabel">
             <IoChevronBackSharp className='buttonLabelIcon'/>
-            <span>{t("back")}</span>
+            {t("back")}
         </div>;
     nextLabel= <div className="buttonLabel">
-        <span>{t("next")}</span>
+        {t("next")}
         <IoChevronForwardSharp className='buttonLabelIcon'/>
     </div>    
     render(){

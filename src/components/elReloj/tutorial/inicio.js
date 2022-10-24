@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next';
 import '../pages.css';
 
 import {RelojAnalogo} from '../relojes/relojAnalogo/relojAnalogo';
-import {RelojEscrito} from '../relojes/relojEscrito/relojEscrito';
+import {RelojDigital} from '../relojes/relojDigital/relojDigital';
 import {Button,Dropdown,TextInput} from '../../input/input';
 import NextBack from '../tutorial/NextBack'
 import {AiFillCheckCircle} from 'react-icons/ai'
@@ -13,13 +13,14 @@ import {es} from '../relojes/relojEscrito/written'
 
 
 import { isContentEditable } from '@testing-library/user-event/dist/utils';
+import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
 
 class Tutorial extends Component {
     constructor(){
         super();
         this.state={
-            page:9,
+            page:13,
             next:undefined,
             back:undefined
         };
@@ -34,7 +35,7 @@ class Tutorial extends Component {
                 min15and30:1,
                 phrase2:2,
                 phrase3:2,
-                phrases2and3:1,
+                phrases2and3:2,
                 periods:1,
                 answer:3,
             },
@@ -51,7 +52,8 @@ class Tutorial extends Component {
                 phrase30:[true,false],
                 phrase31:[true, false],
                 phrases2and30:[true, true],
-                periods0:[true, true],
+                phrases2and31:[true, false],
+                periods0:[true, false],
                 answer0:[true, true],
                 answer1:[true, true],
                 answer2:[true, true]
@@ -193,7 +195,7 @@ class Tutorial extends Component {
                                 newState.dropdown = "";
                             }
                             newState.pic = picChanger(hours,minutes);
-                            newState.phrases = es.phraseFinder(hours,minutes,props.esType,false,0);
+                            newState.phrases = es.phraseFinder(hours,minutes,props.esType,false,false,0);
                         }else{
                             newState.dropdown = "inactive";
                             newState.pic = undefined;
@@ -243,7 +245,7 @@ class Tutorial extends Component {
                     correctValue:15,
                     phraseType:1,
                     startTimeObject:{
-                        hours:10,
+                        hours:7,
                         minutes:10
                     }
                 },
@@ -279,8 +281,8 @@ class Tutorial extends Component {
                     correctValue:50,
                     phraseType:2,
                     startTimeObject:{
-                        hours:10,
-                        minutes:45
+                        hours:12,
+                        minutes:40
                     }
                 },
                 phrase31:{
@@ -421,7 +423,7 @@ class Tutorial extends Component {
                             return false;
                         }
                     }
-                }
+                },
             };
             let parts ={
                 home: <Home {...props}/>,
@@ -435,8 +437,9 @@ class Tutorial extends Component {
                 min15and300:<Minutes15and30 {...props}/>,
                 phrase30:<PhraseTemplate1 {...specialProps["phrase30"]}/>,
                 phrase31:<PhraseTemplate2 {...specialProps["phrase31"]}/>,
-                phrases2and30:null,
-                periods0:null,
+                phrases2and30: <Phrase2and30 {...props}/>,
+                phrases2and31: <Phrase2and31 {...props}/>,
+                periods0: <Periods0 {...props}/>,
                 answer0:null,
                 answer1:null,
                 answer2:null
@@ -928,19 +931,291 @@ class PhraseTemplate2 extends Component{
                 <h1>{t(`${this.props.name}.title`)}</h1>
                 <div id="phraseTemplate2ContentContainer">
                     <div>
-                        <h2>{t("excercises")}</h2>
-                        <p>{t("phrase1.excercisesExplanation")}</p>
+                        <h2>{t("timeQuestion")}</h2>
+                        
                     </div>
                     <div id="phraseTemplate2EscritoContainer">
-                        <span className={`writtenTime phrase${this.props.type}`}>{es.phraseFinder(hours,minutes,this.props.esType,false,this.props.type,0)[0].phrase}</span>
-                        <Button label={t("phrase1.otherTime")} type="1" onClick={this.changeQuestion}/>
+                        <span className={`writtenTime phrase${this.props.type}`}>{es.phraseFinder(hours,minutes,this.props.esType,false,this.props.type,2)[0].phrase}</span>
                     </div>
+                    <p>{t("phrase1.excercisesExplanation")}</p>
                     <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.Ahours} minutes={this.state.Aminutes}/>
+                    <Button label={t("phrase1.otherTime")} type="1" onClick={this.changeQuestion}/>
                 </div>
             </div>
         )
     }
 }
 
+class Phrase2and30 extends Component{
+    constructor(){
+        super();
+        this.state = {
+            hours:undefined,
+            minutes:undefined,
+            phrases:[]
+        };
+        this.generatePhrases=this.generatePhrases.bind(this);
+        this.changeTime=this.changeTime.bind(this);
+    };
+
+    componentDidMount(){
+        this.setState({
+            hours:10,
+            minutes:37,
+            phrases:es.phraseFinder(10,37,this.props.esType,false,false,0)
+        })
+    }
+
+    changeTime({hours,minutes}){
+        let newState={
+            hours:hours,
+            minutes:minutes,
+            phrases:[]
+        }
+        
+        if(minutes>34 && minutes<41){
+            newState.phrases = es.phraseFinder(hours,minutes,this.props.esType,false,false,0)
+        }
+        this.setState(newState);
+    }
+
+    generatePhrases(){
+        if(this.state.phrases.length >0){
+            return <>
+                <span className={`writtenTime phrase1`}>{this.state.phrases[0].phrase}</span>
+                <span>ó</span>
+                <span className={`writtenTime phrase2`}>{this.state.phrases[1].phrase}</span>
+            </>
+        }else{
+            return <p>{t(`phrases2and3.emptyMessage`)}</p>
+        }
+    }
+
+    render(){
+        return(
+            <div className="phraseTemplate">
+                <h1>{t(`phrases2and3.title`)}</h1>
+                <p>{t(`phrases2and3.explanation`)}</p>
+                <div id="phraseTemplateContent">
+                     <h2>{t("examples")}</h2>
+                    <div id="phraseTemplateHalfsContainer">
+                        <span className="phraseTemplateHalf">
+                            <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
+                        </span>
+                        <span className="phraseTemplateHalf">
+                            {this.generatePhrases()}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+class Phrase2and31 extends Component{
+    constructor(props){
+        super();
+        this.state = {
+            correctAnswer:false
+        };
+        this.options=[
+            {label:es.phraseFinder(13,35,props.esType,false,2,0)[0].phrase,value:35},
+            {label:es.phraseFinder(13,36,props.esType,false,2,0)[0].phrase,value:36},
+            {label:es.phraseFinder(13,37,props.esType,false,2,0)[0].phrase,value:37},
+            {label:es.phraseFinder(13,38,props.esType,false,2,0)[0].phrase,value:38},
+            {label:es.phraseFinder(13,39,props.esType,false,2,0)[0].phrase,value:39},
+            {label:es.phraseFinder(13,40,props.esType,false,2,0)[0].phrase,value:40},
+        ]
+        this.recievevalue=this.recieveValue.bind(this);
+    };
+
+    recieveValue(value){
+        if(value==="40"){
+            this.setState({correctAnswer:true});
+            this.props.changeNext(true);
+        }else{
+            if(this.state.correctAnswer === true){
+                this.setState({correctAnswer:false});
+                this.props.changeNext(false);
+            }
+        }
+    }
+
+    render(){   
+        return(
+            <div className="phraseTemplate">
+                <h1>{t(`phrases2and3.title`)}</h1>
+                <div id="phrases2and3Content">
+                    <h2>{t(`phrases2and3.question`)}</h2>
+                    <p>{t(`phrases2and3.instructions`)}</p>
+                </div>
+                <Dropdown options={this.options} placeholder={t('dropdownPlaceholder')} recieveValue={this.recievevalue}/>
+                <div id="casaBlanca"></div>
+            </div>
+        )
+    }
+}
+
+class Periods0 extends Component{
+    constructor(){
+        super();
+        this.state = {
+            hours:10,
+            minutes:0,
+            phrases:[],
+            endings:[],
+            chosenPhrase:undefined,
+            chosenEnding:undefined
+        };
+        this.changeTime = this.changeTime.bind(this);
+        this.chosePhrase = this.chosePhrase.bind(this);
+        this.choseEnding = this.choseEnding.bind(this);
+    };
+
+    componentDidMount(){
+        let newState={}
+        newState.phrases = es.phraseFinder(this.state.hours, this.state.minutes, this.props.esType, false, false, 0,false);
+        newState.endings = es.endings(this.state.hours, null,true);
+        this.setState(newState);
+    }
+
+    changeTime({hours,minutes}){
+        let newState={
+            hours:hours,
+            minutes:minutes,
+            phrases:[],
+            chosenPhrase:undefined,
+            chosenEnding:undefined
+        }
+        newState.phrases = es.phraseFinder(this.state.hours, this.state.minutes, this.props.esType, false, false, 0,false);
+        newState.endings = es.endings(this.state.hours, null,true);
+        this.setState(newState);
+    }
+
+    chosePhrase(Item){
+        let content = undefined
+        if(Item===this.state.chosenPhrase){
+            //do nothing
+        }else{
+            content=Item
+        }
+
+        if(this.state.chosenEnding && content){
+            this.props.changeNext(true)
+        }else{
+            this.props.changeNext(false)
+        }
+
+        this.setState({
+            chosenPhrase:content
+        })
+    }
+
+    choseEnding(Item){
+        let content = undefined
+        if(Item===this.state.chosenEnding){
+            //do nothing
+        }else{
+            content=Item
+        }
+
+        if(this.state.chosenPhrase && content){
+            this.props.changeNext(true)
+        }else{
+            this.props.changeNext(false)
+        }
+
+        this.setState({
+            chosenEnding:content
+        })
+    }
+
+    generatePhrases(){
+        let phrasesDivs = this.state.phrases.map((phrase)=>{
+            return <span onClick={this.chosePhrase.bind(this,phrase.phrase)} key={`phrase${phrase.type}`} className={`writtenTime phrase${phrase.type}`}>{phrase.phrase} ...</span>
+        })
+        return phrasesDivs;
+    }
+
+    generateEndings(){
+        let phrasesDivs = this.state.endings.map((ending)=>{
+            let type = undefined;
+            switch(ending){
+                case " de la mañana":
+                    type=1;
+                    break;
+                case " de la tarde":
+                    type=2;
+                    break;
+                case " de la noche":
+                    type=3;
+                    break;
+                default:
+                    break;
+            }
+            return <span onClick={this.choseEnding.bind(this,ending)} key={`period${type}`} className={`writtenTime ending ending${type}`}>...{ending}.</span>
+        })
+        return phrasesDivs;
+    }
+    
+    render(){   
+        return(
+            <div className="phraseTemplate">
+                <h1>{t(`periods0.title`)}</h1>
+                <p>{t("periods0.explanation")}</p>
+                <div className="periods0table">
+                    <div className="periods0row" id="periods0row0">
+                        <div className="periods0cell periods0cellRight" id="periods0row0cell0">01 - 12</div>
+                        <div className="periods0cell periods0cellLeft" id="periods0row0cell1">'...de la mañana.'</div>
+                    </div>
+                    <div className="periods0row" id="periods0row1">
+                        <div className="periods0cell periods0cellRight" id="periods0row1cell0">13 - 19</div>
+                        <div className="periods0cell periods0cellLeft" id="periods0row1cell1">'...de la tarde.'</div>
+                    </div>
+                    <div className="periods0row" id="periods0row2">
+                        <div className="periods0cell periods0cellRight" id="periods0row2cell0">19 - 00</div>
+                        <div className="periods0cell periods0cellLeft" id="periods0row2cell1">'...de la noche.'</div>
+                    </div>
+                </div>
+                <p>{t("periods0.observe")}</p>
+                <div id="phraseTemplateContent">
+                    <h2>{t("examples")}</h2>
+                    <div id="phraseTemplateHalfsContainer">
+                        <span className="periods0Half">
+                            <div className="completeClock">
+                            <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
+                            <RelojDigital
+                                mode="24"
+                                hours={this.state.hours}
+                                minutes={this.state.minutes}/>
+                            </div>
+                            
+                        </span>
+                        <span className="periods0Half">
+                            <div className="periods0HalfHalf">
+                                <h2>{t("periods0.phrase")}</h2>
+                                {this.generatePhrases()}
+                            </div>
+                            <div className="periods0HalfHalf">
+                                <h2>{t("periods0.periods")}</h2>
+                                {this.generateEndings()}
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <div id="periods0UnderContent">
+                        <h2>{t(`periods0.question`)}</h2>
+                        <p>{t(`periods0.instructions`)}</p>
+                        <span id="horaEscogidaPhantom">
+                            {(this.state.chosenPhrase || this.state.chosenEnding) &&
+                            <span id="horaEscogida">
+                                {`${this.state.chosenPhrase|| ""}${this.state.chosenEnding||""}.`}
+                            </span>}
+                        </span>
+                </div>
+            </div>
+        )
+    }
+}
 
 export default withTranslation()(Tutorial);

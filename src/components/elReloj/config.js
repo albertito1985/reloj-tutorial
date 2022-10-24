@@ -38,7 +38,7 @@ class Configuration extends Component {
                 min15and30:1,
                 phrase2:2,
                 phrase3:2,
-                phrases2and3:1,
+                phrases2and3:2,
                 periods:1,
                 answer:3,
             }

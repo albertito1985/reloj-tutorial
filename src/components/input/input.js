@@ -43,11 +43,13 @@ class Dropdown extends Component{
 
     static getDerivedStateFromProps(props,state){
         if(props.type === "inactive"){
-            state.selected={
-                    value: undefined,
-                    phrase:undefined
-                };
-            state.showDropdown=false
+            return {selected:{
+                        value: undefined,
+                        phrase:undefined
+                        },
+                    showDropdown:false}
+        }else{
+            return 0;
         }
     }
 

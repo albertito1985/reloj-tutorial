@@ -38,7 +38,6 @@ export class RelojAnalogo extends Component{
       })
     }
     
-  
     static getDerivedStateFromProps(props,state){
         if(props.answer){
           return {clockWork:{

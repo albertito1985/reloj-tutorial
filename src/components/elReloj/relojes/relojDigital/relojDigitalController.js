@@ -1,4 +1,4 @@
-import translate from '../timeFunctions';
+import {translate} from '../timeFunctions';
 
 export let relojDigital = {
     hours:0,

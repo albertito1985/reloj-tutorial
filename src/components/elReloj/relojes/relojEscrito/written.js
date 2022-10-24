@@ -1,13 +1,13 @@
 export let es = {
     //falta agregar el type
-    phraseFinder(hours, minutes, mode, ending=false, forceType=false, begining=0){
+    phraseFinder(hours, minutes, mode, ending=false, forceType=false, begining=0,point=true){
         let phraseNumber= (forceType)?[forceType]: es.choosePhrase(minutes,mode);
-        return es.generatePhrases(hours,minutes,phraseNumber,mode,ending,begining);
+        return es.generatePhrases(hours,minutes,phraseNumber,mode,ending,begining,point);
     },
-    generatePhrases(hours,minutes,phraseNumber,mode,ending,begining){
+    generatePhrases(hours,minutes,phraseNumber,mode,ending,begining,point){
         let returnArray = [];
         phraseNumber.forEach((phrase)=>{
-            returnArray = returnArray.concat(es.phrases[phrase](hours,minutes,mode,ending,begining));
+            returnArray = returnArray.concat(es.phrases[phrase](hours,minutes,mode,ending,begining,point));
         });
         return returnArray;
     },
@@ -56,24 +56,24 @@ export let es = {
         return string.charAt(0).toUpperCase() + string.slice(1);
     },
     phrases : [
-        (hours,minutes,mode,ending,begining)=>{
+        (hours,minutes,mode,ending,begining,point)=>{
             //solo en punto
             if(mode !== 2 ){
                 if(hours === 12 && minutes === 0){
-                    return [{type:0,phrase: es.capitalize(`${es.computeBegining("mediodía",begining)}mediodía.`)}]
+                    return [{type:0,phrase: es.capitalize(`${es.computeBegining("mediodía",begining)}mediodía${point?".":""}`)}]
                 }else if(hours === 0 && minutes === 0){
-                    return [{type:0,phrase: es.capitalize(`${es.computeBegining("medianoche",begining)}medianoche.`)}]
+                    return [{type:0,phrase: es.capitalize(`${es.computeBegining("medianoche",begining)}medianoche${point?".":""}`)}]
                 }
             }
             let endings=es.endings(hours,mode,ending);
             hours = es.modeAdaptation(hours,mode);
             let hoursW = es.numberFinder(hours);
             let returnArray = endings.map((ending,index)=>{
-                return {type:0,phrase: es.capitalize((hoursW === "uno")? `${es.computeBegining(hoursW,begining)}la una${(mode !== 4)?" en punto":""}${ending}`: `${es.computeBegining(hoursW,begining)}las ${hoursW}${(mode !== 4)?" en punto":""}${ending}`)};
+                return {type:0,phrase: es.capitalize((hoursW === "uno")? `${es.computeBegining(hoursW,begining)}la una${(mode !== 4)?" en punto":""}${ending}${point?".":""}`: `${es.computeBegining(hoursW,begining)}las ${hoursW}${(mode !== 4)?" en punto":""}${ending}${point?".":""}`)};
             });
             return returnArray;
         },
-        (hours, minutes,mode,ending,begining)=>{
+        (hours, minutes,mode,ending,begining,point)=>{
             //1< min <39
             let endings = es.endings(hours,mode,ending);
             hours = es.modeAdaptation(hours,mode);
@@ -81,11 +81,11 @@ export let es = {
             let minutesW = es.minuteExceptions(es.numberFinder(minutes));
             
             let returnArray = endings.map((ending,index)=>{
-                return{type:1,phrase:es.capitalize((hoursW === "uno")?`${es.computeBegining(hoursW,begining)}la una y ${minutesW} ${ending}`: `${es.computeBegining(hoursW,begining)}las ${hoursW} y ${minutesW}${ending}`)};
+                return{type:1,phrase:es.capitalize((hoursW === "uno")?`${es.computeBegining(hoursW,begining)}la una y ${minutesW}${ending}${point?".":""}`: `${es.computeBegining(hoursW,begining)}las ${hoursW} y ${minutesW}${ending}${point?".":""}`)};
             });
             return returnArray;
         },
-        (hours,minutes,mode,ending,begining)=>{
+        (hours,minutes,mode,ending,begining,point)=>{
             //40<min <59
             minutes = 60-minutes;
             let endings = es.endings(hours+1,mode,ending);
@@ -95,9 +95,9 @@ export let es = {
             
             let returnArray = endings.map((ending,index)=>{
                 if(mode === 0){
-                    return {type:2,phrase:es.capitalize(`${es.computeBegining(minutesW,begining)}${minutesW} para ${(hoursW === "uno")?`la una${ending}`:`las ${hoursW}${ending}`}`)}
+                    return {type:2,phrase:es.capitalize(`${es.computeBegining(minutesW,begining)}${minutesW} para ${(hoursW === "uno")?`la una${ending}${point?".":""}`:`las ${hoursW}${ending}${point?".":""}`}`)}
                 }else{
-                    return {type:2,phrase:es.capitalize((hoursW === "uno")?`${es.computeBegining(hoursW,begining)}la una menos ${minutesW}${ending}`: `${es.computeBegining(hoursW,begining)}las ${hoursW} menos ${minutesW}${ending}`)}
+                    return {type:2,phrase:es.capitalize((hoursW === "uno")?`${es.computeBegining(hoursW,begining)}la una menos ${minutesW}${ending}${point?".":""}`: `${es.computeBegining(hoursW,begining)}las ${hoursW} menos ${minutesW}${ending}${point?".":""}`)}
                 }
             });
             return returnArray;
@@ -115,35 +115,35 @@ export let es = {
     },
     endings:(hours,mode,ending)=>{
         if(ending === false){
-            return ["."];
+            return [""];
         }else if(ending === 0){
-            return [" de la mañana."];
+            return [" de la mañana"];
         }else if(ending === 1){
-            return [" de la tarde."];
+            return [" de la tarde"];
         }else if(ending === 2){
-            return [" de la noche."];
+            return [" de la noche"];
         }
         if(mode === 3){
             if(hours<13){
-                return [" AM."];
+                return [" AM"];
             }else{
-                return [" PM."];
+                return [" PM"];
             }
         }else if(mode === 2){
-            return ["."];
+            return [""];;
         }else{
             if (hours === 0){
-                return  [" de la noche."]
+                return  [" de la noche"]
             }else if(hours <= 12){
-                return  [" de la mañana."]
+                return  [" de la mañana"]
             }else if(hours> 12 && hours<13){
-                return  [" de la mañana.", " de la tarde."];
+                return  [" de la mañana", " de la tarde"];
             }else if(hours < 19){
-                return [" de la tarde."]
+                return [" de la tarde"]
             }else if(hours === 19){
-                return [" de la tarde.", " de la noche."]
+                return [" de la tarde", " de la noche"]
             }else{
-                return [" de la noche."]
+                return [" de la noche"]
             }
         }
     },

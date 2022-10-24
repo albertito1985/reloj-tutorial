@@ -1,6 +1,6 @@
 import {Component} from 'react';
-import translate from '../../controller/timeFunctions';
-import relojDigital from '../../controller/relojDigitalController';
+import {translate} from '../timeFunctions';
+import {relojDigital} from './relojDigitalController';
 import './relojDigital.css';
 
 export class RelojDigital extends Component{
@@ -20,7 +20,6 @@ export class RelojDigital extends Component{
     if(props.answer){
       if(props.mode === 12){
         timeObject = translate.time24hto12h({hours:relojDigital.hours,minutes:relojDigital.minutes});
-        
       }else{
         timeObject = {
           hours:relojDigital.hours,
@@ -115,7 +114,7 @@ export class RelojDigital extends Component{
     if(this.props.mode === 12){
       returnArray.push(<span key="-">-</span>,
       <div className="clockContainers" tabIndex="3" onFocus={this.showInteraction} id="hoursContainer" key="period">
-        <div className="digitalShow show period" >{this.state.period}</div>
+        <div className="digitalShow digitalConditionalShow period" >{this.state.period}</div>
         <span className="digitalSpan period" >
           <select className="digitalInteraction" id="period" onChange={this.handleChange} value={this.state.period} onBlur={this.hideInteraction}>
             <option value="AM">AM</option>
@@ -126,12 +125,12 @@ export class RelojDigital extends Component{
     }
   
     returnArray.unshift(<div className="clockContainers" tabIndex="1" onFocus={this.showInteraction} id="hoursContainer" key="Hours">
-        <div className="digitalShow show hours" >{timeToShow.hours}</div>
+        <div className="digitalShow digitalConditionalShow hours" >{timeToShow.hours}</div>
         <span className="digitalSpan hours" key="spanHours"><input  className="digitalInteraction" onBlur={this.hideInteraction} type="text" id="hours" value={timeToShow.hours} onChange={this.handleChange}></input></span>  
       </div>,
       <span key=":">:</span>,
       <div className="clockContainers" tabIndex="2" onFocus={this.showInteraction} id="minutesContainer" key="minutes">
-        <div className="digitalShow show minutes">{timeToShow.minutes}</div>
+        <div className="digitalShow digitalConditionalShow minutes">{timeToShow.minutes}</div>
         <span className="digitalSpan minutes" key="spanMinutes"><input className="digitalInteraction" onBlur={this.hideInteraction} type="text" id="minutes" value={timeToShow.minutes} onChange={this.handleChange}></input></span>
       </div>);
     return returnArray;

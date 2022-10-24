@@ -25,8 +25,7 @@
     width:var(--dimension);
     background-image:url("../../../../images/background.svg")
   }
-  
-  
+
   .reloj .horasContainer{
     --dimension: 100%;
     position:absolute;

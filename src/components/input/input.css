@@ -97,16 +97,9 @@ input[type="checkbox"].CustomCheckBox:checked::before{
     color:var(--white)
 }
 
-
-
-
-
-
-
 select#customDropdown{
     display:none;
 }
-
 
 .CustomdropdownContainer{
     background-color:var(--white);

@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-span{
+span, div{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -58,8 +58,6 @@ label, td, th, .title{
 #explanation, #esType{
     display:flex;
     flex-direction: column;
-    /* justify-content: space-between;
-    align-items: center; */
 }
 
 .title{
@@ -154,115 +152,6 @@ label, td, th, .title{
     border-radius: 50px;
 }
 
-
-/* /////////////////Phrase10*/
-.phrase10{
-    display:flex;
-    flex-direction:column;
-    align-items: center;
-    gap:20px;
-    width:100%;
-}
-
-#phrase10{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    background-color: var(--orange);
-    padding:20px 20px 30px 20px;
-    border-radius:20px;
-}
-
-#phrase10HalfsContainer {
-    display:flex;
-    width:100%;
-    gap:20px;
-}
-
-.phrase10Half{
-    width: 50%;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:10px;
-}
-
-.phrase10HalfRight{
-    border-radius:20px;
-    border:3px solid black;
-    padding:20px;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:20px;
-}
-
-.phrase10 .phrase10Phrase,
-#phrase12EscritoContainer .phrase10Phrase{
-    border: 3px solid black;
-    background-color:var(--white);
-    height:40px;
-    padding:10px;
-    border-radius:20px;
-    font-weight:1000;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.phrase10pic{
-    height:100%;
-    width:100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.phrase101{background-image: url('./tutorial/images/squirrelEating.jpg');}
-.phrase102{background-image: url('./tutorial/images/sleeping.jpg');}
-.phrase108{background-image: url('./tutorial/images/squirrel1.jpg');}
-.phrase109{background-image: url('./tutorial/images/squirrel2.jpg');}
-.phrase1010{background-image: url('./tutorial/images/squirrel3.jpg');}
-.phrase1011{background-image: url('./tutorial/images/squirrel4.jpg');}
-.phrase1012{background-image: url('./tutorial/images/squirrel5.jpg');}
-.phrase1013{background-image: url('./tutorial/images/squirrelEating.jpg');}
-.phrase1014{background-image: url('./tutorial/images/squirrel6.jpg');}
-.phrase1015{background-image: url('./tutorial/images/squirrel7.jpg');}
-.phrase1016{background-image: url('./tutorial/images/squirrel8.jpg');}
-.phrase1017{background-image: url('./tutorial/images/squirrel9.jpg');}
-.phrase1018{background-image: url('./tutorial/images/squirrel10.jpg');}
-.phrase1019{background-image: url('./tutorial/images/squirrel11.jpg');}
-.phrase1020{background-image: url('./tutorial/images/squirrel12.jpg');}
-.phrase1021{background-image: url('./tutorial/images/squirrel13.jpg');}
-
-.phrase1025{background-image: url('./tutorial/images/owl.jpg');}
-.phrase1026{background-image: url('./tutorial/images/owl2.jpg');}
-
-#phrase1Task1{
-    padding:10px 0;
-    align-self: flex-start;
-}
-
-.phrase10question {
-   text-align: center;
-   font-weight: 1000;
-}
-
-.phrase10 #dropdownContainer{
-    display:flex;
-    flex-direction:column;
-    align-items: center;
-    gap:20px;
-}
-
-.phrase10 #dropdownContainer h2{
-    text-align: center;
-}
-
-
-
 /* /////////////////Phrase11*/
 
 #phrase11{
@@ -272,46 +161,6 @@ label, td, th, .title{
     justify-content: center;
     gap:20px;
     width:100%;
-}
-
-/* /////////////////Phrase12*/
-
-#phrase12{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap:20px;
-    width:100%;
-}
-
-#phrase12ContentContainer{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap:20px;
-    background-color:var(--orange);
-    padding:20px;
-    border-radius:20px;
-    width:60%;
-}
-
-#phrase12EscritoContainer{
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    gap:20px;
-   
-}
-
-#phrase12EscritoContainer .phrasePart{
-    background-color:var(--white);
-    border-radius:20px;
-    font-weight:1000;
-    border-width:3px;
 }
 
 /* /////////////////MinuteArm0*/
@@ -510,8 +359,8 @@ flex-grow: 1;
 .phrase1020{background-image: url('./tutorial/images/squirrel12.jpg');}
 .phrase1021{background-image: url('./tutorial/images/squirrel13.jpg');}
 
-.phrase1025{background-image: url('./tutorial/images/owl.jpg');}
-.phrase1026{background-image: url('./tutorial/images/owl2.jpg');}
+.phrase1025{background-image: url('./tutorial/images/squirrelDrinking.jpg');}
+.phrase1026{background-image: url('./tutorial/images/squirrelSculpture.jpg');}
 
 #phraseTemplateTask1{
     padding:10px 0;
@@ -580,5 +429,138 @@ flex-grow: 1;
     align-items: center;
     justify-content: center;
     gap:20px;
-   
+}
+
+/* /////////////////Phrases2and3*/
+
+.phraseTemplate #casaBlanca{
+    background-image: url('./tutorial/images/squirrelWhiteHouse.jpg');
+    width:50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    aspect-ratio: 4/3;
+    border-radius: 20px;
+}
+
+#phrases2and3Content{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+/* /////////////////Periods0*/
+
+.phraseTemplate .periods0Half{
+    width:50%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.phraseTemplate .periods0Half .periods0HalfHalf{
+    height:50%;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+}
+
+.phraseTemplate .periods0Half .periods0HalfHalf h2{
+    width:100%;
+}
+
+.completeClock{
+    background-color:black;
+    padding:20px;
+    border-radius:20px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+}
+
+.writtenTime.ending{
+    border:3px solid white;
+    background-color:black;
+}
+
+.writtenTime.ending.ending1{
+    color:white;
+}
+
+.writtenTime.ending.ending2{
+    color:var(--yellow);
+}
+
+.writtenTime.ending.ending3{
+    color:var(--orange);
+}
+
+#periods0UnderContent{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    
+}
+
+#periods0UnderContent h2{
+    text-align: center;
+}
+
+#periods0UnderContent #horaEscogidaPhantom{
+    height:40px;
+}
+
+#periods0UnderContent #horaEscogida{
+    height:40px;
+    font-weight:1000;
+    background-color:var(--white);
+    /* color:white; */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:0 20px;
+    border-radius:20px;
+}
+
+.periods0table {
+    width:50%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:var(--orange);
+    border-radius:20px;
+    padding:20px;
+    gap: 10px;
+}
+
+.periods0table .periods0row{
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+}
+
+.periods0table .periods0row .periods0cell{
+    font-weight: 1000;
+}
+
+.periods0table .periods0row .periods0cellRight{
+    text-align: center;
+    width:30%
+}
+
+.periods0table .periods0row .periods0cellLeft{
+    text-align: center;
+    width:70%;
 }
