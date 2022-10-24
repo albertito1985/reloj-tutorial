@@ -106,5 +106,14 @@
         "phrase":"Frase",
         "question":"Ahora junta una hora con su periodo",
         "instructions":"Haz click en una frase y un periodo para decir la hora exacta."
+    },
+    "answer0":{
+        "title":"Responder con la hora",
+        "explanation":"Para responder con la hora hay que tener en cuenta qué pregunta estamos respondiendo. Hay basicamente dos preguntas que se responden con la hora:",
+        "and":"y"
+    },
+    "answer1":{
+        "explanation":"Ésta pregunta se responde con Es ó Son ...",
+        "and":"y"
     }
 }

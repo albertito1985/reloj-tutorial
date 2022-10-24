@@ -20,7 +20,7 @@ class Tutorial extends Component {
     constructor(){
         super();
         this.state={
-            page:13,
+            page:14,
             next:undefined,
             back:undefined
         };
@@ -440,8 +440,8 @@ class Tutorial extends Component {
                 phrases2and30: <Phrase2and30 {...props}/>,
                 phrases2and31: <Phrase2and31 {...props}/>,
                 periods0: <Periods0 {...props}/>,
-                answer0:null,
-                answer1:null,
+                answer0: <Answer0 {...props}/>,
+                answer1: <Answer1 {...props}/>,
                 answer2:null
             }
             return parts[page];
@@ -1230,6 +1230,29 @@ class Periods0 extends Component{
     }
 }
 
+class Answer0 extends Component{
+    render(){
+        return(
+            <div className="answer0">
+                <h1>{t('answer0.title')}</h1>
+                <p>{t('answer0.explanation')}</p>
+                <h2>¿Que hora es/son?</h2>
+                <h2>{t('answer0.and')}</h2>
+                <h2>¿A que hora ...?</h2>
+            </div>
+            )
+    }
+}
 
+class Answer1 extends Component{
+    render(){
+        return(
+            <div className="answer0">
+                <h1>¿Que hora es?</h1>
+                <p>{t('answer1.explanation')}</p>
+            </div>
+            )
+    }
+}
 
 export default withTranslation()(Tutorial);
