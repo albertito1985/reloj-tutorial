@@ -83,7 +83,6 @@ class Configuration extends Component {
 
     calculateTime(prelMoments){
         let total = 0;
-
         let keys = Object.keys(prelMoments);
         keys.forEach((value)=>{
             total += this.moments.duration[value]||0;
@@ -125,7 +124,7 @@ class Configuration extends Component {
 
         prelMoments={...prelMoments, ...prelMomentsExtras}
         let extraTime = this.calculateTime(prelMomentsExtras);
-        let totalTime = this.calculateTime(prelMoments) + extraTime;
+        let totalTime = this.calculateTime(prelMoments);
 
         this.setState({
             actualMoments:{...prelMoments},
@@ -165,14 +164,6 @@ class Configuration extends Component {
                     <h1>{t('config.title')}</h1>
                     <p>{t('config.explanation')}</p>
                     <form id="form">
-                        <div id="explanation">
-                            <div className="title">{t('config.tutorialExplanation')}</div>
-                            <div className="radioAlternatives">
-                                <div className="radioButton"><RadioButton onChange={this.handleChange} checked={this.state.actualMoments.lang === "spanish"} name="lang" value="spanish" id="spanish"/><label htmlFor="spanish">{t('languages.spanish')}</label></div>
-                                <div className="radioButton"><RadioButton onChange={this.handleChange} checked={this.state.actualMoments.lang === "english"} name="lang" value="english" id="english"/><label htmlFor="english">{t('languages.english')}</label></div>
-                                <div className="radioButton"><RadioButton onChange={this.handleChange} checked={this.state.actualMoments.lang === "swedish"} name="lang" value="swedish" id="swedish"/><label htmlFor="swedish">{t('languages.swedish')}</label></div>
-                            </div>
-                        </div>
                         <div id="esType">
                             <div className="title">{t('config.esType')}</div>
                             <div className="radioAlternatives">
@@ -186,6 +177,13 @@ class Configuration extends Component {
                                 <tbody>
                                     <tr>
                                         <th>{t('config.moment')}</th><th>{t('config.minutes')}</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{t('config.answer')}</td>
+                                        <td className={`estTime${this.state.actualMoments.answer? " active": ""}`} id="answerTime">3</td>
+                                        <td>
+                                            <CheckBox id="answer" name="answer" onChange={this.handleChange} value={true}/>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>{t('config.parts')}</td>
@@ -220,13 +218,6 @@ class Configuration extends Component {
                                         <td className={`estTime${this.state.actualMoments.periods? " active": ""}`} id="periodsTime">1</td>
                                         <td>
                                             <CheckBox id="periods" name="periods" onChange={this.handleChange} value={true}/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{t('config.answer')}</td>
-                                        <td className={`estTime${this.state.actualMoments.answer? " active": ""}`} id="answerTime">3</td>
-                                        <td>
-                                            <CheckBox id="answer" name="answer" onChange={this.handleChange} value={true}/>
                                         </td>
                                     </tr>
                                     <tr>

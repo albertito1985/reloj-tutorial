@@ -37,14 +37,14 @@
         "title": "Las partes del reloj",
         "explanation": "Para aprender a decir la hora en español es necesario aprender las partes del reloj. Apunta con el ratón en los nombres de la derecha para resaltar las partes del reloj.",
         "prompt": "Pasa el ratón sobre los nombres a la derecha del reloj.",
-        "horas":"Las horas son los números grandes del reloj y cáda número representa una hora diferente.",
-        "minutos":"No todos los relojes muestran los minutos pero en éste reloj los minútos son los números pequeños. Cuando no se ven, los minutos se pueden calcular multiplicando cada número grande (las horas) por cinco.",
+        "horas":"Las horas son los números grandes del reloj y cáda número representa una hora diferente. El reloj muestra solo doce horas lo que equivale a la mitad del día.",
+        "minutos":"No todos los relojes muestran los minutos pero en éste reloj los minútos son los números pequeños. El reloj muestra solo sesenta minutos lo que equivale a una hora.",
         "horario":"El horario es el palito pequeño y gordito del reloj que indíca una hora específica.",
         "minutero":"El minutero es el palito delgado y largo del reloj que indica un minuto específico."
     },
     "phrase1":{
         "title":"Frase 1 : '...en punto'",
-        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la frase termina con 'en punto'. En la frase 'Las cinco en punto.' el número cinco es la hora que acaba de comenzar.",
+        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la frase termina con 'en punto'. En la frase 'Las diez en punto.' el número diez es la hora que acaba de comenzar.",
         "question":"¿A que hora come Juanito?",
         "instructions":"Cambia la hora en el reloj y descubre a que hora en punto come Juanito.",
         "dropdownPlaceholder": "Escoje la hora correcta.",
@@ -64,9 +64,9 @@
     },
     "phrase2":{
         "title":"Frase 2 : '... y ...'",
-        "explanation": "Cuando el minutero se encuentra en la zona amarilla se utiliza la frase '... y ...'. En el ejemplo 'Las siete y diez' el número siete es la hora que ha comenzado y el número diez los minutos que han pasado desde las siete en punto.",
+        "explanation": "Cuando el minutero se encuentra en la zona amarilla se utiliza la frase '... y ...'. En el ejemplo 'Las diez y cinco' el número diez es la hora que ha comenzado y el número cinco los minutos que han pasado desde las diez en punto.",
         "question":"¿A que hora bebe Juanito agua?",
-        "instructions":"Ahora hace Juanito una pausa para beber agua.",
+        "instructions":"Ahora hace Juanito una pausa para beber agua. Ten en cuenta que comenzó a comer a la una en punto.",
         "dropdownPlaceholder": "Escoje la hora correcta.",
         "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
         "otherTime":"Otra",
@@ -74,21 +74,20 @@
     },
     "phraseTemplate":{
         "dropdownPlaceholder": "Escoje la hora correcta.",
-        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
-        "otherTime":"Otra"
+        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada."
     },
     "phrase3A":{
         "title":"Frase 3 : '... para ...'",
-        "explanation": "La frase ... para ... se utiliza cuando el minutero está en la zona naranja de éste reloj. En el ejemplo 'Veinte para las doce.' el número veinte son los minutos que faltan para las doce en punto y número doce es la hora que va a comenzar.",
-        "question":"¿A que hora ataca el buho?",
-        "instructions":"Después de un momento el buho decide atacar a Juanito. Descubre a que hora ataca el buho.",
+        "explanation": "La frase '... para ...' se utiliza cuando el minutero está en la zona naranja de éste reloj. En el ejemplo 'Veinte para las diez.' el número veinte son los minutos que faltan para las diez en punto y número diez es la hora que va a comenzar.",
+        "question":"¿A que hora ve Juanito la estatua?",
+        "instructions":"Mientras Juanito come, una estatua de una ardilla llama su atención.",
         "emptyMessage":"Mueve el minutero a la zona naranja del reloj para ver más ejemplos." 
     },
     "phrase3B":{
         "title":"Frase 3 : '... menos ...'",
-        "explanation": "La frase ... menos ... se utiliza cuando el minutero está en la zona naranja de éste reloj. En el ejemplo 'Doce menos veinte.' el número doce es la hora que va a comenzar y el numero veinte son los minutos que faltan para las doce en punto.",
-        "question":"¿A que hora ve Juanito la escultura?",
-        "instructions":"Mientras Juanito come, una escultura de una ardilla llama su atención.",
+        "explanation": "La frase '... menos ...' se utiliza cuando el minutero está en la zona naranja de éste reloj. En el ejemplo 'Diez menos veinte.' el número diez es la hora que va a comenzar y el numero veinte son los minutos que faltan para las diez en punto.",
+        "question":"¿A que hora ve Juanito la estatua?",
+        "instructions":"Mientras Juanito come, una estatua de una ardilla llama su atención.",
         "emptyMessage":"Mueve el minutero a la zona naranja del reloj para ver más ejemplos."
     },
     "phrases2and3":{
@@ -113,7 +112,16 @@
         "and":"y"
     },
     "answer1":{
-        "explanation":"Ésta pregunta se responde con Es ó Son ...",
-        "and":"y"
+        "title":"¿Que hora es?",
+        "explanation":"Ésta pregunta se responde con 'Es ...' cuando la hora es singular y 'Son ...' cuando es plural."
+    },
+    "answer2":{
+        "title":"¿A qué hora ...?",
+        "explanation":"Ésta pregunta se relaciona siempre a una acción y se responde normalmente con 'A ...' todo el día menos al mediodía, que se responde con 'Al ...'."
+    },
+    "end":{
+        "title":"El tutorial de el reloj ha terminado",
+        "explanation":"Vuelve a la página principal presionando el simbolo de Español 24/7 ó vuelve a hacer el tutorial presionando el botón de abajo.",
+        "buttonLabel":"Volver a empezar"
     }
 }

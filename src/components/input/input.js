@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { IoTrashBinSharp } from 'react-icons/io5';
 import './input.css'
 
 class RadioButton extends Component {
