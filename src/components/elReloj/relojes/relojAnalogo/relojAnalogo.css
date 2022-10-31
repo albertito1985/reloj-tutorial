@@ -1,10 +1,11 @@
 .reloj {
     width:200px;
     height:200px;
-    border-radius:50%;
+    border-radius:50px;
     position:relative;
     display:flex;
     font-size:20px;
+    overflow:hidden;
   }
   
   .reloj .numeros{

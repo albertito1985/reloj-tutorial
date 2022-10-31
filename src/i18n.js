@@ -9,16 +9,16 @@ i18n
 .use(HttpApi)
 .init({
   debug: true,
-  supportedLngs: [ 'es', 'en','sv'],
+  supportedLngs: [ 'es', 'en','se'],
   fallbackLng: "es",
-  ns:'translation',
-  defaultNS:'translation',
+  ns:['general','elreloj'],
+//   defaultNS:['general'],
   detection: {
       order: ['path','cookie', 'htmlTag','localStorage','subdomain'],
       caches: ['cookie','localStorage'],
     },
     backend: {
-        loadPath: '/assets/locales/{{lng}}/translation.json',
+        loadPath: '/assets/locales/{{lng}}/{{ns}}.json',
     },
     react:{
         useSuspense:true,

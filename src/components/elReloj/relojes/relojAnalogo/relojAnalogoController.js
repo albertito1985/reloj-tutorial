@@ -153,7 +153,7 @@ export let reloj = {
                 }
               }
             }
-          
+            
             reloj.states["minutes"] = minuteDegrees;
             reloj.states["hours"] = hourDegrees;
             reloj.hours = hours;

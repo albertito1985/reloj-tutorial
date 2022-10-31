@@ -1,0 +1,57 @@
+.themesHome{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+  }
+
+.themesHome div{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+  .themesHome a{
+    color:black;
+  }
+
+  .themesHomePuffs{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
+  width:100%;
+  }
+  
+  .themesHomePuffs .homePuff{
+    background-color:var(--yellow);
+    border-radius:20px;
+    width:200px;
+  }
+  
+  .themesHomePuffs .homePuff .homePuffImage{
+    width:100%;
+    aspect-ratio: 4/3;
+    border-radius:20px 20px 0 0;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .themesHomePuffs .homePuff .homePuffImagereloj{
+   background-image:url("./images/smart-watch-g163e2f5d0_640.jpg");
+  }
+  
+  
+  .themesHomePuffs .homePuff .homePuffText{
+    padding:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+  }
+
+  .themesHomePuffs .homePuff .homePuffText h2{
+    text-align: center;
+  }

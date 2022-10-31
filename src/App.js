@@ -1,8 +1,12 @@
+import {setDefaultNamespace} from 'i18next';
 import {Component} from 'react';
 import { Routes, Route} from "react-router-dom";
+import { withTranslation} from 'react-i18next';
 
 import './App.css';
+import Home from './components/home/home';
 import {Header} from './components/header/header';
+import {Footer} from './components/footer/footer';
 import Config from './components/elReloj/config';
 import Tutorial from './components/elReloj/tutorial/inicio';
 import {LoadingMarkup} from './components/loadingMarkup/loading';
@@ -29,6 +33,7 @@ class App extends Component {
       feedback:"",
       answer:null
     }
+    setDefaultNamespace('general')
     this.changeTime = this.changeTime.bind(this);
     this.updateFeedback = this.updateFeedback.bind(this);
     this.updateResponse = this.updateResponse.bind(this);
@@ -68,21 +73,20 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-          <div className="container">
-              <Header/>
-            <div className="contentBody">
-              <Routes>
-                <Route path="/elreloj/*" element={<Config/>}/>
-                <Route path="/elreloj/tutorial/*" element={<Tutorial/>}/>
-              </Routes>              
-            </div>
-            
+        <div className="container">
+        <Header/>
+          <div className="contentBody">
+            <Routes>
+              <Route path="/" element={<Home/>}/>
+              <Route path="/elreloj/*" element={<Config/>}/>
+              <Route path="/elreloj/tutorial/*" element={<Tutorial/>}/>
+            </Routes>
+          </div>
+        <Footer/>
         </div>
       </div>
     );
   }
 }
 
-
-
-export default App;
+export default withTranslation()(App);

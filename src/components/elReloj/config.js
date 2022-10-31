@@ -1,6 +1,6 @@
-import { t } from 'i18next';
+import { t, setDefaultNamespace } from 'i18next';
 import {Component} from 'react';
-import { withTranslation } from 'react-i18next';
+import { withTranslation} from 'react-i18next';
 import './pages.css';
 import {RadioButton, CheckBox, Button} from '../input/input'
 import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
@@ -16,6 +16,7 @@ class Configuration extends Component {
                 esType:"spain"
             }
         };
+        setDefaultNamespace('elreloj');
         this.handleChange = this.handleChange.bind(this);
         this.handleTutorial = this.handleTutorial.bind(this);
         this.handleExcercises = this.handleExcercises.bind(this);
@@ -243,5 +244,8 @@ class Configuration extends Component {
         )
     }
 }
+
+
+
 export default withTranslation()(Configuration);
 

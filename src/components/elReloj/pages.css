@@ -18,7 +18,8 @@
     min-height:50vh;
     width:100%;
     min-width:500px;
-    padding:50px;
+    max-width:800px;
+    padding:40px;
     border-radius: 50px;
   }
 
@@ -29,6 +30,7 @@
     justify-content: center;
     gap:50px;
     align-items: center;
+    width:100%;
   }
 
 label, td, th, .title{
@@ -133,7 +135,6 @@ label, td, th, .title{
 
 .minutosContainer.analogHighlight .minutos{
     color:var(--magenta);
-    /* font-weight:bolder */
 }
 .horasContainer.analogHighlight .horas{
     color:var(--magenta);
@@ -168,84 +169,46 @@ label, td, th, .title{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* #minuteArm0{
-    width:100%;
-    display:flex;
-    flex-direction: column;
-    gap:20px;
-} */
-
 #minuteArmContainer{
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
     width:100%;
-    gap:20px;
-    
-}
-#minuteArmOver{
-    width:100%;
-    display:flex;
-    justify-content: center;
+    display:grid;
+    grid-template-columns: repeat(3,200px);
+    grid-gap:20px;
     align-items: center;
-    height:46px;
-}
-
-/* .minuteArmPhrase{
-    width:250px;
-} */
-
-/* .minuteArmPhrase{
-    border:3px solid black;
-    padding:10px;
-    border-radius:20px;
-    width:250px;
-    display:flex;
     justify-content: center;
+}
+
+.minutearmGrid .writtenTime{
+    width:200px;
+}
+
+.minutearmGrid{
+    min-height:50px;
+    display:flex;
     align-items: center;
-    height:40px;
-} */
-
-/* #minuteArmPhraseOver{
-    background-color:var(--white);
-} */
-
-#minuteArmPhraseLeft{
-    background-color:var(--orange);
-}
-
-#minuteArmUnder{
-    display:flex;
-    gap:20px;
-    width:100%;
-}
-
-.minuteArm0HAlva{
-    display:flex;
     justify-content: center;
-    align-items: center;
-    width:33%;
-    min-width:200px;
 }
 
-/* #minuteArm0HAlvLeft{
-flex-grow: 1;
-
+.minutearmGrid1{
+    order:3
 }
 
-#minuteArm0HAlvMiddle{
-flex-grow: 0;
-
+.minutearmGrid2{
+    order:1;
+    grid-column:span 3;
 }
 
-#minuteArm0HAlvRight{
-flex-grow: 1;
-} */
-
-#minuteArm0HAlvRight .phrasePart{
-    border:3px solid black;
+.minutearmGrid3{
+    order:4;
+    justify-content: start;
 }
+
+.minutearmGrid4{
+    order:2;
+    justify-content: end;
+}
+
+/* /////////////////minutes15 and 30*/
 
 #minutes15and30{
     display:flex;
@@ -337,7 +300,8 @@ flex-grow: 1;
 .phraseTemplateContent{
     display:flex;
     flex-direction:column;
-    width:100%;
+    width:80%;
+    min-width:500px;
     background-color: var(--orange);
     padding:20px 20px 30px 20px;
     border-radius:20px;
@@ -346,7 +310,7 @@ flex-grow: 1;
 .phraseTemplateHalfsContainer {
     display:flex;
     width:100%;
-    gap:20px;
+    gap:10px;
     margin-top:20px;
 }
 
@@ -438,27 +402,6 @@ text-align: center;
     justify-content: center;
 }
 
-/* #phraseTemplate2ContentContainer{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap:20px;
-    background-color:var(--orange);
-    padding:20px;
-    border-radius:20px;
-    width:60%;
-} */
-
-/* #phraseTemplate2EscritoContainer{
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    gap:20px;
-} */
-
 /* /////////////////Phrases2and3*/
 
 .phraseTemplate #casaBlanca{
@@ -489,7 +432,7 @@ text-align: center;
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: stretch;
 }
 
 .phraseTemplate .periods0Half .periods0HalfHalf{
@@ -564,7 +507,7 @@ text-align: center;
 }
 
 .periods0table {
-    width:40%;
+    width:250px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -653,48 +596,46 @@ text-align: center;
 
  /* /////////////////media Queries*/
 
-/* For Desktop View */
-@media screen and (min-width: 1024px) {
+  @media screen and (max-width: 900px) {
+    .phraseTemplate .phraseTemplateHalfsContainer{
+        justify-content: center;
+    }
 
+    .phraseTemplate .periods0Half{
+        width:auto;
+    }
   }
-   
-  /* For Tablet View */
-  @media screen and (min-device-width: 768px)
-  and (max-device-width: 1024px) {
-   
-  }
-   
-  /* For Mobile Portrait View */
-  @media screen and (max-device-width: 480px)
-  and (orientation: portrait) {
-   
-  }
-   
-  /* For Mobile Landscape View */
-  @media screen and (max-device-width: 640px)
-  and (orientation: landscape) {
-    
-  }
-   
-  /* For Mobile Phones Portrait or Landscape View */
-  @media screen and (max-device-width: 640px) {
 
-  }
-   
-  /* For iPhone 4 Portrait or Landscape View */
-  @media screen and (min-device-width: 320px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+  @media screen and (max-width: 850px) {
     
-  }
-   
-  /* For iPhone 5 Portrait or Landscape View */
-  @media (device-height: 568px) and (device-width: 320px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-  }
-   
-  /* For iPhone 6 and 6 plus Portrait or Landscape View */
-  @media (min-device-height: 667px) and (min-device-width: 375px)
-  and (-webkit-min-device-pixel-ratio: 3) {
+
+    #minuteArmContainer{
+        grid-template-columns: repeat(2,200px);
+    }
+
+    .minutearmGrid{
+        min-height:70px;
+    }
+
+    .minutearmGrid1{
+        order:1;
+        grid-row:span 3;
+    }
+    
+    .minutearmGrid2{
+        order:2;
+        grid-column:span 1;
+    }
+    
+    .minutearmGrid3{
+        order:3;
+        justify-content: start;
+    }
+    
+    .minutearmGrid4{
+        order:4;
+        justify-content: end;
+    }
     
   }
 
@@ -705,6 +646,10 @@ text-align: center;
    
     .pages{
         width:100%;
-        background-color:red;
+    }
+
+    .phraseTemplateContent{
+        width:100%;
+        border-radius:0;
     }
   }

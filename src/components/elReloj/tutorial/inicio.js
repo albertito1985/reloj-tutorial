@@ -1,4 +1,4 @@
-import { t } from 'i18next';
+import { t, setDefaultNamespace } from 'i18next';
 import React, {Component} from 'react';
 import { withTranslation } from 'react-i18next';
 import '../pages.css';
@@ -23,11 +23,12 @@ class Tutorial extends Component {
     constructor(){
         super();
         this.state={
-            page:0,
+            page:5,
             next:undefined,
             back:undefined,
             confetti:false
         };
+        setDefaultNamespace('elreloj');
         this.pages=["home"];
         this.config ={};
         this.moments = {
@@ -192,7 +193,6 @@ class Tutorial extends Component {
         if(value===false){
             if(document.getElementsByClassName("confetti")[0]){
                 let confetti= document.getElementsByClassName("confetti")[0]
-                console.log(confetti)
                 confetti.classList.add("invisible");
             }
         }
@@ -423,19 +423,18 @@ class Tutorial extends Component {
                     type:0,
                     changeTime: (state)=>{
                         let newState={Aminutes: state.minutes}
-                    if(state.Ahours>12){
+                    if(state.hours>12){
                         newState.Ahours = state.hours-12;
                     }else{
                         newState.Ahours = state.hours;
                     }
-                    if(state.Aminutes === 0){
+                    if(state.minutes === 0){
                         if(state.Qhours === 0 || state.Qhours === 12){
-                            if(state.Ahours=== 0 || state.Ahours === 12){
+                            if(state.hours=== 0 || state.hours === 12){
                                 newState.Ahours=state.Qhours;
                             }
                         }
-                        
-                        if(state.Ahours===state.Qhours){
+                        if(state.hours===state.Qhours){
                             newState.next = true;
                             props.changeNext(true);
                         }else{
@@ -461,7 +460,7 @@ class Tutorial extends Component {
                 answer2:{
                     name:"answer2",
                     answerType:1,
-                    question:"¿A qué hora duermes?"
+                    question:"¿A qué hora juegas?"
                 },
                 answer1:{
                     name:"answer1",
@@ -568,18 +567,18 @@ class Parts0 extends Component{
 
     highlight(e){
         let target;
-        let targetWord = e.target.textContent;
-        switch(e.target.textContent){
-            case "Horas":
+        let targetWord = e.target.attributes.name.value;
+        switch(targetWord){
+            case "horas":
                 target = document.querySelector(".horasContainer");
             break;
-            case "Minutos":
+            case "minutos":
                 target = document.querySelector(".minutosContainer");
             break;
-            case "Horario":
+            case "horario":
                 target = document.querySelector("#horario .manilla");
             break;
-            case "Minutero":
+            case "minutero":
                 target = document.querySelector("#minutero .manilla");
             break;
             default:
@@ -591,17 +590,17 @@ class Parts0 extends Component{
 
     unHighlight(e){
         let target;
-        switch(e.target.textContent){
-            case "Horas":
+        switch(e.target.attributes.name.value){
+            case "horas":
                 target = document.querySelector(".horasContainer");
             break;
-            case "Minutos":
+            case "minutos":
                 target = document.querySelector(".minutosContainer");
             break;
-            case "Horario":
+            case "horario":
                 target = document.querySelector("#horario .manilla");
             break;
-            case "Minutero":
+            case "minutero":
                 target = document.querySelector("#minutero .manilla");
             break;
             default:
@@ -621,19 +620,19 @@ class Parts0 extends Component{
                         <RelojAnalogo hours={this.state.hours} minutes={this.state.minutes} showMinutes="true"/>
                         </div>
                         <div className="phraseTemplateHalf" id="partsHalfRight">
-                            <Button label="Horas" type="2"/>
-                            <Button label="Minutos" type="2"/>
-                            <Button label="Horario" type="2"/>
-                            <Button label="Minutero" type="2"/>
+                            <Button label={t('parts.hours')} name="horas" type="2"/>
+                            <Button label={t('parts.minutes')} name="minutos" type="2"/>
+                            <Button label={t('parts.hourArm')} name="horario" type="2"/>
+                            <Button label={t('parts.minuteArm')} name="minutero" type="2"/>
                         </div>
                     </div>
                     <div id="parts02">
                         <p>
                             {(this.state.part === undefined) && t('parts.prompt')}
-                            {(this.state.part === "Horas") && t('parts.horas')}
-                            {(this.state.part === "Minutos") && t('parts.minutos')}
-                            {(this.state.part === "Horario") && t('parts.horario')}
-                            {(this.state.part === "Minutero") && t('parts.minutero')}
+                            {(this.state.part === "horas") && t('parts.horas')}
+                            {(this.state.part === "minutos") && t('parts.minutos')}
+                            {(this.state.part === "horario") && t('parts.horario')}
+                            {(this.state.part === "minutero") && t('parts.minutero')}
                         </p>
                     </div>
                 </div>
@@ -671,32 +670,30 @@ class Minutearm0 extends Component{
                 <h1>{t("minuteArm.title")}</h1>
                 <p>{t("minuteArm.explanation")}</p>
                 <div id="minuteArmContainer">
-                    <div id="minuteArmOver">
-                        {(this.state.phrases[0]) && (this.state.phrases[0].type === 0) && 
-                            <span className="writtenTime phrase0">
-                                {general.capitalizeAndPoint(this.state.phrases[0].phrase)}
-                            </span>}
+                    <div className="minutearmGrid minutearmGrid1">
+                        <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
                     </div>
-                    <div id="minuteArmUnder">
-                        <div className="minuteArm0HAlva">
-                                {(this.state.phrases[0]) && (this.state.phrases[0].type === 2) && 
-                                <span className="writtenTime phrase2">
-                                    {general.capitalizeAndPoint(this.state.phrases[0].phrase)}
-                                </span>}
-                                {(this.state.phrases[1]) && (this.state.phrases[1].type === 2) && 
-                                <span className="writtenTime phrase2">
-                                    {general.capitalizeAndPoint(this.state.phrases[1].phrase)}
-                                </span>}
-                        </div>
-                        <div className="minuteArm0HAlva">
-                            <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
-                        </div>
-                        <div className="minuteArm0HAlva">
-                            {(this.state.phrases[0]) && (this.state.phrases[0].type === 1) &&
+                    <div className="minutearmGrid minutearmGrid2">
+                        {(this.state.phrases[0]) && (this.state.phrases[0].type === 0) && 
+                        <span className="writtenTime phrase0">
+                            {general.capitalizeAndPoint(this.state.phrases[0].phrase)}
+                        </span>}
+                    </div>
+                    <div className="minutearmGrid minutearmGrid3">
+                    {(this.state.phrases[0]) && (this.state.phrases[0].type === 1) &&
                             <span className="writtenTime phrase1">
                                  {general.capitalizeAndPoint(this.state.phrases[0].phrase)}
                             </span>}
-                        </div>
+                    </div>
+                    <div className="minutearmGrid minutearmGrid4">
+                        {(this.state.phrases[0]) && (this.state.phrases[0].type === 2) && 
+                        <span className="writtenTime phrase2">
+                            {general.capitalizeAndPoint(this.state.phrases[0].phrase)}
+                        </span>}
+                        {(this.state.phrases[1]) && (this.state.phrases[1].type === 2) && 
+                        <span className="writtenTime phrase2">
+                            {general.capitalizeAndPoint(this.state.phrases[1].phrase)}
+                        </span>}
                     </div>
                 </div>
             </div>
@@ -878,7 +875,8 @@ class PhraseTemplate1 extends Component{
         }else{
             this.props.changeNext(false);
         }
-    }
+    };
+
     generatePhraseAndImage(){
         if(this.state.phrases[0]){
             if(this.state.phrases[0].type === this.props.phraseType){
@@ -1021,29 +1019,8 @@ class PhraseTemplate2 extends Component{
                         
                     </div>
                     <div id="phraseTemplate2EscritoContainer">
-                        
                     </div>
-                    
-                    
-                    
                 </div>
-
-
-                  
-
-
-                {/* <div id="phraseTemplate2ContentContainer">
-                    <div>
-                        <h2>{t("timeQuestion")}</h2>
-                        
-                    </div>
-                    <div id="phraseTemplate2EscritoContainer">
-                        <span className={`writtenTime phrase${this.props.type}`}>{general.capitalizeAndPoint(es.phraseFinder(hours,minutes,this.props.esType,false,this.props.type,2)[0].phrase)}</span>
-                    </div>
-                    <p>{t("phrase1.excercisesExplanation")}</p>
-                    <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.Ahours} minutes={this.state.Aminutes}/>
-                    <Button label={t("phrase1.otherTime")} type="1" onClick={this.changeQuestion}/>
-                </div> */}
             </div>
         )
     }
@@ -1293,7 +1270,7 @@ class Periods0 extends Component{
                     </div>
                 </div>
                 <p>{t("periods0.observe")}</p>
-                <div className="phraseTemplateContent">
+                <div className="phraseTemplateContent" id="periods0Content">
                     <h2>{t("examples")}</h2>
                     <div className="phraseTemplateHalfsContainer">
                         <span className="periods0Half">
@@ -1306,7 +1283,7 @@ class Periods0 extends Component{
                             </div>
                             
                         </span>
-                        <span className="periods0Half">
+                        <span className="periods0Half periods0HalfStretch">
                             <div className="periods0HalfHalf">
                                 <h2>{t("periods0.phrase")}</h2>
                                 {this.generatePhrases()}
@@ -1418,4 +1395,4 @@ class End extends Component{
     }
 }
 
-export default withTranslation()(Tutorial);
+export default withTranslation('elreloj')(Tutorial);

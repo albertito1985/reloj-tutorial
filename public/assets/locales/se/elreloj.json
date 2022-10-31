@@ -1,0 +1,125 @@
+{
+    "titulo": "Lär dig att läsa klockan på spanska",
+    "next": "Nästa",
+    "back":"Bakåt",
+    "examples":"Exempel",
+    "excercises":"Övningar",
+    "dropdownPlaceholder": "Välj den rätta tiden.",
+    "timeQuestion": "¿Qué hora es?",
+    "config": {
+        "title":"El reloj - Anpassa lektionen",
+        "explanation": "Den här avdelningen har som syfte att skräddarsy lektionen 'El Reloj' till dina behov eller till boken du följer.",
+        "spain":"Spanien",
+        "lAmerica":"Latinamerika",
+        "esType" : "Spanska Typ:",
+        "content": "Innehål:",
+        "moment": "Moment",
+        "minutes": "Minuter",
+        "parts":"Klockdelarna.",
+        "phrase1":"Fras 1: ... en punto.",
+        "phrase2":"Fras 2: ... y ....",
+        "phrase3":"Fras 3: ... para ....",
+        "periods":"Dagens delar (mañana, tarde y noche).",
+        "answer":"Att svara med tiden.",
+        "extra":"Extra",
+        "total":"Total",
+        "tutorial":"Tutorial",
+        "excercises":"Övningar"
+    },
+    "answer0":{
+        "title":"Att svara med klockslaget",
+        "explanation":"För att svara med klockslaget måste man ta hänsyn till vilken fråga du ska svara på. Det finns i stort sätt två frågor som svaras med klockslaget:",
+        "and":"och"
+    },
+    "answer1":{
+        "title":"¿Que hora es?",
+        "explanation":"Den här frågan svaras med 'Es ...' när tiden är på singular och 'Son ...' när den är på plural. Ändra tiden på klockan för att se flera exempel."
+    },
+    "answer2":{
+        "title":"¿A qué hora ...?",
+        "explanation":"Den här frågan relateras alltid till en handling och den svaras oftast med 'A ...' hela dagen förutom klockan tolv där den svas med 'Al ...'."
+    },
+    "parts":{
+        "title": "Klockans delar",
+        "explanation": "För att lära dig klockslaget på spanska är det nödvändigt att veta klockans delar. Hovra med musen på nämnen som finns till höger om klockan för att belysa vilken del det handlar om.",
+        "prompt": "Hovra på namnen till höger om klockan.",
+        "horas":"Timmarna, eller 'Las horas' på spanska, är de stora numren som finns i klockan. Varje nummer motsvarar en olik tid. Klockan visar enbart tjugofyra timmar, vilket motsvarar halva dygnet.",
+        "minutos":"Minutrarna, eller 'los minutos' på spanska, visas inte ofta på klockan. I den här specifika klockan visas som de små nummren. Klockan visar enbart sextio minuter, vilket motsvarar en timme.",
+        "horario":"Timvisaren, eller 'el horario' på spanska, är den lilla och tjocka pinnen som pekar på en specifik timmeslag.",
+        "minutero":"Minutvisaren, eller 'el minutero' på spanska, är den långa och smalla pinnen som pekar på en specifik minutslag.",
+        "hours":"Timmarna",
+        "minutes":"Minuterna",
+        "hourArm":"Timvisaren",
+        "minuteArm":"Minutvisaren"
+    },
+    "minuteArm":{
+        "title":"Minutvisaren",
+        "explanation": "Minutvisaren anger mängden av minuter som har passerat inom varje timme. Minutvisaren anger också vilken fras man ska använda för att läsa klockan. Flytta på minutvisaren för att se de tre olika typer av fraser som används för att läsa klockan på spanska. Varje fras har en egen färg."
+    },
+    "phrase1":{
+        "title":"Frase 1 : '...en punto'",
+        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la frase termina con 'en punto'. En la frase 'Las diez en punto.' el número diez es la hora que acaba de comenzar.",
+        "question":"¿A que hora come Juanito?",
+        "instructions":"Cambia la hora en el reloj y descubre a que hora en punto come Juanito.",
+        "dropdownPlaceholder": "Escoje la hora correcta.",
+        "explanation2": "De repente te diste cuenta que entre las horas '...en punto' hay dos que tienen su propio nombre, mediodía y medianoche. Mediodía son las 12:00 y medianoche las 00:00 ¿A que hora apunta el horario en éstas dos horas?.",
+        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
+        "otherTime":"Otra",
+        "emptyMessage":"Mueve el minutero a la zona blanca del reloj para ver más ejemplos."
+    },
+    
+    "minutes15and30":{
+        "title":"Minutos 15 y 30",
+        "explanation": "Para decir la hora en español en lugar de decir 15 (minutos) se dice cuarto y en lugar de decir 30 (minutos) se dice media. Escribe los nombres al costado de las sifras.",
+        "placeholder": "Escribe aquí"
+    },
+    "phrase2":{
+        "title":"Frase 2 : '... y ...'",
+        "explanation": "Cuando el minutero se encuentra en la zona amarilla se utiliza la frase '... y ...'. En el ejemplo 'Las diez y cinco' el número diez es la hora que ha comenzado y el número cinco los minutos que han pasado desde las diez en punto.",
+        "question":"¿A que hora bebe Juanito agua?",
+        "instructions":"Ahora hace Juanito una pausa para beber agua. Ten en cuenta que comenzó a comer a la una en punto.",
+        "dropdownPlaceholder": "Escoje la hora correcta.",
+        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
+        "otherTime":"Otra",
+        "emptyMessage":"Mueve el minutero a la zona amarilla del reloj para ver más ejemplos."
+    },
+    "phraseTemplate":{
+        "dropdownPlaceholder": "Escoje la hora correcta.",
+        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada."
+    },
+    "phrase3A":{
+        "title":"Frase 3 : '... para ...'",
+        "explanation": "La frase '... para ...' se utiliza cuando el minutero está en la zona naranja de éste reloj. En el ejemplo 'Veinte para las diez.' el número veinte son los minutos que faltan para las diez en punto y número diez es la hora que va a comenzar.",
+        "question":"¿A que hora ve Juanito la estatua?",
+        "instructions":"Mientras Juanito come, una estatua de una ardilla llama su atención.",
+        "emptyMessage":"Mueve el minutero a la zona naranja del reloj para ver más ejemplos." 
+    },
+    "phrase3B":{
+        "title":"Frase 3 : '... menos ...'",
+        "explanation": "La frase '... menos ...' se utiliza cuando el minutero está en la zona naranja de éste reloj. En el ejemplo 'Diez menos veinte.' el número diez es la hora que va a comenzar y el numero veinte son los minutos que faltan para las diez en punto.",
+        "question":"¿A que hora ve Juanito la estatua?",
+        "instructions":"Mientras Juanito come, una estatua de una ardilla llama su atención.",
+        "emptyMessage":"Mueve el minutero a la zona naranja del reloj para ver más ejemplos."
+    },
+    "phrases2and3":{
+        "title":"Frases 2 y 3",
+        "explanation": "Entre los minutos treinta y cinco, y cuarenta se puede utilizar la frase dos ó la tres.",
+        "emptyMessage":"Mueve el minutero a la zona que tiene naranja y amarillo para ver más ejemplos.",
+        "question":"¿Aque hora va Juanito a la casa blanca?",
+        "instructions":"Juanito decide irse de excursión a la casa blanca a la una y cuarenta. Elige la hora que equivale a la una y cuarenta."
+    },
+    "periods0":{
+        "title":"Los periodos de tiempo",
+        "explanation":"Como el día tiene 24 horas y el reloj solo 12, el reloj da dos vueltas cada día. Para diferenciar la primera vuelta de la segunda se agregan periodos de tiempo después de la hora según el siguiente cuadro.",
+        "observe":"Observa que entre las 19:00 y las 19:59 se puede utilizar de la tarde ó de la noche.",
+        "periods":"Periodos",
+        "phrase":"Frase",
+        "question":"Ahora junta una hora con su periodo",
+        "instructions":"Haz click en una frase y un periodo para decir la hora exacta."
+    },
+    "end":{
+        "title":"El tutorial de el reloj ha terminado",
+        "explanation":"Vuelve a la página principal presionando el simbolo de Español 24/7 ó vuelve a hacer el tutorial presionando el botón de abajo.",
+        "buttonLabel":"Volver a empezar"
+    }
+}

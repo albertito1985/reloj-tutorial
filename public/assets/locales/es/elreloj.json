@@ -6,21 +6,14 @@
     "excercises":"Ejercicios",
     "dropdownPlaceholder": "Escoje la hora correcta.",
     "timeQuestion": "¿Qué hora es?",
-    "languages":{
-        "spanish":"Español",
-        "english":"Inglés",
-        "swedish":"Sueco"
-    },
     "config": {
         "title":"El reloj - Adaptar lección",
         "explanation": "Ésta sección tiene como objetivo adaptar la lección de 'El Reloj' a tu necesidad o la del libro que estás siguiendo.",
-        "tutorialExplanation": "Explicaciónes en:",
         "spain":"España",
         "lAmerica":"Latinoamérica",
         "esType" : "Tipo de Español:",
         "content": "Contenido:",
         "moment": "Momento",
-        "slides":"Slides",
         "minutes": "Minutos",
         "parts":"Las partes del reloj.",
         "phrase1":"Frase 1: ... en punto.",
@@ -40,7 +33,11 @@
         "horas":"Las horas son los números grandes del reloj y cáda número representa una hora diferente. El reloj muestra solo doce horas lo que equivale a la mitad del día.",
         "minutos":"No todos los relojes muestran los minutos pero en éste reloj los minútos son los números pequeños. El reloj muestra solo sesenta minutos lo que equivale a una hora.",
         "horario":"El horario es el palito pequeño y gordito del reloj que indíca una hora específica.",
-        "minutero":"El minutero es el palito delgado y largo del reloj que indica un minuto específico."
+        "minutero":"El minutero es el palito delgado y largo del reloj que indica un minuto específico.",
+        "hours":"Horas",
+        "minutes":"Minutos",
+        "hourArm":"Horario",
+        "minuteArm":"Minutero"
     },
     "phrase1":{
         "title":"Frase 1 : '...en punto'",
@@ -113,7 +110,7 @@
     },
     "answer1":{
         "title":"¿Que hora es?",
-        "explanation":"Ésta pregunta se responde con 'Es ...' cuando la hora es singular y 'Son ...' cuando es plural."
+        "explanation":"Ésta pregunta se responde con 'Es ...' cuando la hora es singular y 'Son ...' cuando es plural. Cambia la hora en el reloj para ver más ejemplos."
     },
     "answer2":{
         "title":"¿A qué hora ...?",

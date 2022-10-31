@@ -21,7 +21,7 @@ class Button extends Component{
     
     render(){
         return(
-            <div className={`CustomButton button${this.props.type}`} id={this.props.id} onClick={(this.props.type==="inactive")?null:this.props.onClick}>{this.props.label}</div>
+            <div className={`CustomButton button${this.props.type}`} id={this.props.id} onClick={(this.props.type==="inactive")?null:this.props.onClick} name={this.props.name}>{this.props.label}</div>
         )
     }
 }
