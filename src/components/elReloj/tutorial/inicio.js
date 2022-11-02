@@ -531,6 +531,71 @@ class Home extends Component{
     }
 }
 
+class Answer0 extends Component{
+    render(){
+        return(
+            <div className="answer0">
+                <h1>{t('answer0.title')}</h1>
+                <p>{t('answer0.explanation')}</p>
+                <h2>¿Que hora es?</h2>
+                <h2>{t('answer0.and')}</h2>
+                <h2>¿A que hora ...?</h2>
+            </div>
+            )
+    }
+}
+
+class AnswerTemplate extends Component{
+    constructor(){
+        super();
+        this.state = {
+            hours: 13,
+            minutes:0
+        }
+        this.changeTime = this.changeTime.bind(this);
+        this.generatePhrase =this.generatePhrase.bind(this);
+    }
+
+    changeTime({hours,minutes}){
+        this.setState({
+            hours:hours,
+            minutes:minutes
+        });
+    }
+
+    generatePhrase(){
+        let phrase = es.phraseFinder(this.state.hours, this.state.minutes, this.props.esType, false, false, this.props.answerType,false)[0].phrase;
+        let index = phrase.indexOf(" ");
+        let begining= general.capitalize(phrase.slice(0,index));
+        let end = general.addPoint(phrase.slice(index+1,phrase.length));
+
+        return ([<h2 className ="answerTemplateHalfRightUnderElement" key="begining">{begining}</h2>,<p className ="answerTemplateHalfRightUnderElement" key="end">{end}</p>]);
+    }
+
+    render(){
+    return(
+        <div className="phraseTemplate">
+            <h1>{t(`${this.props.name}.title`)}</h1>
+            <p>{t(`${this.props.name}.explanation`)}</p>
+            <div className="phraseTemplateContent">
+                <h2>{t("examples")}</h2>
+                <div className="phraseTemplateHalfsContainer">
+                    <span className="phraseTemplateHalf">
+                        <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
+                    </span>
+                    <span className="phraseTemplateHalf answerTemplateHalfRight">
+                        <h2>{this.props.question}</h2>
+                        <div id="answerTemplateHalfRightUnder">
+                            {this.generatePhrase()}
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        )
+    }
+}
+
 class Parts0 extends Component{
     constructor(){
         super();
@@ -1129,7 +1194,7 @@ class Phrase2and31 extends Component{
                     <h2 id="phrases2and3Question">{t(`phrases2and3.question`)}</h2>
                     <p>{t(`phrases2and3.instructions`)}</p>
                 </div>
-                <Dropdown options={this.options} placeholder={t('dropdownPlaceholder')} recieveValue={this.recievevalue}/>
+                <Dropdown options={this.options} placeholder={t('phraseTemplate.dropdownPlaceholder')} recieveValue={this.recievevalue}/>
                 <div id="casaBlanca"></div>
             </div>
         )
@@ -1258,15 +1323,15 @@ class Periods0 extends Component{
                 <div className="periods0table">
                     <div className="periods0row" id="periods0row0">
                         <div className="periods0cell periods0cellRight" id="periods0row0cell0">01 - 12</div>
-                        <div className="periods0cell periods0cellLeft" id="periods0row0cell1">'...de la mañana.'</div>
+                        <div className="periods0cell periods0cellLeft" id="periods0row0cell1">'... de la mañana.'</div>
                     </div>
                     <div className="periods0row" id="periods0row1">
                         <div className="periods0cell periods0cellRight" id="periods0row1cell0">13 - 19</div>
-                        <div className="periods0cell periods0cellLeft" id="periods0row1cell1">'...de la tarde.'</div>
+                        <div className="periods0cell periods0cellLeft" id="periods0row1cell1">'... de la tarde.'</div>
                     </div>
                     <div className="periods0row" id="periods0row2">
                         <div className="periods0cell periods0cellRight" id="periods0row2cell0">19 - 00</div>
-                        <div className="periods0cell periods0cellLeft" id="periods0row2cell1">'...de la noche.'</div>
+                        <div className="periods0cell periods0cellLeft" id="periods0row2cell1">'... de la noche.'</div>
                     </div>
                 </div>
                 <p>{t("periods0.observe")}</p>
@@ -1306,71 +1371,6 @@ class Periods0 extends Component{
                         </span>
                 </div>
             </div>
-        )
-    }
-}
-
-class Answer0 extends Component{
-    render(){
-        return(
-            <div className="answer0">
-                <h1>{t('answer0.title')}</h1>
-                <p>{t('answer0.explanation')}</p>
-                <h2>¿Que hora es?</h2>
-                <h2>{t('answer0.and')}</h2>
-                <h2>¿A que hora ...?</h2>
-            </div>
-            )
-    }
-}
-
-class AnswerTemplate extends Component{
-    constructor(){
-        super();
-        this.state = {
-            hours: 10,
-            minutes:0
-        }
-        this.changeTime = this.changeTime.bind(this);
-        this.generatePhrase =this.generatePhrase.bind(this);
-    }
-
-    changeTime({hours,minutes}){
-        this.setState({
-            hours:hours,
-            minutes:minutes
-        });
-    }
-
-    generatePhrase(){
-        let phrase = es.phraseFinder(this.state.hours, this.state.minutes, this.props.esType, false, false, this.props.answerType,false)[0].phrase;
-        let index = phrase.indexOf(" ");
-        let begining= general.capitalize(phrase.slice(0,index));
-        let end = general.addPoint(phrase.slice(index+1,phrase.length));
-
-        return ([<h2 className ="answerTemplateHalfRightUnderElement" key="begining">{begining}</h2>,<p className ="answerTemplateHalfRightUnderElement" key="end">{end}</p>]);
-    }
-
-    render(){
-    return(
-        <div className="phraseTemplate">
-            <h1>{t(`${this.props.name}.title`)}</h1>
-            <p>{t(`${this.props.name}.explanation`)}</p>
-            <div className="phraseTemplateContent">
-                <h2>{t("examples")}</h2>
-                <div className="phraseTemplateHalfsContainer">
-                    <span className="phraseTemplateHalf">
-                        <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes}/>
-                    </span>
-                    <span className="phraseTemplateHalf answerTemplateHalfRight">
-                        <h2>{this.props.question}</h2>
-                        <div id="answerTemplateHalfRightUnder">
-                            {this.generatePhrase()}
-                        </div>
-                    </span>
-                </div>
-            </div>
-        </div>
         )
     }
 }

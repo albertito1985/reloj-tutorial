@@ -4,7 +4,6 @@
     "back":"Atrás",
     "examples":"Ejemplos",
     "excercises":"Ejercicios",
-    "dropdownPlaceholder": "Escoje la hora correcta.",
     "timeQuestion": "¿Qué hora es?",
     "config": {
         "title":"El reloj - Adaptar lección",
@@ -26,6 +25,19 @@
         "tutorial":"Tutorial",
         "excercises":"Ejercicios"
     },
+    "answer0":{
+        "title":"Responder con la hora",
+        "explanation":"Para responder con la hora hay que tener en cuenta qué pregunta estamos respondiendo. Hay basicamente dos preguntas que se responden con la hora:",
+        "and":"y"
+    },
+    "answer1":{
+        "title":"¿Que hora es?",
+        "explanation":"Ésta pregunta se responde con 'Es ...' cuando la hora es singular y 'Son ...' cuando es plural. Cambia la hora en el reloj para ver más ejemplos."
+    },
+    "answer2":{
+        "title":"¿A qué hora ...?",
+        "explanation":"Ésta pregunta se relaciona siempre a una acción y se responde normalmente con 'A ...' todo el día menos al mediodía, que se responde con 'Al ...'."
+    },
     "parts":{
         "title": "Las partes del reloj",
         "explanation": "Para aprender a decir la hora en español es necesario aprender las partes del reloj. Apunta con el ratón en los nombres de la derecha para resaltar las partes del reloj.",
@@ -39,20 +51,22 @@
         "hourArm":"Horario",
         "minuteArm":"Minutero"
     },
+    "minuteArm":{
+        "title":"El minutero",
+        "explanation": "El minutero indica la cantidad de minutos transcurrida dentro de cada hora. El minutero indica también que frase se usa para decir la hora. Agarra el munitero y dale una vuelta completa para ver los tres tipos de frases, cada una tiene un color diferente."
+    },
+    "phraseTemplate":{
+        "dropdownPlaceholder": "Escoje la hora correcta."
+    },
     "phrase1":{
         "title":"Frase 1 : '...en punto'",
         "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la frase termina con 'en punto'. En la frase 'Las diez en punto.' el número diez es la hora que acaba de comenzar.",
         "question":"¿A que hora come Juanito?",
-        "instructions":"Cambia la hora en el reloj y descubre a que hora en punto come Juanito.",
+        "instructions":"Mueve el reloj a la una en punto para ver a Juanito comer.",
         "dropdownPlaceholder": "Escoje la hora correcta.",
-        "explanation2": "De repente te diste cuenta que entre las horas '...en punto' hay dos que tienen su propio nombre, mediodía y medianoche. Mediodía son las 12:00 y medianoche las 00:00 ¿A que hora apunta el horario en éstas dos horas?.",
+        "explanation2": "De repente te diste cuenta que entre las horas '...en punto' hay dos que tienen su propio nombre, mediodía y medianoche. Mediodía son las 12:00 y medianoche las 00:00 ¿A que hora apunta el horario en éstas dos horas?",
         "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
-        "otherTime":"Otra",
         "emptyMessage":"Mueve el minutero a la zona blanca del reloj para ver más ejemplos."
-    },
-    "minuteArm":{
-        "title":"El minutero",
-        "explanation": "El minutero indica la cantidad de minutos transcurrida dentro de cada hora. El minutero indica también que frase se usa para decir la hora. Mueve el munitero para ver los tres tipos de frases, cada una tiene un color diferente."
     },
     "minutes15and30":{
         "title":"Minutos 15 y 30",
@@ -63,15 +77,8 @@
         "title":"Frase 2 : '... y ...'",
         "explanation": "Cuando el minutero se encuentra en la zona amarilla se utiliza la frase '... y ...'. En el ejemplo 'Las diez y cinco' el número diez es la hora que ha comenzado y el número cinco los minutos que han pasado desde las diez en punto.",
         "question":"¿A que hora bebe Juanito agua?",
-        "instructions":"Ahora hace Juanito una pausa para beber agua. Ten en cuenta que comenzó a comer a la una en punto.",
-        "dropdownPlaceholder": "Escoje la hora correcta.",
-        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
-        "otherTime":"Otra",
+        "instructions":"Ahora hace Juanito una pausa de su comida para beber agua. Ten en cuenta que comenzó a comer a la una en punto.",
         "emptyMessage":"Mueve el minutero a la zona amarilla del reloj para ver más ejemplos."
-    },
-    "phraseTemplate":{
-        "dropdownPlaceholder": "Escoje la hora correcta.",
-        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada."
     },
     "phrase3A":{
         "title":"Frase 3 : '... para ...'",
@@ -97,24 +104,11 @@
     "periods0":{
         "title":"Los periodos de tiempo",
         "explanation":"Como el día tiene 24 horas y el reloj solo 12, el reloj da dos vueltas cada día. Para diferenciar la primera vuelta de la segunda se agregan periodos de tiempo después de la hora según el siguiente cuadro.",
-        "observe":"Observa que entre las 19:00 y las 19:59 se puede utilizar de la tarde ó de la noche.",
+        "observe":"Observa que entre las 19:00 y las 19:59 se puede utilizar '... de la tarde' ó '... de la noche'.",
         "periods":"Periodos",
         "phrase":"Frase",
         "question":"Ahora junta una hora con su periodo",
         "instructions":"Haz click en una frase y un periodo para decir la hora exacta."
-    },
-    "answer0":{
-        "title":"Responder con la hora",
-        "explanation":"Para responder con la hora hay que tener en cuenta qué pregunta estamos respondiendo. Hay basicamente dos preguntas que se responden con la hora:",
-        "and":"y"
-    },
-    "answer1":{
-        "title":"¿Que hora es?",
-        "explanation":"Ésta pregunta se responde con 'Es ...' cuando la hora es singular y 'Son ...' cuando es plural. Cambia la hora en el reloj para ver más ejemplos."
-    },
-    "answer2":{
-        "title":"¿A qué hora ...?",
-        "explanation":"Ésta pregunta se relaciona siempre a una acción y se responde normalmente con 'A ...' todo el día menos al mediodía, que se responde con 'Al ...'."
     },
     "end":{
         "title":"El tutorial de el reloj ha terminado",

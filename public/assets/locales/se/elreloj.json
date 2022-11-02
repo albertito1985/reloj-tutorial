@@ -4,7 +4,6 @@
     "back":"Bakåt",
     "examples":"Exempel",
     "excercises":"Övningar",
-    "dropdownPlaceholder": "Välj den rätta tiden.",
     "timeQuestion": "¿Qué hora es?",
     "config": {
         "title":"El reloj - Anpassa lektionen",
@@ -54,72 +53,66 @@
     },
     "minuteArm":{
         "title":"Minutvisaren",
-        "explanation": "Minutvisaren anger mängden av minuter som har passerat inom varje timme. Minutvisaren anger också vilken fras man ska använda för att läsa klockan. Flytta på minutvisaren för att se de tre olika typer av fraser som används för att läsa klockan på spanska. Varje fras har en egen färg."
-    },
-    "phrase1":{
-        "title":"Frase 1 : '...en punto'",
-        "explanation": "Cuando el minutero se encuentra sobre el número 12 ó en la zona blanca, la frase termina con 'en punto'. En la frase 'Las diez en punto.' el número diez es la hora que acaba de comenzar.",
-        "question":"¿A que hora come Juanito?",
-        "instructions":"Cambia la hora en el reloj y descubre a que hora en punto come Juanito.",
-        "dropdownPlaceholder": "Escoje la hora correcta.",
-        "explanation2": "De repente te diste cuenta que entre las horas '...en punto' hay dos que tienen su propio nombre, mediodía y medianoche. Mediodía son las 12:00 y medianoche las 00:00 ¿A que hora apunta el horario en éstas dos horas?.",
-        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
-        "otherTime":"Otra",
-        "emptyMessage":"Mueve el minutero a la zona blanca del reloj para ver más ejemplos."
-    },
-    
-    "minutes15and30":{
-        "title":"Minutos 15 y 30",
-        "explanation": "Para decir la hora en español en lugar de decir 15 (minutos) se dice cuarto y en lugar de decir 30 (minutos) se dice media. Escribe los nombres al costado de las sifras.",
-        "placeholder": "Escribe aquí"
-    },
-    "phrase2":{
-        "title":"Frase 2 : '... y ...'",
-        "explanation": "Cuando el minutero se encuentra en la zona amarilla se utiliza la frase '... y ...'. En el ejemplo 'Las diez y cinco' el número diez es la hora que ha comenzado y el número cinco los minutos que han pasado desde las diez en punto.",
-        "question":"¿A que hora bebe Juanito agua?",
-        "instructions":"Ahora hace Juanito una pausa para beber agua. Ten en cuenta que comenzó a comer a la una en punto.",
-        "dropdownPlaceholder": "Escoje la hora correcta.",
-        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada.",
-        "otherTime":"Otra",
-        "emptyMessage":"Mueve el minutero a la zona amarilla del reloj para ver más ejemplos."
+        "explanation": "Minutvisaren anger mängden av minuter som har passerat inom varje timme. Minutvisaren anger också vilken fras man ska använda för att läsa klockan. Ta minutvisaren och ge det ett varv för att se de tre olika typer av fraser som används för att läsa klockan på spanska. Varje fras har en egen färg."
     },
     "phraseTemplate":{
-        "dropdownPlaceholder": "Escoje la hora correcta.",
-        "excercisesExplanation":"Mueve las manijas del reloj a la hora indicada."
+        "dropdownPlaceholder": "Välj den rätta tiden."
+    },
+    "phrase1":{
+        "title":"Fras 1 : '... en punto'",
+        "explanation": "När minutvisaren pekar på nummer tolv eller är i den vita zonen i den här klockan, klockslaget slutar med 'en punto'. I klockslaget 'Las diez en punto.', diez är timmen som har precis påbörjats.",
+        "question":"¿A que hora come Juanito?",
+        "instructions":"Flytta på klockan till 'la una en punto' för att se Juanito äta.",
+        "explanation2": "Plötsligt märker du att några timmar '... en punto' har sit eget namn, 'mediodía' och 'medianoche'. Mediodía är kl 12:00 och medianoche 00:00. Vilken tid pekar klockan på i de här två timmarna?",
+        "excercisesExplanation":"Flyta på klockarmarna till den indikerade tiden.",
+        "emptyMessage":"Flytta minutvisaren till den vita zonen för att se flera exempel."
+    },
+    "minutes15and30":{
+        "title":"Minuter 15 och 30",
+        "explanation": "För att säga klockslaget på spanska istället för 15 (minuter)säger man cuarto och istället för 30 (minuter) säger man media. Skriv namnet bredvid motsvarande siffra.",
+        "placeholder": "Skriv här"
+    },
+    "phrase2":{
+        "title":"Fras 2 : '... y ...'",
+        "explanation": "När minutvisaren är i den gula zonen i den här klockan använder man frasen '... y ...' för att säga klockslaget. I exemplet 'Las diez y cinco', diez är timmen som har påbörjat och cinco är minuterna som har passerat sedan klockan tio påbörjade.",
+        "question":"¿A que hora bebe Juanito agua?",
+        "instructions":"Nu gör Juanito en paus från att äta för att dricka vatten. Lägg märke till att han började äta klockan ett.",
+        "otherTime":"Otra",
+        "emptyMessage":"Flytta minutvisaren till den gula zonen för att se flera exempel."
     },
     "phrase3A":{
-        "title":"Frase 3 : '... para ...'",
-        "explanation": "La frase '... para ...' se utiliza cuando el minutero está en la zona naranja de éste reloj. En el ejemplo 'Veinte para las diez.' el número veinte son los minutos que faltan para las diez en punto y número diez es la hora que va a comenzar.",
+        "title":"Fras 3 : '... para ...'",
+        "explanation": "Frasen '... para ...' används när minutvisaren är i den orangea zonen i den här klockan. I exemplet 'Veinte para las diez.', veinte är minuterna som saknas till klockan tio och diez är timmen som ska påbörja.",
         "question":"¿A que hora ve Juanito la estatua?",
-        "instructions":"Mientras Juanito come, una estatua de una ardilla llama su atención.",
-        "emptyMessage":"Mueve el minutero a la zona naranja del reloj para ver más ejemplos." 
+        "instructions":"När Juanito äter, en staty av en ekorre kallar hans uppmärksamhet.",
+        "emptyMessage":"Flytta minutvisaren till den orangea zonen för att se flera exempel." 
     },
     "phrase3B":{
-        "title":"Frase 3 : '... menos ...'",
-        "explanation": "La frase '... menos ...' se utiliza cuando el minutero está en la zona naranja de éste reloj. En el ejemplo 'Diez menos veinte.' el número diez es la hora que va a comenzar y el numero veinte son los minutos que faltan para las diez en punto.",
+        "title":"Fras 3 : '... menos ...'",
+        "explanation": "Frasen '... menos ...' används när minutvisaren är i den orangea zonen i den här klockan. I exemplet 'Diez menos veinte.' diez är timmen som ska påbörja och veinte är minuterna som saknas till klockan tio.",
         "question":"¿A que hora ve Juanito la estatua?",
-        "instructions":"Mientras Juanito come, una estatua de una ardilla llama su atención.",
-        "emptyMessage":"Mueve el minutero a la zona naranja del reloj para ver más ejemplos."
+        "instructions":"När Juanito äter, en staty av en ekorre kallar hans uppmärksamhet.",
+        "emptyMessage":"Flytta minutvisaren till den orangea zonen för att se flera exempel."
     },
     "phrases2and3":{
-        "title":"Frases 2 y 3",
-        "explanation": "Entre los minutos treinta y cinco, y cuarenta se puede utilizar la frase dos ó la tres.",
+        "title":"Fras 2 och 3",
+        "explanation": "Mellan minuterna trettiofem och fyrtio kan man använda både fras 2 och fras 3.",
         "emptyMessage":"Mueve el minutero a la zona que tiene naranja y amarillo para ver más ejemplos.",
         "question":"¿Aque hora va Juanito a la casa blanca?",
-        "instructions":"Juanito decide irse de excursión a la casa blanca a la una y cuarenta. Elige la hora que equivale a la una y cuarenta."
+        "instructions":"Juanito bestämmer sig att gå på utflykt till det vita huset 'a la una y cuarenta'. Välj klockslaget som motsvarar 'la una y cuarenta'."
     },
     "periods0":{
-        "title":"Los periodos de tiempo",
-        "explanation":"Como el día tiene 24 horas y el reloj solo 12, el reloj da dos vueltas cada día. Para diferenciar la primera vuelta de la segunda se agregan periodos de tiempo después de la hora según el siguiente cuadro.",
-        "observe":"Observa que entre las 19:00 y las 19:59 se puede utilizar de la tarde ó de la noche.",
-        "periods":"Periodos",
-        "phrase":"Frase",
-        "question":"Ahora junta una hora con su periodo",
-        "instructions":"Haz click en una frase y un periodo para decir la hora exacta."
+        "title":"Tidsperioder",
+        "explanation":"I och med att dagen har 24 timmar och klockan enbart 12, timmvisaren gåt två varv varje dag. För att urskilja det första från det andra varvet lägger man till en tidsperiod efter klockslaget enligt följande tabell:",
+        "observe":"Lägg märke till att mellan klockan 19:00 och 19:59 kan man använda '... de la tarde' ó '... de la noche'.",
+        "periods":"Period",
+        "phrase":"Fras",
+        "question":"Nu ska du binda ihop en klockslag med sin period.",
+        "instructions":"Klicka på en fras och en period för att bygga ett exakt klockslag."
     },
     "end":{
-        "title":"El tutorial de el reloj ha terminado",
-        "explanation":"Vuelve a la página principal presionando el simbolo de Español 24/7 ó vuelve a hacer el tutorial presionando el botón de abajo.",
-        "buttonLabel":"Volver a empezar"
+        "title":"Tutorialen är nu klar",
+        "explanation":"Gå tillbaka till startsidan genom att klicka på Español 24/7 symbolen eller gör om tutorialen genom att trycka på knappen här nere.",
+        "buttonLabel":"Gör om"
     }
 }
