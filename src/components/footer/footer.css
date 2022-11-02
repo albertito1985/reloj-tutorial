@@ -28,4 +28,9 @@ footer div{
 
 footer a{
     color:white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

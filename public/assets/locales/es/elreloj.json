@@ -77,7 +77,7 @@
         "title":"Frase 2 : '... y ...'",
         "explanation": "Cuando el minutero se encuentra en la zona amarilla se utiliza la frase '... y ...'. En el ejemplo 'Las diez y cinco' el número diez es la hora que ha comenzado y el número cinco los minutos que han pasado desde las diez en punto.",
         "question":"¿A que hora bebe Juanito agua?",
-        "instructions":"Ahora hace Juanito una pausa de su comida para beber agua. Ten en cuenta que comenzó a comer a la una en punto.",
+        "instructions":"Ahora hace Juanito una pausa de su comida para beber agua. Mueve el reloj a la una y cuarto para ver a Juanito beber.",
         "emptyMessage":"Mueve el minutero a la zona amarilla del reloj para ver más ejemplos."
     },
     "phrase3A":{

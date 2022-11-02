@@ -76,7 +76,7 @@
         "title":"Fras 2 : '... y ...'",
         "explanation": "När minutvisaren är i den gula zonen i den här klockan använder man frasen '... y ...' för att säga klockslaget. I exemplet 'Las diez y cinco', diez är timmen som har påbörjat och cinco är minuterna som har passerat sedan klockan tio påbörjade.",
         "question":"¿A que hora bebe Juanito agua?",
-        "instructions":"Nu gör Juanito en paus från att äta för att dricka vatten. Lägg märke till att han började äta klockan ett.",
+        "instructions":"Nu gör Juanito en paus från att äta för att dricka vatten. Flytta på klockan till 'la una y cuarto' för att se Juanito dricka.",
         "otherTime":"Otra",
         "emptyMessage":"Flytta minutvisaren till den gula zonen för att se flera exempel."
     },
@@ -84,14 +84,14 @@
         "title":"Fras 3 : '... para ...'",
         "explanation": "Frasen '... para ...' används när minutvisaren är i den orangea zonen i den här klockan. I exemplet 'Veinte para las diez.', veinte är minuterna som saknas till klockan tio och diez är timmen som ska påbörja.",
         "question":"¿A que hora ve Juanito la estatua?",
-        "instructions":"När Juanito äter, en staty av en ekorre kallar hans uppmärksamhet.",
+        "instructions":"När Juanito äter, en staty av en ekorre kallar hans uppmärksamhet. Flytta på klockan till 'diez para las dos' för att se Juanito dricka.",
         "emptyMessage":"Flytta minutvisaren till den orangea zonen för att se flera exempel." 
     },
     "phrase3B":{
         "title":"Fras 3 : '... menos ...'",
         "explanation": "Frasen '... menos ...' används när minutvisaren är i den orangea zonen i den här klockan. I exemplet 'Diez menos veinte.' diez är timmen som ska påbörja och veinte är minuterna som saknas till klockan tio.",
         "question":"¿A que hora ve Juanito la estatua?",
-        "instructions":"När Juanito äter, en staty av en ekorre kallar hans uppmärksamhet.",
+        "instructions":"När Juanito äter, en staty av en ekorre kallar hans uppmärksamhet. Flytta på klockan till 'las dos menos diez' för att se Juanito dricka.",
         "emptyMessage":"Flytta minutvisaren till den orangea zonen för att se flera exempel."
     },
     "phrases2and3":{

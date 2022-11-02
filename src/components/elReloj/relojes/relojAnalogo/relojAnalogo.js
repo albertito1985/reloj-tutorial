@@ -10,7 +10,8 @@ export class RelojAnalogo extends Component{
       this.state = {
         moving: false,
         handle: undefined,
-        showMinutes:false,
+        showMinutes:true,
+        oneHandle:undefined,
         clockWork:{
           degrees:{
             hours:0,
@@ -25,24 +26,31 @@ export class RelojAnalogo extends Component{
     }
     
     static getDerivedStateFromProps(props,state){
-        if(props.answer){
-          return {clockWork:{
-            degrees:{
-              hours:reloj.states.hours,
-              minutes:reloj.states.minutes
-            }
-          }}
-        }else{
-          let clockWork = {};
-        clockWork.degrees = reloj.degreesFromNumber(props.hours, props.minutes);
-        reloj.hours = props.hours;
-        reloj.minutes = props.minutes;
-        reloj.period = translate.time24hto12h({hours: props.hours,minutes:props.minutes}).period;
-        reloj.states ={...clockWork.degrees};
-        let showMinutes = (props.showMinutes)?true:false;
-        return {clockWork,showMinutes};
+      if(props.answer){
+        return {clockWork:{
+          degrees:{
+            hours:reloj.states.hours,
+            minutes:reloj.states.minutes
+          }
+        }}
+      }else{
+        let clockWork = {};
+      clockWork.degrees = reloj.degreesFromNumber(props.hours, props.minutes);
+      reloj.hours = props.hours;
+      reloj.minutes = props.minutes;
+      reloj.period = translate.time24hto12h({hours: props.hours,minutes:props.minutes}).period;
+      reloj.states ={...clockWork.degrees};
+      let responseObject = {clockWork};
+      if(props.showMinutes !== undefined){
+        responseObject.showMinutes = (props.showMinutes === true)?true:false;
+      };      
+      if(props.oneHandle !== undefined){
+        if(props.oneHandle === "minutero" || props.oneHandle === "horario"){
+          responseObject.oneHandle = props.oneHandle;
         }
-        
+      }
+      return {...responseObject};
+      }
     }
   
     componentDidMount(){
@@ -50,12 +58,22 @@ export class RelojAnalogo extends Component{
       if(this.props.interaction === true){
         let manillaContainers = document.getElementsByClassName("manillaContainer");
         manillaContainers.forEach((container)=>{
-          container.classList.add("active");
-          container.addEventListener('mousedown',this.handle.eventHandlers.mouseDown);
+          if(this.state.oneHandle !== undefined){
+            if(this.state.oneHandle === container.id){
+              container.classList.add("active");
+              container.addEventListener('mousedown',this.handle.eventHandlers.mouseDown);
+            }
+          }else{
+            container.classList.add("active");
+            container.addEventListener('mousedown',this.handle.eventHandlers.mouseDown);
+          }
         });
-        let reloj = document.getElementById("reloj");
-        reloj.addEventListener('mouseup',this.handle.eventHandlers.mouseUp);
-        reloj.addEventListener('mousemove',this.handle.eventHandlers.mouseMove);
+        //delete if it do not causes a bug
+        // let reloj = document.getElementById("reloj");
+        // reloj.addEventListener('mouseup',this.handle.eventHandlers.mouseUp);
+        // reloj.addEventListener('mousemove',this.handle.eventHandlers.mouseMove);
+        document.addEventListener('mouseup',this.handle.eventHandlers.mouseUp);
+        document.addEventListener('mousemove',this.handle.eventHandlers.mouseMove);
       }
     }
   
@@ -169,7 +187,7 @@ export class RelojAnalogo extends Component{
               <p className="numero">12</p>
             </div>
           </div>
-          <div className="minutosContainer" style={{display:(this.state.showMinutes === true || this.state.handle === "minutero")? "flex":"none"}}>
+          <div className="minutosContainer" style={{display:(this.state.showMinutes === true && this.state.handle === "minutero")? "flex":"none"}}>
             <div className="minutos numero1">
               <p className="numero">5</p>
             </div>

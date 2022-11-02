@@ -113,9 +113,9 @@ label, td, th, .title{
     gap:5px;
 }
 
-.phraseTemplateHalf .minutosContainer .minutos{
+/* .phraseTemplateHalf .minutosContainer .minutos{
     display:none;
-}
+} */
 
 #horario .manilla.analogHighlight,
 #minutero .manilla.analogHighlight,
