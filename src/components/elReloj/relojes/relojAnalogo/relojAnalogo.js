@@ -187,7 +187,8 @@ export class RelojAnalogo extends Component{
               <p className="numero">12</p>
             </div>
           </div>
-          <div className="minutosContainer" style={{display:(this.state.showMinutes === true && this.state.handle === "minutero")? "flex":"none"}}>
+          {/* <div className={`minutosContainer`} style={{display:(this.state.showMinutes === true && this.state.handle === "minutero")? "flex":"none"}}> */}
+          <div className={`minutosContainer${(this.state.showMinutes === true && this.state.handle === "minutero")? " minutosContainerShow":""}`} >
             <div className="minutos numero1">
               <p className="numero">5</p>
             </div>

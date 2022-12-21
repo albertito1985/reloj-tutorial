@@ -136,6 +136,11 @@ label, td, th, .title{
 .minutosContainer.analogHighlight .minutos{
     color:var(--magenta);
 }
+
+.reloj .minutosContainer.analogHighlight{
+    display:block;
+}
+
 .horasContainer.analogHighlight .horas{
     color:var(--magenta);
     font-weight:bolder;

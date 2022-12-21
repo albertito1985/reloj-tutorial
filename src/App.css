@@ -68,21 +68,18 @@ a {
 }
 
 .contentBody {
-  background-image: url('./images/time-g42305ce1d_19202.jpg');
+  /* background-image: url('./images/time-g42305ce1d_19202.jpg'); */
+  background-image: url('./images/backgroundSpanksa2.svg');
   background-repeat: none;
   background-size:cover;
   width:100%;
-  min-height:calc(100vh - 99px - 250px);
+  min-height:calc(100vh - 99px);
   display:flex;
   justify-content: center;
   align-items: center;
   padding:50px;
   position:relative;
 }
-
-
-
-
 
 .disco .arrow{ /* ????????? */
 font-size:2em;

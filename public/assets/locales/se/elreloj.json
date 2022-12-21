@@ -27,7 +27,7 @@
     },
     "answer0":{
         "title":"Att svara med klockslaget",
-        "explanation":"För att svara med klockslaget måste man ta hänsyn till vilken fråga du ska svara på. Det finns i stort sätt två frågor som svaras med klockslaget:",
+        "explanation":"För att svara med klockslaget måste man ta hänsyn till vilken fråga du ska svara på. På spanska finns det i stort sätt två frågor som svaras med klockslaget:",
         "and":"och"
     },
     "answer1":{
@@ -36,11 +36,11 @@
     },
     "answer2":{
         "title":"¿A qué hora ...?",
-        "explanation":"Den här frågan relateras alltid till en handling och den svaras oftast med 'A ...' hela dagen förutom klockan tolv där den svas med 'Al ...'."
+        "explanation":"Den här frågan relateras alltid till en handling och den svaras med 'A ...' hela dagen förutom klockan tolv där den svas med 'Al ...'."
     },
     "parts":{
         "title": "Klockans delar",
-        "explanation": "För att lära dig klockslaget på spanska är det nödvändigt att veta klockans delar. Hovra med musen på nämnen som finns till höger om klockan för att belysa vilken del det handlar om.",
+        "explanation": "För att lära dig klockslaget på spanska är det nödvändigt att veta klockans delar. För musen över nämnen som finns till höger om klockan för att belysa vilken del det handlar om.",
         "prompt": "Hovra på namnen till höger om klockan.",
         "horas":"Timmarna, eller 'Las horas' på spanska, är de stora numren som finns i klockan. Varje nummer motsvarar en olik tid. Klockan visar enbart tjugofyra timmar, vilket motsvarar halva dygnet.",
         "minutos":"Minutrarna, eller 'los minutos' på spanska, visas inte ofta på klockan. I den här specifika klockan visas som de små nummren. Klockan visar enbart sextio minuter, vilket motsvarar en timme.",
@@ -62,21 +62,21 @@
         "title":"Fras 1 : '... en punto'",
         "explanation": "När minutvisaren pekar på nummer tolv eller är i den vita zonen i den här klockan, klockslaget slutar med 'en punto'. I klockslaget 'Las diez en punto.', diez är timmen som har precis påbörjats.",
         "question":"¿A que hora come Juanito?",
-        "instructions":"Flytta på klockan till 'la una en punto' för att se Juanito äta.",
+        "instructions":"Ändra klockan till 'la una en punto' för att se Juanito äta.",
         "explanation2": "Plötsligt märker du att några timmar '... en punto' har sit eget namn, 'mediodía' och 'medianoche'. Mediodía är kl 12:00 och medianoche 00:00. Vilken tid pekar klockan på i de här två timmarna?",
         "excercisesExplanation":"Flyta på klockarmarna till den indikerade tiden.",
         "emptyMessage":"Flytta minutvisaren till den vita zonen för att se flera exempel."
     },
     "minutes15and30":{
         "title":"Minuter 15 och 30",
-        "explanation": "För att säga klockslaget på spanska istället för 15 (minuter)säger man cuarto och istället för 30 (minuter) säger man media. Skriv namnet bredvid motsvarande siffra.",
+        "explanation": "För att säga klockslaget på spanska istället för femton (minuter) säger man cuarto och istället för trettio (minuter) säger man media. Skriv namnet bredvid motsvarande siffra.",
         "placeholder": "Skriv här"
     },
     "phrase2":{
         "title":"Fras 2 : '... y ...'",
-        "explanation": "När minutvisaren är i den gula zonen i den här klockan använder man frasen '... y ...' för att säga klockslaget. I exemplet 'Las diez y cinco', diez är timmen som har påbörjat och cinco är minuterna som har passerat sedan klockan tio påbörjade.",
+        "explanation": "När minutvisaren är i den gula zonen i den här klockan använder man frasen '... y ...' för att säga klockslaget. I exemplet 'Las diez y cinco', diez är timmen som har påbörjat och cinco är minuterna som har passerat sedan den timmen påbörjade.",
         "question":"¿A que hora bebe Juanito agua?",
-        "instructions":"Nu gör Juanito en paus från att äta för att dricka vatten. Flytta på klockan till 'la una y cuarto' för att se Juanito dricka.",
+        "instructions":"Nu gör Juanito en paus från att äta för att dricka vatten. Ändra klockan till 'la una y cuarto' för att se Juanito dricka.",
         "otherTime":"Otra",
         "emptyMessage":"Flytta minutvisaren till den gula zonen för att se flera exempel."
     },
@@ -84,14 +84,14 @@
         "title":"Fras 3 : '... para ...'",
         "explanation": "Frasen '... para ...' används när minutvisaren är i den orangea zonen i den här klockan. I exemplet 'Veinte para las diez.', veinte är minuterna som saknas till klockan tio och diez är timmen som ska påbörja.",
         "question":"¿A que hora ve Juanito la estatua?",
-        "instructions":"När Juanito äter, en staty av en ekorre kallar hans uppmärksamhet. Flytta på klockan till 'diez para las dos' för att se Juanito dricka.",
+        "instructions":"När Juanito äter, en staty av en ekorre kallar hans uppmärksamhet. Ändra klockan till 'diez para las dos' för att se Juanito dricka.",
         "emptyMessage":"Flytta minutvisaren till den orangea zonen för att se flera exempel." 
     },
     "phrase3B":{
         "title":"Fras 3 : '... menos ...'",
         "explanation": "Frasen '... menos ...' används när minutvisaren är i den orangea zonen i den här klockan. I exemplet 'Diez menos veinte.' diez är timmen som ska påbörja och veinte är minuterna som saknas till klockan tio.",
         "question":"¿A que hora ve Juanito la estatua?",
-        "instructions":"När Juanito äter, en staty av en ekorre kallar hans uppmärksamhet. Flytta på klockan till 'las dos menos diez' för att se Juanito dricka.",
+        "instructions":"När Juanito äter, en staty av en ekorre kallar hans uppmärksamhet. Ändra klockan till 'las dos menos diez' för att se Juanito dricka.",
         "emptyMessage":"Flytta minutvisaren till den orangea zonen för att se flera exempel."
     },
     "phrases2and3":{
@@ -103,12 +103,12 @@
     },
     "periods0":{
         "title":"Tidsperioder",
-        "explanation":"I och med att dagen har 24 timmar och klockan enbart 12, timmvisaren gåt två varv varje dag. För att urskilja det första från det andra varvet lägger man till en tidsperiod efter klockslaget enligt följande tabell:",
+        "explanation":"I och med att dagen har 24 timmar och klockan enbart 12, timmvisaren gåt två varv varje dag. För att urskilja det första från det andra varvet, dagen is uppdelad i perioder, vilka man lägger efter klockslaget för att säga den exakta tiden.",
         "observe":"Lägg märke till att mellan klockan 19:00 och 19:59 kan man använda '... de la tarde' ó '... de la noche'.",
         "periods":"Period",
-        "phrase":"Fras",
+        "phrase":"Klockslag",
         "question":"Nu ska du binda ihop en klockslag med sin period.",
-        "instructions":"Klicka på en fras och en period för att bygga ett exakt klockslag."
+        "instructions":"Klicka på en klockslag och en period för att bygga ett exakt klockslag."
     },
     "end":{
         "title":"Tutorialen är nu klar",

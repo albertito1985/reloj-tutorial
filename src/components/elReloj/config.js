@@ -1,4 +1,5 @@
 import { t, setDefaultNamespace } from 'i18next';
+import { NavLink } from 'react-router-dom'
 import {Component} from 'react';
 import { withTranslation} from 'react-i18next';
 import './pages.css';
@@ -11,6 +12,7 @@ class Configuration extends Component {
         this.state={
             totalTime:0,
             extraTime:0,
+            valuesString:undefined,
             actualMoments:{
                 lang: "spanish",
                 esType:"spain"
@@ -126,10 +128,12 @@ class Configuration extends Component {
         prelMoments={...prelMoments, ...prelMomentsExtras}
         let extraTime = this.calculateTime(prelMomentsExtras);
         let totalTime = this.calculateTime(prelMoments);
+        let valuesString = this.valuesString();
+        console.log(valuesString)
 
         this.setState({
             actualMoments:{...prelMoments},
-            totalTime, extraTime
+            totalTime, extraTime, valuesString
         });
     }
 
@@ -148,13 +152,13 @@ class Configuration extends Component {
 
     handleTutorial(){
         let data = this.valuesString();
-        let address= `./elreloj/tutorial${data}`
+        let address= `./elreloj/tutorial${data}`;
         window.location.href = address;
     }
 
     handleExcercises(){
         let data = this.valuesString();
-        let address= `./elreloj/exercise1${data}`
+        let address= `./elreloj/exercise1${data}`;
         window.location.href = address;
     }
     
@@ -236,8 +240,10 @@ class Configuration extends Component {
                         </div>
                     </form>
                     <div id="buttons">
-                        <Button type={this.state.totalTime>0?"1":"inactive"} onClick={this.handleTutorial} label={t('config.tutorial')}/>
-                        <Button type={this.state.totalTime>0?"1":"inactive"} onClick={this.handleExcercises} label={t('config.excercises')}/> 
+                        {/* <NavLink to={`./tutorial${this.valueString}`}><Button type={this.state.totalTime>0?"1":"inactive"} onClick={this.handleTutorial} label={t('config.tutorial')}/></NavLink>
+                        <NavLink to={`./exercise1${this.valueString}`}><Button type={this.state.totalTime>0?"1":"inactive"} onClick={this.handleExcercises} label={t('config.excercises')}/></NavLink> */}
+                        <NavLink to={`./tutorial${this.state.valuesString}`}><Button type={this.state.totalTime>0?"1":"inactive"} label={t('config.tutorial')}/></NavLink>
+                        <NavLink to={`./exercise1${this.state.valuesString}`}><Button type={"inactive"} label={t('config.excercises')}/></NavLink>
                     </div>
                 </div>
            </div>

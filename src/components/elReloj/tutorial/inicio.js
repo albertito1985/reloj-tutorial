@@ -23,7 +23,7 @@ class Tutorial extends Component {
     constructor(){
         super();
         this.state={
-            page:6,
+            page:0,
             next:undefined,
             back:undefined,
             confetti:false
@@ -682,7 +682,7 @@ class Parts0 extends Component{
                     <p>{t('parts.explanation')}</p>
                     <div className="phraseTemplateHalfsContainer parts0">
                         <div className="phraseTemplateHalf" id="partsHalfLeft">
-                        <RelojAnalogo hours={this.state.hours} minutes={this.state.minutes} showMinutes="true"/>
+                        <RelojAnalogo hours={this.state.hours} minutes={this.state.minutes}/>
                         </div>
                         <div className="phraseTemplateHalf" id="partsHalfRight">
                             <Button label={t('parts.hours')} name="horas" type="2"/>

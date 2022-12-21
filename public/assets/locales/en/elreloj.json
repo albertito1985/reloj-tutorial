@@ -1,0 +1,117 @@
+{
+    "titulo": "Learn how to read the clock in Spanish",
+    "next": "Next",
+    "back":"Back",
+    "examples":"Example",
+    "excercises":"Exercises",
+    "timeQuestion": "¿Qué hora es?",
+    "config": {
+        "title":"El reloj - Adapt the lession",
+        "explanation": "This section aims to adapt the lession of 'El reloj' to your needs or to the needs of the book you are following.",
+        "spain":"Spain",
+        "lAmerica":"Latinamerica",
+        "esType" : "Type of Spanish:",
+        "content": "Content:",
+        "moment": "Moment",
+        "minutes": "Minutes",
+        "parts":"Parts of the clock.",
+        "phrase1":"Phrase 1: ... en punto.",
+        "phrase2":"Phrase 2: ... y ....",
+        "phrase3":"Phrase 3: ... para ....",
+        "periods":"The parts of the day (mañana, tarde y noche).",
+        "answer":"To answer with the time.",
+        "extra":"Extra",
+        "total":"Total",
+        "tutorial":"Tutorial",
+        "excercises":"Exercises"
+    },
+    "answer0":{
+        "title":"To tell the time",
+        "explanation":"To tell the time you need first to regard which question you are answering. In Spanish there are basically two questions that can be answered with the time:",
+        "and":"and"
+    },
+    "answer1":{
+        "title":"¿Que hora es?",
+        "explanation":"This question is answered with 'Es ...' when the time is singular, and 'Son ...' when it is plural. Move the arms of the clock to see more examples."
+    },
+    "answer2":{
+        "title":"¿A qué hora ...?",
+        "explanation":"This question is always related to an action, and it is often answered with 'A ...' all day but on midday, where you answer with 'Al ...'."
+    },
+    "parts":{
+        "title": "The parts of the clock",
+        "explanation": "To tell the time in Spanish it is necesary to learn the parts of the clock. Hover the names to the right of the clock to highlight its parts.",
+        "prompt": "Hover over the names to the right of the clock.",
+        "horas":"The hours are the big numbers in the clock and each number represents a different hour. The clock shows only twelve hours which is equivalen to half a day.",
+        "minutos":"Not all the clocks show the minutes but the minutes in this specific clock are the tiny numbers. The clock shows only sixty minutes which is equivalent to an hour.",
+        "horario":"The hour arm is the fat and short stick which indicates a specific hour.",
+        "minutero":"The minute arm is the thin and long stick which indicates a specific minut.",
+        "hours":"Hours",
+        "minutes":"Minutes",
+        "hourArm":"Hour arm",
+        "minuteArm":"Minute arm"
+    },
+    "minuteArm":{
+        "title":"The minute arm",
+        "explanation": "The minute arm indicates the amount of minutes passed in each hour. The minute arm indicates also which phrase it is used to tell the time. Take the minute arm and turn it around the clock to see the three types of phrases used in Spanish. Each one will have a different color."
+    },
+    "phraseTemplate":{
+        "dropdownPlaceholder": "Choose the correct time."
+    },
+    "phrase1":{
+        "title":"Phrase 1 : '...en punto'",
+        "explanation": "When the minute arm is pointing at number 12, or is in the white zone, the time ends with 'en punto'. In the phrase 'Las diez en punto.', diez is the hour that just begun.",
+        "question":"¿A que hora come Juanito?",
+        "instructions":"Change the clock to 'la una en punto' to see Juanito eat.",
+        "explanation2": "You maybe noticed that between the '...en punto' hours there is two which have their own name, mediodía and medianoche. Mediodía is at 12:00 and medianoche at 00:00. Which hour does the hour arm points to in those hours?",
+        "excercisesExplanation":"Change the clock to the indicated time.",
+        "emptyMessage":"Move the minute arm to the white zone in the clock to see more examples."
+    },
+    "minutes15and30":{
+        "title":"Minutes 15 and 30",
+        "explanation": "To tell the time in spanish, instead of saying fifteen (minutes) you say cuarto and instead of saying thirty (minutes) you say media. Write the names beside each number.",
+        "placeholder": "Write here"
+    },
+    "phrase2":{
+        "title":"Phrase 2 : '... y ...'",
+        "explanation": "When the minute arm is at the yellow zone, you use the phrase '... y ...'. In the example 'Las diez y cinco', diez is the hour that just begun, and cinco are the mintues gone since the hour begun.",
+        "question":"¿A que hora bebe Juanito agua?",
+        "instructions":"Now takes Juanito a pause from his food to drink a little water. Change the clock to 'la una y cuarto' to see Juanito drink.",
+        "emptyMessage":"Move the minute arm to the yellow zone of the clock to see more examples."
+    },
+    "phrase3A":{
+        "title":"Phrase 3 : '... para ...'",
+        "explanation":"When the minute arm is at the orange zone, you use the phrase '... para ...'. In the example 'Veinte para las diez.', veinte are the remaining minutes until the incomming hour, and diez is the incomming hour.",
+        "question":"¿A que hora ve Juanito la estatua?",
+        "instructions":"When Juanito is eating, a statue of asquirrel calls his attention. Change the clock to 'diez para las dos' to see the statue.",
+        "emptyMessage":"Move the minute arm to the orange zone to see more examples."
+    },
+    "phrase3B":{
+        "title":"Phrase 3 : '... menos ...'",
+        "explanation": "When the minute arm is at the orange zone, you use the phrase '... menos ...'. In the example 'diez menos veinte.', diez is the incomming hour and veinte are the remaining minutes until the incomming hour.",
+        "question":"¿A que hora ve Juanito la estatua?",
+        "instructions":"When Juanito is eating, a statue of asquirrel calls his attention. Change the clock to 'dos menos diez' to see the statue.",
+        "emptyMessage":"Move the minute arm to the orange zone to see more examples."
+    },
+    "phrases2and3":{
+        "title":"Phrases 2 and 3",
+        "explanation": "Between the minutes thirtyfive and forty you can youse both, the phrase two and three.",
+        "emptyMessage":"Move the minute arm to the zone with orange and yellow to see more examples.",
+        "question":"¿Aque hora va Juanito a la casa blanca?",
+        "instructions":"Juanito decides to take a excursion to the white house at 'la una y cuarenta'. Choose the time aquivalent to 'la una y cuarenta'."
+    },
+    "periods0":{
+        "title":"The time periods",
+        "explanation":"As the day has 24 hours and the clock only twelve, the hour arm makes two turns each day. To difference the first from the second one, the day is divided in periods which are added after the time to tell the exact time.", 
+        "observe":"Observe that between 19:00 and 19:59 you can use '... de la tarde' or '... de la noche'.",
+        "periods":"Periods",
+        "phrase":"Time",
+        "question":"Now join a time with its period",
+        "instructions":"Click on a time and a period to tell the exact time."
+    },
+    "end":{
+        "title":"The tutorial of 'El reloj' is now finished",
+        "explanation":"Go back to the home page through the Español 24/7 symbol or make the tutorial again through the button below.",
+        "buttonLabel":"Begin again"
+    }
+}
