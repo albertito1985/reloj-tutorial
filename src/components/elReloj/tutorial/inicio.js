@@ -23,7 +23,7 @@ class Tutorial extends Component {
     constructor(){
         super();
         this.state={
-            page:0,
+            page:14,
             next:undefined,
             back:undefined,
             confetti:false
@@ -208,6 +208,24 @@ class Tutorial extends Component {
                 phrase10:{
                     ...props,
                     name:"phrase1",
+                    pics:[
+                        "phrase101",
+                        "phrase102",
+                        "phrase108",
+                        "phrase109",
+                        "phrase1010",
+                        "phrase1011",
+                        "phrase1012",
+                        "phrase1013",
+                        "phrase1014",
+                        "phrase1015",
+                        "phrase1016",
+                        "phrase1017",
+                        "phrase1018",
+                        "phrase1019",
+                        "phrase1020",
+                        "phrase102"
+                    ],
                     options:[
                         {label:"A la una en punto.",value:1},
                         {label:"A las dos en punto.",value:2},
@@ -249,6 +267,25 @@ class Tutorial extends Component {
                 phrase20:{
                     ...props,
                     name:"phrase2",
+                    pics:[
+                        "phrase101",
+                        "phrase102",
+                        "phrase108",
+                        "phrase109",
+                        "phrase1010",
+                        "phrase1011",
+                        "phrase1012",
+                        "phrase1013",
+                        "phrase1014",
+                        "phrase1015",
+                        "phrase1016",
+                        "phrase1017",
+                        "phrase1018",
+                        "phrase1019",
+                        "phrase1020",
+                        "phrase102",
+                        "phrase1025"
+                    ],
                     options:[
                         {label:"A la una y cinco.",value:5},
                         {label:"A la una y diez.",value:10},
@@ -286,6 +323,26 @@ class Tutorial extends Component {
                 phrase30:{
                     ...props,
                     name:(props.esType===0)?"phrase3A":"phrase3B",
+                    pics:[
+
+                        "phrase101",
+                        "phrase102",
+                        "phrase108",
+                        "phrase109",
+                        "phrase1010",
+                        "phrase1011",
+                        "phrase1012",
+                        "phrase1013",
+                        "phrase1014",
+                        "phrase1015",
+                        "phrase1016",
+                        "phrase1017",
+                        "phrase1018",
+                        "phrase1019",
+                        "phrase1020",
+                        "phrase102",
+                        "phrase1026"
+                    ],
                     options:[
                         {label:general.capitalizeAndPoint(es.phraseFinder(1,35,props.esType,false,0,1,false)[1].phrase),value:35},
                         {label:general.capitalizeAndPoint(es.phraseFinder(1,40,props.esType,false,0,1,false)[1].phrase),value:40},
@@ -862,11 +919,12 @@ class PhraseTemplate1 extends Component{
         this.state={
             hours:10,
             minutes:0,
-            // next:false,
             dropdown:"inactive",
             pic:undefined,
             phrases:[{type:0,phrase:"Las diez en punto."}]
         }
+        
+        this.picDivs={};
         this.picChanger = this.picChanger.bind(this);
         this.changeTime=this.changeTime.bind(this);
         this.changeState=this.changeState.bind(this);
@@ -875,6 +933,17 @@ class PhraseTemplate1 extends Component{
     }
     componentDidMount(){
         this.changeTime(this.props.startTimeObject);
+        this.picDivs=this.createPicDivs(this.props.pics);
+    }
+
+    createPicDivs(pics){
+        console.log(pics);
+        let picDivs= {}
+        pics.forEach(pic=>{
+            picDivs[pic] = <div className={`phraseTemplatePic ${pic}`}></div>
+        })
+        console.log(picDivs);
+        return picDivs;
     }
 
     changeState(values){
@@ -947,13 +1016,13 @@ class PhraseTemplate1 extends Component{
             if(this.state.phrases[0].type === this.props.phraseType){
                 return (<>
                     <span className={`writtenTime phrase${this.props.phraseType}`}>{general.capitalizeAndPoint(this.state.phrases[0].phrase)}</span>
-                    <div className={`phraseTemplatePic${(this.state.pic !== undefined)?` ${this.state.pic}`:""}`} ></div>
+                    {(this.state.pic === undefined)?<div className={`phraseTemplatePic`}></div>: this.picDivs[this.state.pic]}
                 </>)
             }else if(this.state.phrases[1]){
                 if((this.state.phrases[1].type ) === this.props.phraseType){
                     return (<>
                         <span className={`writtenTime phrase${this.props.phraseType}`}>{general.capitalizeAndPoint(this.state.phrases[1].phrase)}</span>
-                        <div className={`phraseTemplatePic${(this.state.pic !== undefined)?` ${this.state.pic}`:""}`} ></div>
+                        {(this.state.pic === undefined)?<div className={`phraseTemplatePic`}></div>: this.picDivs[this.state.pic]}
                     </>)
                 }
             }else{

@@ -129,7 +129,6 @@ class Configuration extends Component {
         let extraTime = this.calculateTime(prelMomentsExtras);
         let totalTime = this.calculateTime(prelMoments);
         let valuesString = this.valuesString();
-        console.log(valuesString)
 
         this.setState({
             actualMoments:{...prelMoments},
