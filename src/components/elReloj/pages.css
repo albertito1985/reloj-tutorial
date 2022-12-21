@@ -670,6 +670,15 @@ text-align: center;
        gap:50px;
     }
 
+    .phraseTemplateHalfsContainer.parts0{
+        flex-direction: row;
+        gap:20px;
+     }
+
+     #parts02{
+       height:150px; 
+     }
+
     .phraseTemplateHalf{
         width:auto;
     }
@@ -686,5 +695,10 @@ text-align: center;
 
     .phraseTemplate #casaBlanca{
         width:90%;
+    }
+
+    #minuteArmContainer{
+        display:flex;
+        flex-direction:column;
     }
 }

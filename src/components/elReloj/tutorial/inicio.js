@@ -23,7 +23,7 @@ class Tutorial extends Component {
     constructor(){
         super();
         this.state={
-            page:14,
+            page:0,
             next:undefined,
             back:undefined,
             confetti:false
