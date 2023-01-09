@@ -82,7 +82,7 @@ input[type="checkbox"].CustomCheckBox:checked::before{
     color:var(--white);
 }
 
-.CustomButton.button1:hover{
+.CustomButton.button1:hover, .CustomButton.button1.hover{
     background-color:var(--white);
     color:var(--magenta)
 }
@@ -92,7 +92,7 @@ input[type="checkbox"].CustomCheckBox:checked::before{
     color:var(--white);
 }
 
-.CustomButton.button2:hover{
+.CustomButton.button2:hover, .CustomButton.button2.hover{
     background-color:var(--magenta);
     color:var(--white)
 }

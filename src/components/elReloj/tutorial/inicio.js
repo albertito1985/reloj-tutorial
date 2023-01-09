@@ -101,6 +101,7 @@ class Tutorial extends Component {
             back:back,
             next:next
         })
+        window.scrollTo(0,0);
     }
 
     previousPage(){
@@ -856,8 +857,9 @@ class Phrase11 extends Component{
             <div id="phrase11">
                 <h1>{t("phrase1.title")}</h1>
                 <p>{t("phrase1.explanation2")}</p>
+                <p className="continuePrompt">{t("continuePrompt")}</p>
                 <div id="dropdownContainer">
-                    <Dropdown options={this.options} placeholder={t("phrase1.dropdownPlaceholder")} recieveValue={this.recieveValue}/>
+                    <Dropdown options={this.options} placeholder={t("phraseTemplate.dropdownPlaceholder")} recieveValue={this.recieveValue}/>
                 </div>
             </div>
         )
@@ -892,6 +894,7 @@ class Minutes15and30 extends Component{
             <div id="minutes15and30">
                 <h1>{t("minutes15and30.title")}</h1>
                 <p>{t("minutes15and30.explanation")}</p>
+                <p className="continuePrompt">{t("continuePrompt")}</p>
                 <div id="minutes15and30AnswersContainer">
                     <div className="minutes15and30FieldContainer">
                         <h2>15 =</h2>
@@ -937,12 +940,10 @@ class PhraseTemplate1 extends Component{
     }
 
     createPicDivs(pics){
-        console.log(pics);
         let picDivs= {}
         pics.forEach(pic=>{
             picDivs[pic] = <div className={`phraseTemplatePic ${pic}`}></div>
         })
-        console.log(picDivs);
         return picDivs;
     }
 
@@ -1044,17 +1045,18 @@ class PhraseTemplate1 extends Component{
                         <span className="phraseTemplateHalf">
                             <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes} oneHandle={"minutero"}/>
                         </span>
-                        <span className="phraseTemplateHalf">
+                        <span className="phraseTemplateHalf phraseTemplateHalfRight">
                             {this.generatePhraseAndImage()}
                         </span>
                     </div>
                 </div>
                 <div id="dropdownContainer">
-                    <div>
+                
+                    {/* <div> */}
+                    <h2>{t(`${this.props.name}.question`)}</h2>
                         <p>{t(`${this.props.name}.instructions`)}</p>
-                        <h2>{t(`${this.props.name}.question`)}</h2>
-                        
-                    </div>
+                        <p className="continuePrompt">{t("continuePrompt")}</p>
+                    {/* </div> */}
                     <Dropdown type={this.state.dropdown} options={this.props.options} placeholder={t("phraseTemplate.dropdownPlaceholder")} recieveValue={this.recieveValue}/>
                 </div>
             </div>
@@ -1140,9 +1142,8 @@ class PhraseTemplate2 extends Component{
                                 </span>
                                 <Button label={<FaRandom/>} type="1" onClick={this.changeQuestion}/>
                             </div>
-                            
                             <p>{t("phrase1.excercisesExplanation")}</p>
-                            {/* <Button label={t("phrase1.otherTime")} type="1" onClick={this.changeQuestion}/> */}
+                            <p className="continuePrompt">{t("continuePrompt")}</p>
                         </div>
                         <div className="phraseTemplateHalf">
                         <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.Ahours} minutes={this.state.Aminutes}/>
@@ -1217,7 +1218,7 @@ class Phrase2and30 extends Component{
                         <span className="phraseTemplateHalf">
                             <RelojAnalogo response={this.changeTime} interaction={true} hours={this.state.hours} minutes={this.state.minutes} oneHandle="minutero"/>
                         </span>
-                        <span className="phraseTemplateHalf">
+                        <span className="phraseTemplateHalf phraseTemplateHalfRight2och3">
                             {this.generatePhrases()}
                         </span>
                     </div>
@@ -1264,6 +1265,7 @@ class Phrase2and31 extends Component{
                     <h2 id="phrases2and3Question">{t(`phrases2and3.question`)}</h2>
                     <p>{t(`phrases2and3.instructions`)}</p>
                 </div>
+                <p className="continuePrompt">{t("continuePrompt")}</p>
                 <Dropdown options={this.options} placeholder={t('phraseTemplate.dropdownPlaceholder')} recieveValue={this.recievevalue}/>
                 <div id="casaBlanca"></div>
             </div>

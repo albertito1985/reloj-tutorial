@@ -62,18 +62,18 @@ export class RelojAnalogo extends Component{
             if(this.state.oneHandle === container.id){
               container.classList.add("active");
               container.addEventListener('mousedown',this.handle.eventHandlers.mouseDown);
+              container.addEventListener('touchstart',this.handle.eventHandlers.mouseDown);
             }
           }else{
             container.classList.add("active");
             container.addEventListener('mousedown',this.handle.eventHandlers.mouseDown);
+            container.addEventListener('touchstart',this.handle.eventHandlers.mouseDown);
           }
         });
-        //delete if it do not causes a bug
-        // let reloj = document.getElementById("reloj");
-        // reloj.addEventListener('mouseup',this.handle.eventHandlers.mouseUp);
-        // reloj.addEventListener('mousemove',this.handle.eventHandlers.mouseMove);
         document.addEventListener('mouseup',this.handle.eventHandlers.mouseUp);
         document.addEventListener('mousemove',this.handle.eventHandlers.mouseMove);
+        document.addEventListener('touchend',this.handle.eventHandlers.mouseUp);
+        document.addEventListener('touchmove',this.handle.eventHandlers.mouseMove);
       }
     }
   
@@ -87,13 +87,15 @@ export class RelojAnalogo extends Component{
     }
   
     componentWillUnmount(){
-      let reloj = document.getElementById("reloj");
       let manillaContainers = Array.prototype.slice.call(document.getElementsByClassName("manillaContainer"));
       manillaContainers.forEach((container)=>{
         container.removeEventListener('mousedown',this.handle.eventHandlers.mouseDown);
+        container.removeEventListener('touchstart',this.handle.eventHandlers.mouseDown);
       });
-      reloj.removeEventListener('mouseup',this.handle.eventHandlers.mouseUp);
-      reloj.removeEventListener('mousemove',this.handle.eventHandlers.mouseMove);
+      document.removeEventListener('mouseup',this.handle.eventHandlers.mouseUp);
+      document.removeEventListener('mousemove',this.handle.eventHandlers.mouseMove);
+      document.removeEventListener('touchend',this.handle.eventHandlers.mouseUp);
+      document.removeEventListener('touchmove',this.handle.eventHandlers.mouseMove);
     }
   
     handle = {
@@ -110,12 +112,19 @@ export class RelojAnalogo extends Component{
       eventHandlers:{
         mouseMove:function(e){
           if(this.state.moving === true){
-            let timeObject = reloj.change(e, this.state.handle, this.clockCenter);
+            let coordinates;
+            if(e.type ==="touchmove"){
+              coordinates = e.touches[0];
+            }else{
+              coordinates = e;
+            }
+            let timeObject = reloj.change(coordinates, this.state.handle, this.clockCenter);
             this.handle.both.moveView(timeObject);
             this.props.response({...timeObject.time});
           }
         },
         mouseDown(e){
+          e.preventDefault();
           this.clockCenter = this.calculateClockCenter();
           let horario = document.getElementById("horario");
           let minutero = document.getElementById("minutero");

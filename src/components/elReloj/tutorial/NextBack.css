@@ -1,3 +1,16 @@
+.nextBackContainer{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+.nextBackContainer p{
+    color:var(--magenta);
+    font-weight:900;
+}
+
 .nextBack{
     display:flex;
     width:100%;

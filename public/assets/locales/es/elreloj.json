@@ -5,6 +5,7 @@
     "examples":"Ejemplos",
     "excercises":"Ejercicios",
     "timeQuestion": "¿Qué hora es?",
+    "continuePrompt": "Sigue las instrucciónes para continuar.",
     "config": {
         "title":"El reloj - Adaptar lección",
         "explanation": "Ésta sección tiene como objetivo adaptar la lección de 'El Reloj' a tu necesidad o la del libro que estás siguiendo.",

@@ -1,5 +1,5 @@
 import { t, setDefaultNamespace } from 'i18next';
-import { NavLink } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {Component} from 'react';
 import { withTranslation} from 'react-i18next';
 import './pages.css';
@@ -124,11 +124,11 @@ class Configuration extends Component {
             }
         });
         let prelMomentsExtras = this.calculateExtraMoments(relevantMoments);
-
+        
         prelMoments={...prelMoments, ...prelMomentsExtras}
         let extraTime = this.calculateTime(prelMomentsExtras);
         let totalTime = this.calculateTime(prelMoments);
-        let valuesString = this.valuesString();
+        let valuesString = this.valuesString(prelMoments);
 
         this.setState({
             actualMoments:{...prelMoments},
@@ -136,12 +136,11 @@ class Configuration extends Component {
         });
     }
 
-    valuesString(){
-        let elements = this.state.actualMoments;
-        let keys = Object.keys(this.state.actualMoments);
+    valuesString(prelMoments){
+        let keys = Object.keys(prelMoments);
         let string = "?";
         for(let i=0;i<keys.length;i++){
-            let value = elements[keys[i]];
+            let value = prelMoments[keys[i]];
             let name = keys[i];
                 string += `${encodeURIComponent(name)}=${encodeURIComponent(value)}&`;
         }
@@ -150,14 +149,12 @@ class Configuration extends Component {
     }
 
     handleTutorial(){
-        let data = this.valuesString();
-        let address= `./elreloj/tutorial${data}`;
+        let address= `./#/elreloj/tutorial${this.state.valuesString}`;
         window.location.href = address;
     }
 
     handleExcercises(){
-        let data = this.valuesString();
-        let address= `./elreloj/exercise1${data}`;
+        let address= `./#/elreloj/exercise1${this.state.valuesString}`;
         window.location.href = address;
     }
     
@@ -239,10 +236,8 @@ class Configuration extends Component {
                         </div>
                     </form>
                     <div id="buttons">
-                        {/* <NavLink to={`./tutorial${this.valueString}`}><Button type={this.state.totalTime>0?"1":"inactive"} onClick={this.handleTutorial} label={t('config.tutorial')}/></NavLink>
-                        <NavLink to={`./exercise1${this.valueString}`}><Button type={this.state.totalTime>0?"1":"inactive"} onClick={this.handleExcercises} label={t('config.excercises')}/></NavLink> */}
-                        <NavLink to={`./tutorial${this.state.valuesString}`}><Button type={this.state.totalTime>0?"1":"inactive"} label={t('config.tutorial')}/></NavLink>
-                        <NavLink to={`./exercise1${this.state.valuesString}`}><Button type={"inactive"} label={t('config.excercises')}/></NavLink>
+                        <Link to={`./tutorial${this.state.valuesString}`}><Button type={this.state.totalTime>0?"1":"inactive"} onClick={this.handleTutorial} label={t('config.tutorial')}/></Link>
+                        <Link to={`./exercise1${this.state.valuesString}`}><Button type={"inactive"} label={t('config.excercises')}/></Link>
                     </div>
                 </div>
            </div>

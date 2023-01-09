@@ -4,13 +4,12 @@ import {t} from 'i18next';
 import { withTranslation} from 'react-i18next';
 import {setDefaultNamespace} from 'i18next';
 import puffsContent from './homeModell';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './home.css';
 
 class Home extends Component{
     constructor(){
         super();
-        console.log(i18t);
         setDefaultNamespace('general')
     }
     render(){
@@ -34,7 +33,7 @@ class Puff extends Component {
         let title= this.props.contentObject.title;
         let address= this.props.contentObject.address;
       return(
-        <NavLink to={address}>
+        <Link to={address}>
             <div className={`homePuff puff${name}`}>
             <div className={`homePuffImage homePuffImage${name}`}></div>
             <div className="homePuffText">
@@ -44,7 +43,7 @@ class Puff extends Component {
                 </div>
             </div>
             </div>
-        </NavLink>
+        </Link>
       )
     }
   }

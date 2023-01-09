@@ -5,6 +5,7 @@
     "examples":"Example",
     "excercises":"Exercises",
     "timeQuestion": "¿Qué hora es?",
+    "continuePrompt": "Follow the instructions to continue.",
     "config": {
         "title":"El reloj - Adapt the lession",
         "explanation": "This section aims to adapt the lession of 'El reloj' to your needs or to the needs of the book you are following.",

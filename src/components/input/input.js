@@ -18,10 +18,62 @@ class CheckBox extends Component {
 }
 
 class Button extends Component{
+    static id = 0;
+    constructor(){
+        super();
+        this.id = undefined;
+        if(this.props === undefined){
+            this.id = Button.id;
+            Button.id++; 
+        }else{
+            if(this.props.id === undefined){
+                this.id = Button.id;
+                Button.id++;
+            }
+            this.id = this.props.id
+        }
+        this.touchEndhandler = this.touchEndhandler.bind(this);
+        this.touchStarthandler =this.touchStarthandler.bind(this);
+    }
+
+    componentDidMount(){
+        let button = document.getElementById(this.id);
+        button.addEventListener("touchstart", this.touchStarthandler);
+        button.addEventListener("touchend",  this.touchEndhandler);
+        button.addEventListener("touchmove", (e)=>e.preventDefault());
+        // button.addEventListener("touccancel", (e)=>e.preventDefault());
+    }
+
+    componentWillUnmount(){
+        let button = document.getElementById(this.id);
+        button.removeEventListener("touchstart", this.touchStarthandler);
+        button.removeEventListener("touchend",  this.touchEndhandler);
+        button.removeEventListener("touchmove", (e)=>e.preventDefault());
+    }
+
+    touchStarthandler(e){
+        e.preventDefault();
+        if(this.props.type==="inactive"){
+            //do nothing
+        }else{
+            let button = document.getElementById(this.id);
+            button.classList.add("hover");
+        }
+    }
+
+    touchEndhandler(e){
+        let button = document.getElementById(this.id);
+            button.classList.remove("hover");
+        if(this.props.type==="inactive" || (typeof this.props.onClick === "undefined")){
+            //do nothing
+        }else{
+            this.props.onClick()
+        }
+    }
     
     render(){
         return(
-            <div className={`CustomButton button${this.props.type}`} id={this.props.id} onClick={(this.props.type==="inactive")?null:this.props.onClick} name={this.props.name}>{this.props.label}</div>
+            <div className={`CustomButton button${this.props.type}`} id={this.id} onClick={(this.props.type==="inactive")?null:this.props.onClick} name={this.props.name}>{this.props.label}</div>
         )
     }
 }

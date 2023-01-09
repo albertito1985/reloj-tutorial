@@ -1,6 +1,6 @@
 import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
@@ -10,9 +10,9 @@ import {LoadingMarkup} from './components/loadingMarkup/loading';
 ReactDOM.render(
   <Suspense fallback={<LoadingMarkup/>}>
     <React.StrictMode>
-      <BrowserRouter>
+      <HashRouter>
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </React.StrictMode>
   </Suspense>,
   document.getElementById('root')

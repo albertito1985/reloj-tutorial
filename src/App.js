@@ -77,9 +77,10 @@ class App extends Component {
         <Header/>
           <div className="contentBody">
             <Routes>
-              <Route path="/" element={<Home/>}/>
-              <Route path="/elreloj/*" element={<Config/>}/>
-              <Route path="/elreloj/tutorial/*" element={<Tutorial/>}/>
+              <Route exact path="/" element={<Home/>}/>
+              <Route exact path="/elreloj/*" element={<Config/>}/>
+              <Route exact path="/elreloj/tutorial/*" element={<Tutorial/>}/>
+              <Route path="*" element={<Home/>}/>
             </Routes>
           </div>
         <Footer/>

@@ -99,6 +99,7 @@ label, td, th, .title{
 
 #buttons {
     display:flex;
+    margin-top:30px;
     gap:20px;
 }
 
@@ -378,6 +379,14 @@ label, td, th, .title{
     text-align: center;
 }
 
+.continuePrompt{
+    width:100%;
+    text-align: center;
+    font-weight:900;
+    color:var(--magenta);
+    /* margin:20px 0; */
+}
+
 /* /////////////////PhraseTemplate2*/
 
 #phraseTemplate2{
@@ -428,6 +437,9 @@ text-align: center;
 
 .phraseTemplate #phrases2and3Question{
     text-align: center;
+}
+.phraseTemplateHalfRight2och3{
+    height:150px;
 }
 
 /* /////////////////Periods0*/
@@ -605,15 +617,11 @@ text-align: center;
     .phraseTemplate .phraseTemplateHalfsContainer{
         justify-content: center;
     }
-
-    .phraseTemplate .periods0Half{
-        width:auto;
-    }
+    
   }
 
   @media screen and (max-width: 850px) {
     
-
     #minuteArmContainer{
         grid-template-columns: repeat(2,200px);
     }
@@ -641,10 +649,29 @@ text-align: center;
         order:4;
         justify-content: end;
     }
-    
+
+    #periods0Content .phraseTemplateHalfsContainer{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+
+    #periods0Content{
+        width:auto;
+    }
+
+    #periods0Content .periods0Half{
+        width:100%;
+    }
+
+    #periods0Content .periods0Half .periods0HalfHalf{
+        height: 150px;
+    }
+   
   }
 
-  @media screen and (max-width: 700px) {
+@media screen and (max-width: 700px) {
     label, td, th, .title{
         font-size:1.2rem;
     }
@@ -662,7 +689,8 @@ text-align: center;
     .phraseTemplate #casaBlanca{
         width:80%;
     }
-  }
+
+}
 
 @media screen and (max-width: 550px) {
     .phraseTemplateHalfsContainer{
@@ -683,6 +711,10 @@ text-align: center;
         width:auto;
     }
 
+    .phraseTemplateHalfRight{
+        height:275px;
+    }
+
     .phraseTemplatePic{
         height:auto;
         width:80%;
@@ -700,5 +732,9 @@ text-align: center;
     #minuteArmContainer{
         display:flex;
         flex-direction:column;
+    }
+
+    .CustomTextInput{
+        width:150px;
     }
 }
