@@ -18,7 +18,7 @@
         "phrase1":"Fras 1: ... en punto.",
         "phrase2":"Fras 2: ... y ....",
         "phrase3":"Fras 3: ... para ....",
-        "periods":"Dygnets delar (mañana, tarde y noche).",
+        "periods":"Tidsperioder (mañana, tarde y noche).",
         "answer":"Att svara med klockslag.",
         "extra":"Extra",
         "total":"Total",
@@ -40,16 +40,12 @@
     },
     "parts":{
         "title": "Klockans delar",
-        "explanation": "För att lära dig klockan på spanska är det viktigt att känna till klockans olika delar. Hovra med musen eller klicka på orden som finns till höger om klockan för att visa vilken del det handlar om.",
-        "prompt": "Hovra på orden till höger om klockan.",
-        "horas":"Timmar, eller 'las horas' på spanska, är numren som finns i klockan. Varje nummer står för ett klockslag. Klockan visar tolv timmar, vilket är ett halvt dygn.",
-        "minutos":"Minuter, eller 'los minutos' på spanska, syns inte ofta på vanliga klockor. Men på den här klockan visas som de små nummer. Klockan visar sextio minuter, vilket motsvarar en timme.",
-        "horario":"Timvisare, eller 'el horario' på spanska, är den lilla och tjocka visaren som pekar på olika timslag.",
-        "minutero":"Minutvisare, eller 'el minutero' på spanska, är den långa och smala visaren som pekar på olika minutslag.",
-        "hours":"Timmar",
-        "minutes":"Minuter",
-        "hourArm":"Timvisare",
-        "minuteArm":"Minutvisare"
+        "explanation": "För att lära dig klockan på spanska är det viktigt att känna till klockans olika delar. Klicka på orden som finns till höger om klockan för att visa vilken del det handlar om.",
+        "prompt": "Klicka på orden till höger om klockan.",
+        "horas":"'Horas' eller timmar på svenska, är numren som finns i klockan. Varje nummer står för ett klockslag. Klockan visar tolv timmar, vilket är ett halvt dygn.",
+        "minutos":"'Minutos' eller minuter på svenska, syns inte ofta på vanliga klockor. Men på den här klockan visas som de små nummer. Klockan visar sextio minuter, vilket motsvarar en timme.",
+        "horario":"'Horario' eller timvisare på svenska, är den lilla och tjocka visaren som pekar på olika timslag.",
+        "minutero":"'Minutero' eller minutvisare på svenska, är den långa och smala visaren som pekar på olika minutslag.",
     },
     "minuteArm":{
         "title":"Minutvisare",
@@ -97,22 +93,22 @@
     "phrases2and3":{
         "title":"Fras 2 och 3",
         "explanation": "Mellan minuterna trettiofem och fyrtio kan man använda både fras 2 och fras 3.",
-        "emptyMessage":"Mueve el minutero a la zona que tiene naranja y amarillo para ver más ejemplos.",
+        "emptyMessage":"Flytta minutvisaren till den gula och orangea zonen för att se flera exempel.",
         "question":"¿Aque hora va Juanito a la casa blanca?",
-        "instructions":"Juanito bestämmer sig att gå på utflykt till det vita huset 'a la una y cuarenta'. Välj klockslaget som motsvarar 'la una y cuarenta'."
+        "instructions":"Juanito bestämmer sig för att gå på utflykt till Vita huset 'a la una y cuarenta'. Välj klockslaget som kan användas istället för 'la una y cuarenta'."
     },
     "periods0":{
         "title":"Tidsperioder",
-        "explanation":"I och med att dagen har 24 timmar och klockan enbart 12, timmvisaren gåt två varv varje dag. För att urskilja det första från det andra varvet lägger man till en tidsperiod efter klockslaget enligt följande tabell:",
+        "explanation":"I och med att dygnet har 24 timmar och klockan enbart 12, snurrar timvisaren två varv varje dygn. För att se skillnad mellan det första varvet och det andra läggs en tidsperiod till efter klockslaget. Se tabellen här nere:",
         "observe":"Lägg märke till att mellan klockan 19:00 och 19:59 kan man använda '... de la tarde' ó '... de la noche'.",
-        "periods":"Period",
+        "periods":"Tidsperiod",
         "phrase":"Fras",
-        "question":"Nu ska du binda ihop en klockslag med sin period.",
-        "instructions":"Klicka på en fras och en period för att bygga ett exakt klockslag."
+        "question":"Nu ska du binda ihop ett klockslag med en tidsperiod.",
+        "instructions":"Klicka på en fras och en tidsperiod för att bygga ett exakt klockslag."
     },
     "end":{
-        "title":"Tutorialen är nu klar",
-        "explanation":"Gå tillbaka till startsidan genom att klicka på Español 24/7 symbolen eller gör om tutorialen genom att trycka på knappen här nere.",
+        "title":"Du har nu gjort klart tutorialen!",
+        "explanation":"Gå tillbaka till startsidan genom att klicka på symbolen för Español 24/7 eller gör om tutorialen genom att trycka på knappen här nere.",
         "buttonLabel":"Gör om"
     }
 }
