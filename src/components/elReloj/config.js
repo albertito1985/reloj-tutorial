@@ -13,6 +13,7 @@ class Configuration extends Component {
             totalTime:0,
             extraTime:0,
             valuesString:undefined,
+            selectAll: false,
             actualMoments:{
                 lang: "spanish",
                 esType:"spain"
@@ -25,6 +26,7 @@ class Configuration extends Component {
         this.valuesString = this.valuesString.bind(this);
         this.calculateTime = this.calculateTime.bind(this);
         this.calculateExtraMoments = this.calculateExtraMoments.bind(this);
+        this.selectAll = this.selectAll.bind(this);
         this.moments= {
             principal:{
                 titles :["parts", "minutearm","phrase1", "min15and30", "phrase2", "phrase3", "phrases2and3", "periods", "answer"],
@@ -157,6 +159,42 @@ class Configuration extends Component {
         let address= `./#/elreloj/exercise1${this.state.valuesString}`;
         window.location.href = address;
     }
+    selectAll(){
+        let selectAll = !this.state.selectAll 
+        let form = document.getElementById("form").getElementsByClassName("CustomCheckBox");
+        for(let i=0;i<form.length;i++){
+            let element = form[i]
+            if(element.type !== "radio"){
+                element.checked = selectAll;
+                element.value = selectAll;
+            }
+        }
+        let actualMoments={lang:this.state.actualMoments.lang, esType: this.state.actualMoments.esType};
+        let extraTime;
+        let totalTime;
+        let valuesString;
+        if(selectAll === true){
+            let actualtitles = this.moments.principal.titles.concat(this.moments.extras.titles);
+            actualtitles.forEach((moment)=>{
+                actualMoments[moment] = true;
+            });
+            extraTime = this.moments.extras.titles.reduce((accumulator,value)=>accumulator+this.moments.duration[value],0);
+            totalTime = this.moments.principal.titles.reduce((accumulator,value)=>accumulator+this.moments.duration[value],0);
+            valuesString = this.valuesString(actualMoments);
+        }else{
+            extraTime = 0;
+            totalTime = 0;
+            valuesString = undefined;
+        }
+
+        this.setState({
+            selectAll,
+            actualMoments,
+            extraTime,
+            totalTime,
+            valuesString
+        });
+    }
     
     render(){
         return(
@@ -177,7 +215,11 @@ class Configuration extends Component {
                             <table className="contentTable">
                                 <tbody>
                                     <tr>
-                                        <th>{t('config.moment')}</th><th>{t('config.minutes')}</th>
+                                        <th>{t('config.moment')}</th>
+                                        <th>{t('config.minutes')}</th>
+                                        <td>
+                                            <CheckBox id="selectAll" name="selectAll" onChange={this.selectAll} value={true}/>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>{t('config.answer')}</td>

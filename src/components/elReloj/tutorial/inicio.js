@@ -665,13 +665,14 @@ class Parts0 extends Component{
         this.highlight=this.highlight.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.unHighlight = this.unHighlight.bind(this);
+        this.clickHandler = this.clickHandler.bind(this);
     }
 
     componentDidMount(){
         let buttons = document.getElementById("partsHalfRight").children;
         buttons.forEach((button)=>{
-            button.addEventListener("mouseover", this.highlight);
-            button.addEventListener("mouseout", this.unHighlight);
+            button.addEventListener("touchend",  this.clickHandler);
+            button.addEventListener("touchmove", (e)=>e.preventDefault());
         })
         const d = new Date();
         this.setState({
@@ -683,8 +684,8 @@ class Parts0 extends Component{
     componentWillUnmount(){
         let buttons = document.getElementById("partsHalfRight").children;
         buttons.forEach((button)=>{
-            button.removeEventListener("mouseover", this.highlight);
-            button.removeEventListener("mouseout", this.unHighlight)
+            button.removeEventListener("touchend",  this.clickHandler);
+            button.removeEventListener("touchmove", (e)=>e.preventDefault());
         })
     }
 
@@ -711,26 +712,37 @@ class Parts0 extends Component{
         this.setState({part:targetWord})
     }
 
-    unHighlight(e){
+    unHighlight(){
         let target;
-        switch(e.target.attributes.name.value){
-            case "horas":
-                target = document.querySelector(".horasContainer");
-            break;
-            case "minutos":
-                target = document.querySelector(".minutosContainer");
-            break;
-            case "horario":
-                target = document.querySelector("#horario .manilla");
-            break;
-            case "minutero":
-                target = document.querySelector("#minutero .manilla");
-            break;
-            default:
-            break;
-        }
+        if(typeof this.state.part !=="undefined"){
+            switch(this.state.part){
+                case "horas":
+                    target = document.querySelector(".horasContainer");
+                break;
+                case "minutos":
+                    target = document.querySelector(".minutosContainer");
+                break;
+                case "horario":
+                    target = document.querySelector("#horario .manilla");
+                break;
+                case "minutero":
+                    target = document.querySelector("#minutero .manilla");
+                break;
+                default:
+                break;
+            }
         target.classList.remove("analogHighlight");
-        this.setState({part:undefined})
+        }
+    }
+
+    clickHandler(e){
+        if(e.target.id === this.state.part){
+            this.unHighlight();
+            this.setState({part:undefined});
+        }else{
+            this.unHighlight();
+            this.highlight(e);
+        }
     }
 
     render(){
@@ -743,10 +755,10 @@ class Parts0 extends Component{
                         <RelojAnalogo hours={this.state.hours} minutes={this.state.minutes}/>
                         </div>
                         <div className="phraseTemplateHalf" id="partsHalfRight">
-                            <Button label={t('parts.hours')} name="horas" type="2"/>
-                            <Button label={t('parts.minutes')} name="minutos" type="2"/>
-                            <Button label={t('parts.hourArm')} name="horario" type="2"/>
-                            <Button label={t('parts.minuteArm')} name="minutero" type="2"/>
+                            <div className={`switchKlockansDelar${(this.state.part==="horas")?" active":""}`} onClick={this.clickHandler} id="horas" name="horas">Horas</div>
+                            <div className={`switchKlockansDelar${(this.state.part==="minutos")?" active":""}`} onClick={this.clickHandler} id="minutos" name="minutos">Minutos</div>
+                            <div className={`switchKlockansDelar${(this.state.part==="horario")?" active":""}`} onClick={this.clickHandler} id="horario" name="horario">Horario</div>
+                            <div className={`switchKlockansDelar${(this.state.part==="minutero")?" active":""}`} onClick={this.clickHandler} id="minutero" name="minutero">Minutero</div>
                         </div>
                     </div>
                     <div id="parts02">

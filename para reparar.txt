@@ -1,0 +1,11 @@
+Version mobil
+
+config:
+- botón de seleccionar todo.
+
+Título:
+- El scroll no se posicióna en cero cuando se navega de la configuración a el título.
+
+las partes del reloj:
+- botones de no funcionan con touch.
+- arreglar layout en 390px

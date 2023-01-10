@@ -158,6 +158,22 @@ label, td, th, .title{
     border-radius: 50px;
 }
 
+.switchKlockansDelar {
+    padding: 10px 20px;
+    border-radius:50px;
+    text-decoration: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    min-width: 150px;
+    background-color:var(--orange);
+    color:var(--white);
+}
+
+.switchKlockansDelar.active{
+    background-color:var(--magenta);
+    color:var(--white)
+}
+
 /* /////////////////Phrase11*/
 
 #phrase11{
@@ -340,7 +356,6 @@ label, td, th, .title{
     background-size: contain;
     aspect-ratio: 4/3;
     border-radius: 20px;
-    
 }
 
 .phrase101{background-image: url('./tutorial/images/squirrelEating.jpg');}
@@ -693,6 +708,11 @@ text-align: center;
 }
 
 @media screen and (max-width: 550px) {
+
+    .pages{
+        border-radius:0;
+    }
+
     .phraseTemplateHalfsContainer{
        flex-direction: column;
        gap:50px;

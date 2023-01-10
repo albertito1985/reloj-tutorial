@@ -67,7 +67,7 @@ class Button extends Component{
         if(this.props.type==="inactive" || (typeof this.props.onClick === "undefined")){
             //do nothing
         }else{
-            this.props.onClick()
+            this.props.onClick(e)
         }
     }
     
