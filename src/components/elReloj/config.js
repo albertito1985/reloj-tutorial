@@ -117,7 +117,7 @@ class Configuration extends Component {
         }
         let keys = Object.keys(prelMoments);
 
-        //Evaluation START: if everything is checked then turn on the select all switch if not turn it off       
+        // Evaluation START: if everything is checked then turn on the select all switch if not turn it off       
         let checker=true;
         this.moments.principal.titles.forEach((title)=>{
             if(!this.moments.extras.titles.includes(title)){
@@ -132,7 +132,6 @@ class Configuration extends Component {
         let valuesString;
         let selectAll;
         if(checker !== false){
-            console.log("allt selected");
             selectAll=true
             let actualtitles = this.moments.principal.titles.concat(this.moments.extras.titles);
             actualtitles.forEach((moment)=>{
@@ -148,9 +147,8 @@ class Configuration extends Component {
                 totalTime,
                 valuesString
             });
-            return 0
+            return null;
         }else{
-            console.log("allt unselected");
             selectAll=false
         }
         //Evaluation END
