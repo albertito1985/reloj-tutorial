@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {Component} from 'react';
 import { withTranslation} from 'react-i18next';
 import './pages.css';
-import {RadioButton, CheckBox, Button} from '../input/input'
+import {RadioButton, CheckBox, Button,SwitchButton} from '../input/input'
 import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
 class Configuration extends Component {
@@ -153,12 +153,14 @@ class Configuration extends Component {
     handleTutorial(){
         let address= `./#/elreloj/tutorial${this.state.valuesString}`;
         window.location.href = address;
+        window.scrollTo(0,0);
     }
 
     handleExcercises(){
         let address= `./#/elreloj/exercise1${this.state.valuesString}`;
         window.location.href = address;
     }
+
     selectAll(){
         let selectAll = !this.state.selectAll 
         let form = document.getElementById("form").getElementsByClassName("CustomCheckBox");
@@ -210,16 +212,16 @@ class Configuration extends Component {
                                 <div className="radioButton"><RadioButton onChange={this.handleChange} checked={this.state.actualMoments.esType === "lAmerica"} id="lAmerica" name="esType" value="lAmerica"/><label htmlFor="lAmerica">{t('config.lAmerica')}</label></div>
                             </div>
                         </div>
-                        <div>
-                            <div className="title">{t('config.content')}</div>
+                        <div id="congfigContentContainer">
+                            <div id="contenttitleContainer">
+                                <div className="title">{t('config.content')}</div>
+                                <SwitchButton label="Switch" value={this.state.selectAll} onClick={this.selectAll} type={1}/>
+                            </div>
                             <table className="contentTable">
                                 <tbody>
                                     <tr>
                                         <th>{t('config.moment')}</th>
                                         <th>{t('config.minutes')}</th>
-                                        <td>
-                                            <CheckBox id="selectAll" name="selectAll" onChange={this.selectAll} value={true}/>
-                                        </td>
                                     </tr>
                                     <tr>
                                         <td>{t('config.answer')}</td>

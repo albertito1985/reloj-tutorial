@@ -39,7 +39,7 @@ label, td, th, .title{
 }
 
 
-/*---------------------------------explanation ----------------------------------*/
+/*---------------------------------configuration ----------------------------------*/
 #config {
     display:flex;
     flex-direction:column;
@@ -49,10 +49,24 @@ label, td, th, .title{
     gap:20px;
 }
 
+#contenttitleContainer{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#congfigContentContainer{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
 #form{
     display:flex;
     flex-direction:column;
     gap:20px;
+    width:100%;
 }
 
 #explanation, #esType{

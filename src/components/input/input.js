@@ -22,14 +22,10 @@ class Button extends Component{
     constructor(){
         super();
         this.id = undefined;
-        if(this.props === undefined){
-            this.id = Button.id;
+        if(this.props === undefined || this.props.id === undefined){
+            this.id = `button${Button.id}`;
             Button.id++; 
         }else{
-            if(this.props.id === undefined){
-                this.id = Button.id;
-                Button.id++;
-            }
             this.id = this.props.id
         }
         this.touchEndhandler = this.touchEndhandler.bind(this);
@@ -70,7 +66,7 @@ class Button extends Component{
             this.props.onClick(e)
         }
     }
-    
+
     render(){
         return(
             <div className={`CustomButton button${this.props.type}`} id={this.id} onClick={(this.props.type==="inactive")?null:this.props.onClick} name={this.props.name}>{this.props.label}</div>
@@ -175,4 +171,61 @@ class TextInput extends Component{
     }
 }
 
-export {RadioButton, CheckBox, Button, Dropdown, TextInput}
+class SwitchButton extends Component{
+    static id = 0;
+    constructor(){
+        super();
+        this.id = undefined;
+        if(this.props === undefined || this.props.id === undefined){
+            this.id = `switch${SwitchButton.id}`;
+            SwitchButton.id++;
+        }else{
+            this.id = this.props.id
+        }
+        this.touchEndhandler = this.touchEndhandler.bind(this);
+        this.touchStarthandler =this.touchStarthandler.bind(this);
+    }
+
+    componentDidMount(){
+        let switchButton = document.getElementById(this.id);
+        switchButton.addEventListener("touchstart", this.touchStarthandler);
+        switchButton.addEventListener("touchend",  this.touchEndhandler);
+        switchButton.addEventListener("touchmove", (e)=>e.preventDefault());
+    }
+
+    componentWillUnmount(){
+        let switchButton = document.getElementById(this.id);
+        switchButton.removeEventListener("touchstart", this.touchStarthandler);
+        switchButton.removeEventListener("touchend",  this.touchEndhandler);
+        switchButton.removeEventListener("touchmove", (e)=>e.preventDefault());
+    }
+
+    touchStarthandler(e){
+        e.preventDefault();
+        if(this.props.type==="inactive"){
+            //do nothing
+        }else{
+            let button = document.getElementById(this.id);
+            button.classList.add("hover");
+        }
+    }
+
+    touchEndhandler(e){
+        let button = document.getElementById(this.id);
+            button.classList.remove("hover");
+        if(this.props.type==="inactive" || (typeof this.props.onClick === "undefined")){
+            //do nothing
+        }else{
+            this.props.onClick(e)
+        }
+    }
+    render(){
+        return(
+        <div className={`CustomButton CustomSwitch button${this.props.type}${(this.props.value)?" active":""}`} onClick={this.props.onClick} id={this.id}>{this.props.label}
+            <input className="CustomCheckBox" onChange={this.props.onChange} type="checkbox" id={this.props.id} name={this.props.name} value={this.props.value}/>
+        </div>)
+    }
+}
+
+
+export {RadioButton, CheckBox, Button, Dropdown, TextInput, SwitchButton}
