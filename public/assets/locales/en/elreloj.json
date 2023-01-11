@@ -24,7 +24,8 @@
         "extra":"Extra",
         "total":"Total",
         "tutorial":"Tutorial",
-        "excercises":"Exercises"
+        "excercises":"Exercises",
+        "selectAll":"Select all"
     },
     "answer0":{
         "title":"To tell the time",

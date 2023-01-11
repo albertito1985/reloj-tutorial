@@ -222,7 +222,7 @@ class SwitchButton extends Component{
     render(){
         return(
         <div className={`CustomButton CustomSwitch button${this.props.type}${(this.props.value)?" active":""}`} onClick={this.props.onClick} id={this.id}>{this.props.label}
-            <input className="CustomCheckBox" onChange={this.props.onChange} type="checkbox" id={this.props.id} name={this.props.name} value={this.props.value}/>
+            <input className="CustomCheckBox" onChange={()=>null} type="checkbox" id={this.props.id} name={this.props.name} value={this.props.value} checked={this.props.value}/>
         </div>)
     }
 }

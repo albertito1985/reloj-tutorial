@@ -115,8 +115,46 @@ class Configuration extends Component {
             changedMoment[name] = value? value: undefined;
             prelMoments ={...prelMoments,...changedMoment};
         }
-
         let keys = Object.keys(prelMoments);
+
+        //Evaluation START: if everything is checked then turn on the select all switch if not turn it off       
+        let checker=true;
+        this.moments.principal.titles.forEach((title)=>{
+            if(!this.moments.extras.titles.includes(title)){
+                if(!keys.includes(title)){
+                    checker = false
+                }
+            }
+        });
+        let actualMoments={lang:this.state.actualMoments.lang, esType: this.state.actualMoments.esType};
+        let extraTime;
+        let totalTime;
+        let valuesString;
+        let selectAll;
+        if(checker !== false){
+            console.log("allt selected");
+            selectAll=true
+            let actualtitles = this.moments.principal.titles.concat(this.moments.extras.titles);
+            actualtitles.forEach((moment)=>{
+                actualMoments[moment] = true;
+            });
+            extraTime = this.moments.extras.titles.reduce((accumulator,value)=>accumulator+this.moments.duration[value],0);
+            totalTime = this.moments.principal.titles.reduce((accumulator,value)=>accumulator+this.moments.duration[value],0);
+            valuesString = this.valuesString(actualMoments);
+            this.setState({
+                selectAll,
+                actualMoments,
+                extraTime,
+                totalTime,
+                valuesString
+            });
+            return 0
+        }else{
+            console.log("allt unselected");
+            selectAll=false
+        }
+        //Evaluation END
+
         let relevantMoments=[];
         keys.forEach((key)=>{
             if(typeof prelMoments[key] !== "undefined"){
@@ -128,11 +166,12 @@ class Configuration extends Component {
         let prelMomentsExtras = this.calculateExtraMoments(relevantMoments);
         
         prelMoments={...prelMoments, ...prelMomentsExtras}
-        let extraTime = this.calculateTime(prelMomentsExtras);
-        let totalTime = this.calculateTime(prelMoments);
-        let valuesString = this.valuesString(prelMoments);
+        extraTime = this.calculateTime(prelMomentsExtras);
+        totalTime = this.calculateTime(prelMoments);
+        valuesString = this.valuesString(prelMoments);
 
         this.setState({
+            selectAll,
             actualMoments:{...prelMoments},
             totalTime, extraTime, valuesString
         });
@@ -215,7 +254,7 @@ class Configuration extends Component {
                         <div id="congfigContentContainer">
                             <div id="contenttitleContainer">
                                 <div className="title">{t('config.content')}</div>
-                                <SwitchButton label="Switch" value={this.state.selectAll} onClick={this.selectAll} type={1}/>
+                                <SwitchButton label={t("config.selectAll")} value={this.state.selectAll} onClick={this.selectAll} type={1}/>
                             </div>
                             <table className="contentTable">
                                 <tbody>

@@ -24,7 +24,8 @@
         "extra":"Extra",
         "total":"Total",
         "tutorial":"Tutorial",
-        "excercises":"Ejercicios"
+        "excercises":"Ejercicios",
+        "selectAll":"Marcar todo"
     },
     "answer0":{
         "title":"Responder con la hora",
