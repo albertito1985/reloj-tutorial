@@ -1,5 +1,11 @@
 {
     "themes":"Teman",
+<<<<<<< HEAD
     "footer":"Español 24/7 är en pilot webbsida (för tillfället) om tutorialer och spel för spanska inlärning producerad och administrerad av:",
     "reloj":"Det här temat arbetar klockan, dess delar och hur man läser den."
 }
+=======
+    "footer":"Español 24/7 är en pilot webbsida (för tillfället) om tutorialer och spel för inlärning av spanska. Producerad och administrerad av:",
+    "reloj":"I det här temat arbetas med klockan, dess delar och hur man läser den"
+}
+>>>>>>> d8deaf8d004f3fe7e0eabf5cdbbcb49ee1b408c6
