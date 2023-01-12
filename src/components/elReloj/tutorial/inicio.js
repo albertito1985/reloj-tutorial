@@ -671,6 +671,7 @@ class Parts0 extends Component{
     componentDidMount(){
         let buttons = document.getElementById("partsHalfRight").children;
         buttons.forEach((button)=>{
+            button.addEventListener("touchstart", (e)=>e.preventDefault());
             button.addEventListener("touchend",  this.clickHandler);
             button.addEventListener("touchmove", (e)=>e.preventDefault());
         })
@@ -684,6 +685,7 @@ class Parts0 extends Component{
     componentWillUnmount(){
         let buttons = document.getElementById("partsHalfRight").children;
         buttons.forEach((button)=>{
+            button.removeEventListener("touchstart", (e)=>e.preventDefault());
             button.removeEventListener("touchend",  this.clickHandler);
             button.removeEventListener("touchmove", (e)=>e.preventDefault());
         })

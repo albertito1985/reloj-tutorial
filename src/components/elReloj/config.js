@@ -126,7 +126,7 @@ class Configuration extends Component {
                 }
             }
         });
-        let actualMoments={lang:this.state.actualMoments.lang, esType: this.state.actualMoments.esType};
+        let actualMoments={lang:this.state.actualMoments.lang, esType: (target.type==="radio")?value:this.state.actualMoments.esType};
         let extraTime;
         let totalTime;
         let valuesString;
@@ -140,6 +140,7 @@ class Configuration extends Component {
             extraTime = this.moments.extras.titles.reduce((accumulator,value)=>accumulator+this.moments.duration[value],0);
             totalTime = this.moments.principal.titles.reduce((accumulator,value)=>accumulator+this.moments.duration[value],0);
             valuesString = this.valuesString(actualMoments);
+            console.log(actualMoments);
             this.setState({
                 selectAll,
                 actualMoments,
