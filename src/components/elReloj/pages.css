@@ -333,12 +333,17 @@ label, td, th, .title{
     gap:20px;
 }
 
+
+/* Aquí me quedé*/
+
+
 .phraseTemplateContent{
     display:flex;
     flex-direction:column;
     width:80%;
     min-width:390px;
     background-color: var(--orange);
+    /* background:var(--gradient1); */
     padding:20px 20px 30px 20px;
     border-radius:20px;
 }
@@ -413,6 +418,7 @@ label, td, th, .title{
     text-align: center;
     font-weight:900;
     color:var(--magenta);
+    /* color:white; */
     /* margin:20px 0; */
 }
 

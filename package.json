@@ -2,7 +2,7 @@
   "name": "reloj",
   "version": "0.1.0",
   "private": true,
-  "homepage":"http://www.espanol24-7.com/",
+  "homepage":"http://www.albertonunez/es247/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.3",

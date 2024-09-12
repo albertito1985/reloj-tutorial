@@ -42,8 +42,8 @@
     },
     "parts":{
         "title": "The parts of the clock",
-        "explanation": "To tell the time in Spanish it is necesary to learn the parts of the clock. Hover the names to the right of the clock to highlight its parts.",
-        "prompt": "Hover over the names to the right of the clock.",
+        "explanation": "To tell the time in Spanish it is necesary to learn the parts of the clock. Click on the names to the right of the clock to highlight its parts.",
+        "prompt": "Click on the names to the right of the clock.",
         "horas":"The hours are the big numbers in the clock and each number represents a different hour. The clock shows only twelve hours which is equivalen to half a day.",
         "minutos":"Not all the clocks show the minutes but the minutes in this specific clock are the tiny numbers. The clock shows only sixty minutes which is equivalent to an hour.",
         "horario":"The hour arm is the fat and short stick which indicates a specific hour.",

@@ -26,8 +26,14 @@ F8CA00  rgba(248, 202, 0, 1) yellow
 :root{
   --yellow: #F8CA00;
   --orange: #E97F02;
+  --red:#E51A47;
   --magenta: #BD1550;
   --white: #F7F7F7;
+  --blackYellowish: #423D28;
+  --blackRedish:#423131;
+  --gradient1 : linear-gradient(90deg, var(--orange) 0%, var(--red) 100%);
+  --gradient2 : linear-gradient(90deg, var(--red) 0%, var(--magenta) 100%);
+  --gradient3 : linear-gradient(90deg, var(--blackRedish) 0%, black 100%);
 }
 
 @font-face{

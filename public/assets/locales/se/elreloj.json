@@ -42,8 +42,8 @@
     },
     "parts":{
         "title": "Klockans delar",
-        "explanation": "För att lära dig klockslaget på spanska är det nödvändigt att veta klockans delar. För musen över nämnen som finns till höger om klockan för att belysa vilken del det handlar om.",
-        "prompt": "Hovra på namnen till höger om klockan.",
+        "explanation": "För att lära dig klockslaget på spanska är det nödvändigt att veta klockans delar. Clicka på nämnen som finns till höger om klockan för att belysa vilken del det handlar om.",
+        "prompt": "Clicka på namnen till höger om klockan.",
         "horas":"Timmarna, eller 'Las horas' på spanska, är de stora numren som finns i klockan. Varje nummer motsvarar en olik tid. Klockan visar enbart tjugofyra timmar, vilket motsvarar halva dygnet.",
         "minutos":"Minutrarna, eller 'los minutos' på spanska, visas inte ofta på klockan. I den här specifika klockan visas som de små nummren. Klockan visar enbart sextio minuter, vilket motsvarar en timme.",
         "horario":"Timvisaren, eller 'el horario' på spanska, är den lilla och tjocka pinnen som pekar på en specifik timmeslag.",

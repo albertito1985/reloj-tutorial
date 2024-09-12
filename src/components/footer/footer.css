@@ -5,7 +5,8 @@
 
 footer{
     width:100%;
-    background-color:black;
+    /* background-color:black; */
+    background:var(--gradient3);
     color:var(--white);
     display:flex;
     flex-direction: column;

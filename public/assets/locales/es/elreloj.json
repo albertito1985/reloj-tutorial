@@ -42,8 +42,8 @@
     },
     "parts":{
         "title": "Las partes del reloj",
-        "explanation": "Para aprender a decir la hora en español es necesario aprender las partes del reloj. Apunta con el ratón en los nombres a la derecha del reloj para resaltar sus partes.",
-        "prompt": "Pasa el ratón sobre los nombres a la derecha del reloj.",
+        "explanation": "Para aprender a decir la hora en español es necesario aprender las partes del reloj. Haz click con el ratón en los nombres a la derecha del reloj para resaltar sus partes.",
+        "prompt": "Haz click sobre los nombres a la derecha del reloj.",
         "horas":"Las horas son los números grandes del reloj y cáda número representa una hora diferente. El reloj muestra solo doce horas lo que equivale a la mitad del día.",
         "minutos":"No todos los relojes muestran los minutos pero en éste reloj los minútos son los números pequeños. El reloj muestra solo sesenta minutos lo que equivale a una hora.",
         "horario":"El horario es el palito pequeño y gordito del reloj que indíca una hora específica.",
