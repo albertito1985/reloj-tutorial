@@ -2,7 +2,7 @@ import { t, setDefaultNamespace } from 'i18next';
 import {Link} from 'react-router-dom'
 import {Component} from 'react';
 import { withTranslation} from 'react-i18next';
-import './pages.css';
+import './config.css';
 import {RadioButton, CheckBox, Button,SwitchButton} from '../input/input'
 import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 
@@ -253,7 +253,7 @@ class Configuration extends Component {
                         <div id="congfigContentContainer">
                             <div id="contenttitleContainer">
                                 <div className="title">{t('config.content')}</div>
-                                <SwitchButton label={t("config.selectAll")} value={this.state.selectAll} onClick={this.selectAll} type={1}/>
+                                <SwitchButton label={t("config.selectAll")} value={this.state.selectAll} onClick={this.selectAll} type={3}/>
                             </div>
                             <table className="contentTable">
                                 <tbody>

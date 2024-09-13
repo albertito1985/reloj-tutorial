@@ -24,7 +24,8 @@
   }
   
   .themesHomePuffs .homePuff{
-    background-color:var(--yellow);
+    /* background-color:var(--yellow); */
+    background:var(--gradientYellow);
     border-radius:20px;
     width:200px;
   }
@@ -35,11 +36,16 @@
     border-radius:20px 20px 0 0;
     background-position: center; 
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
+    transition:background-size 0.5s ease;
   }
   
   .themesHomePuffs .homePuff .homePuffImagereloj{
    background-image:url("./images/smart-watch-g163e2f5d0_640.jpg");
+  }
+
+  .themesHomePuffs .homePuff:hover .homePuffImage{
+    background-size: 150%;
   }
   
   

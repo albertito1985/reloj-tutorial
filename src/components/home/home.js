@@ -35,13 +35,13 @@ class Puff extends Component {
       return(
         <Link to={address}>
             <div className={`homePuff puff${name}`}>
-            <div className={`homePuffImage homePuffImage${name}`}></div>
-            <div className="homePuffText">
-                <h2 className="homePuffTitle">{title}</h2>
-                <div className="homePuffExplanation">
-                    {t(name)}
+                <div className={`homePuffImage homePuffImage${name}`}></div>
+                <div className="homePuffText">
+                    <h2 className="homePuffTitle">{title}</h2>
+                    <div className="homePuffExplanation">
+                        {t(name)}
+                    </div>
                 </div>
-            </div>
             </div>
         </Link>
       )

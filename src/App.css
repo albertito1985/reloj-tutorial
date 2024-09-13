@@ -24,16 +24,19 @@ F8CA00  rgba(248, 202, 0, 1) yellow
 }
 
 :root{
+  --lightYellow:#F9DE66;
   --yellow: #F8CA00;
+  --lightOrage:#FFA439;
   --orange: #E97F02;
   --red:#E51A47;
   --magenta: #BD1550;
   --white: #F7F7F7;
   --blackYellowish: #423D28;
   --blackRedish:#423131;
-  --gradient1 : linear-gradient(90deg, var(--orange) 0%, var(--red) 100%);
-  --gradient2 : linear-gradient(90deg, var(--red) 0%, var(--magenta) 100%);
-  --gradient3 : linear-gradient(90deg, var(--blackRedish) 0%, black 100%);
+  --gradientYellow : linear-gradient(90deg, var(--lightYellow) 0%, var(--yellow) 100%);
+  --gradientOrange : linear-gradient(90deg, var(--lightOrage) 0%, var(--orange) 100%);
+  --gradientMagenta : linear-gradient(90deg, var(--red) 0%, var(--magenta) 100%);
+  --gradientDark : linear-gradient(90deg, var(--blackRedish) 0%, black 100%);
 }
 
 @font-face{
@@ -75,7 +78,7 @@ a {
 
 .contentBody {
   /* background-image: url('./images/time-g42305ce1d_19202.jpg'); */
-  background-image: url('./images/backgroundSpanksa2.svg');
+  background-image: url('./images/backgroundSpanksa.svg');
   background-repeat: none;
   background-size:cover;
   width:100%;
@@ -86,6 +89,7 @@ a {
   padding:50px;
   position:relative;
 }
+
 
 .disco .arrow{ /* ????????? */
 font-size:2em;

@@ -1,0 +1,64 @@
+.phraseTemplateHalf#partsHalfLeft{
+    align-items:flex-end;
+}
+
+.phraseTemplateHalf#partsHalfRight{
+    align-items:flex-start;
+    gap:5px;
+}
+
+#horario .manilla.analogHighlight,
+#minutero .manilla.analogHighlight,
+.minutosContainer.analogHighlight .minutos,
+.horasContainer.analogHighlight .horas{
+    color:var(--magenta);
+    display:block;
+}
+
+#horario .manilla.analogHighlight{
+    background-color:var(--magenta);
+}
+
+#minutero .manilla.analogHighlight{
+    background-color:var(--magenta);
+}
+
+.minutosContainer.analogHighlight .minutos{
+    color:var(--magenta);
+}
+
+.reloj .minutosContainer.analogHighlight{
+    display:block;
+}
+
+.horasContainer.analogHighlight .horas{
+    color:var(--magenta);
+    font-weight:bolder;
+}
+
+#parts02{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--white);
+    width:100%;
+    height:100px;
+    padding:30px;
+    border-radius: 50px;
+}
+
+.switchKlockansDelar {
+    padding: 10px 20px;
+    border-radius:50px;
+    text-decoration: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    min-width: 150px;
+    background-color:var(--orange);
+    color:var(--white);
+}
+
+.switchKlockansDelar.active{
+    background-color:var(--magenta);
+    color:var(--white)
+}

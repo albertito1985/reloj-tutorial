@@ -1,0 +1,43 @@
+#minuteArm0 span{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#minuteArmContainer{
+    width:100%;
+    display:grid;
+    grid-template-columns: repeat(3,200px);
+    grid-gap:20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.minutearmGrid .writtenTime{
+    width:200px;
+}
+
+.minutearmGrid{
+    min-height:50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.minutearmGrid1{
+    order:3
+}
+
+.minutearmGrid2{
+    order:1;
+    grid-column:span 3;
+}
+
+.minutearmGrid3{
+    order:4;
+    justify-content: start;
+}
+
+.minutearmGrid4{
+    order:2;
+    justify-content: end;
+}
+

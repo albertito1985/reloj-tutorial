@@ -1,7 +1,7 @@
 import { withTranslation } from 'react-i18next';
 import { t } from 'i18next';
 import {Component} from 'react';
-import {Button} from '../../input/input';
+import {Button} from '../../../input/input';
 import './NextBack.css';
 import {IoChevronBackSharp,IoChevronForwardSharp} from 'react-icons/io5';
 

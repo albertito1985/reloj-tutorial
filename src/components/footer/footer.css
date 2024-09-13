@@ -6,7 +6,7 @@
 footer{
     width:100%;
     /* background-color:black; */
-    background:var(--gradient3);
+    background:var(--gradientDark);
     color:var(--white);
     display:flex;
     flex-direction: column;

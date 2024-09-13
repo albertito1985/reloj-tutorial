@@ -1,0 +1,136 @@
+.pages .confetti.invisible{
+    display:none;
+}
+
+/* /////////////////media Queries*/
+
+@media screen and (max-width: 900px) {
+    .phraseTemplate .phraseTemplateHalfsContainer{
+        justify-content: center;
+    }
+    
+  }
+
+  @media screen and (max-width: 850px) {
+    
+    #minuteArmContainer{
+        grid-template-columns: repeat(2,200px);
+    }
+
+    .minutearmGrid{
+        min-height:70px;
+    }
+
+    .minutearmGrid1{
+        order:1;
+        grid-row:span 3;
+    }
+    
+    .minutearmGrid2{
+        order:2;
+        grid-column:span 1;
+    }
+    
+    .minutearmGrid3{
+        order:3;
+        justify-content: start;
+    }
+    
+    .minutearmGrid4{
+        order:4;
+        justify-content: end;
+    }
+
+    #periods0Content .phraseTemplateHalfsContainer{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+
+    #periods0Content{
+        width:auto;
+    }
+
+    #periods0Content .periods0Half{
+        width:100%;
+    }
+
+    #periods0Content .periods0Half .periods0HalfHalf{
+        height: 150px;
+    }
+   
+  }
+
+@media screen and (max-width: 700px) {
+    label, td, th, .title{
+        font-size:1.2rem;
+    }
+   
+    .pages{
+        width:100%;
+        
+    }
+
+    .phraseTemplateContent{
+        width:100%;
+        border-radius:0;
+    }
+
+    .phraseTemplate #casaBlanca{
+        width:80%;
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+
+    .pages{
+        border-radius:0;
+    }
+
+    .phraseTemplateHalfsContainer{
+       flex-direction: column;
+       gap:50px;
+    }
+
+    .phraseTemplateHalfsContainer.parts0{
+        flex-direction: row;
+        gap:20px;
+     }
+
+     #parts02{
+       height:150px; 
+     }
+
+    .phraseTemplateHalf{
+        width:auto;
+    }
+
+    .phraseTemplateHalfRight{
+        height:275px;
+    }
+
+    .phraseTemplatePic{
+        height:auto;
+        width:80%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        aspect-ratio: 4/3;
+        border-radius: 20px;
+    }
+
+    .phraseTemplate #casaBlanca{
+        width:90%;
+    }
+
+    #minuteArmContainer{
+        display:flex;
+        flex-direction:column;
+    }
+
+    .CustomTextInput{
+        width:150px;
+    }
+}

@@ -1,0 +1,118 @@
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.pages span{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.pages{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:var(--gradientYellow);
+    min-height:50vh;
+    width:100%;
+    min-width:390px;
+    max-width:800px;
+    padding:40px;
+    border-radius: 50px;
+  }
+
+  .pages .tutorialContent{
+    z-index:1;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:50px;
+    align-items: center;
+    width:100%;
+  }
+
+label, td, th, .title{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:1.5rem;
+}
+
+
+/*---------------------------------configuration ----------------------------------*/
+#config {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    gap:20px;
+}
+
+#contenttitleContainer{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#congfigContentContainer{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+#form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    width:100%;
+}
+
+#explanation, #esType{
+    display:flex;
+    flex-direction: column;
+}
+
+.title{
+    font-weight: bold;
+}
+
+.radioAlternatives{
+    display:flex;
+    gap:20px;
+}
+
+.radioButton{
+    display:flex;
+    align-items: center;
+    gap:3px
+}
+
+.contentTable{
+    background-color:rgba(225,225,225,0.5);
+    padding:20px;
+    border-spacing: 10px;
+}
+
+.contentTable th{
+    text-align: left;
+}
+
+.contentTable .estTime{
+    min-width: 50px;
+    background-color:white;
+    vertical-align: middle;
+    text-align: center;
+    color:rgb(190, 190, 190);
+}
+
+.estTime.active{
+    color: black;
+}
+
+#buttons {
+    display:flex;
+    margin-top:30px;
+    gap:20px;
+}

@@ -1,0 +1,25 @@
+/* /////////////////Phrases2and3*/
+
+.phraseTemplate #casaBlanca{
+    background-image: url('../../images/squirrelWhiteHouse.jpg');
+    width:50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    aspect-ratio: 4/3;
+    border-radius: 20px;
+}
+
+#phrases2and3Content{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.phraseTemplate #phrases2and3Question{
+    text-align: center;
+}
+.phraseTemplateHalfRight2och3{
+    height:150px;
+}
